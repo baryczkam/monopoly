@@ -14,9 +14,9 @@ public class SpecialCardField extends Field {
         this.card = card;
     }
 
-    public SpecialCardField(int fieldIndex, PlayerInterface player, SpecialCardInterface card) {
-        super(fieldIndex, player);
+
+    public SpecialCardField(int fieldIndex, SpecialCardInterface card) {
+        super(fieldIndex);
         this.card = card;
     }
-
 }

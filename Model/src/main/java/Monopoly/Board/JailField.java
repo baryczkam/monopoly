@@ -8,8 +8,8 @@ public class JailField extends SpecialField{
     private int HowLong;
     private Status status;
 
-    public JailField(int fieldIndex, PlayerInterface player, int stayTime, int howLong, Status status) {
-        super(fieldIndex, player);
+    public JailField(int fieldIndex, int stayTime, int howLong, Status status) {
+        super(fieldIndex);
         this.stayTime = stayTime;
         HowLong = howLong;
         this.status = status;

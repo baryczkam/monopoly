@@ -54,4 +54,13 @@ public class Player extends Participant{
     public void jailCardAdd(JailCard card){
         getCards().add(card);
     }
+
+    public void buyProperty(PropertyField propertyField){
+        if(getMoney() - propertyField.getCostPurchaseProperty() >= 0){
+            setMoney(getMoney() - propertyField.getCostPurchaseProperty());
+            propertyField.setOwner(this);
+            getListOfProperties().add(propertyField);
+
+        }
+    }
 }
