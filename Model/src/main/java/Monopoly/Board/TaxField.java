@@ -6,8 +6,8 @@ public class TaxField extends SpecialField{
     private int taxCost;
 
 
-    public TaxField(int fieldIndex, PlayerInterface player, int taxCost) {
-        super(fieldIndex, player);
+    public TaxField(int fieldIndex, int taxCost) {
+        super(fieldIndex);
         this.taxCost = taxCost;
     }
 

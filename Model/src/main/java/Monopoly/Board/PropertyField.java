@@ -1,5 +1,7 @@
 package Monopoly.Board;
 
+import Monopoly.Player.Bank;
+import Monopoly.Player.Participant;
 import Monopoly.Player.Player;
 import Monopoly.Player.PlayerInterface;
 import Monopoly.SpecialCard.Status;
@@ -9,7 +11,7 @@ public class PropertyField extends Field{
     private int costPurchaseProperty;
 //    private int costPurchaseBuilding;
 //    private Status status;
-    private Player owner;
+    private Participant owner = new Bank();
 //    private NumberOfBuildings numberOfBuildings;
 
     private int stayCost;
@@ -37,11 +39,12 @@ public class PropertyField extends Field{
 //        this.costPurchaseBuilding = costPurchaseBuilding;
 //    }
 
-    public Player getOwner() {
+
+    public Participant getOwner() {
         return owner;
     }
 
-    public void setOwner(Player owner) {
+    public void setOwner(Participant owner) {
         this.owner = owner;
     }
 
@@ -61,5 +64,15 @@ public class PropertyField extends Field{
                 .append("owner", owner)
                 .append("stayCost", stayCost)
                 .toString();
+    }
+
+    public void buyProperty(Player player){
+        if(getOwner() instanceof Bank) {
+            if(player.getMoney() - getCostPurchaseProperty() >= 0){
+                player.setMoney(player.getMoney() - getCostPurchaseProperty());
+                setOwner(player);
+                player.getListOfProperties().add(this);
+            }
+        }
     }
 }

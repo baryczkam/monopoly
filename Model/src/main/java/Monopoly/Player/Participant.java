@@ -19,4 +19,6 @@ public class Participant {
         this.listOfProperties = listOfProperties;
     }
 
+    public Participant() {
+    }
 }
