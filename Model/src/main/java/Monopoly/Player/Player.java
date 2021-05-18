@@ -2,22 +2,32 @@ package Monopoly.Player;
 
 import Monopoly.Board.PropertyField;
 import Monopoly.SpecialCard.JailCard;
-import Monopoly.SpecialCard.SpecialCard;
-import Monopoly.SpecialCard.SpecialCardInterface;
 import Monopoly.SpecialCard.Status;
 
 import java.util.List;
 
 public class Player extends Participant{
+    private int money;
     private Pawn pawn;
-    private Status canExitJail = Status.OUT_JAIL;
+    private Status isInJail = Status.OUT_JAIL;
+    private boolean canExitJail = false;
     private List<JailCard> cards;
 
-    public Player(int money, List<PropertyField> listOfProperties, Pawn pawn, Status canExitJail, List<JailCard> cards) {
-        super(money, listOfProperties);
+    public Player(int money, List<PropertyField> listOfProperties, Pawn pawn, Status isInJail, boolean canExitJail,List<JailCard> cards) {
+        super(listOfProperties);
+        this.money = money;
         this.pawn = pawn;
+        this.isInJail = isInJail;
         this.canExitJail = canExitJail;
         this.cards = cards;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public Pawn getPawn() {
@@ -28,11 +38,19 @@ public class Player extends Participant{
         this.pawn = pawn;
     }
 
-    public Status getCanExitJail() {
+    public Status getIsInJail() {
+        return isInJail;
+    }
+
+    public void setIsInJail(Status isInJail) {
+        this.isInJail = isInJail;
+    }
+
+    public boolean getCanExitJail() {
         return canExitJail;
     }
 
-    public void setCanExitJail(Status canExitJail) {
+    public void setCanExitJail(boolean canExitJail) {
         this.canExitJail = canExitJail;
     }
 
@@ -45,8 +63,8 @@ public class Player extends Participant{
     }
 
     public void setStatus(){
-        if(!getCards().isEmpty() && getCanExitJail() == Status.IN_JAIL){
-            setCanExitJail(Status.OUT_JAIL);
+        if(!getCards().isEmpty() && getIsInJail() == Status.IN_JAIL){
+            setIsInJail(Status.OUT_JAIL);
             getCards().remove(getCards().get(0));
         }
     }

@@ -1,5 +1,6 @@
 package Monopoly.SpecialCard;
 
+import Monopoly.Player.Player;
 import Monopoly.Player.PlayerInterface;
 
 public class JailCard extends SpecialCard{
@@ -19,7 +20,9 @@ public class JailCard extends SpecialCard{
     }
 
     @Override
-    public void performAction() {
-        super.performAction();
-    }
+    public void performAction(Player Player) {
+        if(!Player.getCanExitJail())
+        Player.setCanExitJail(true);
+        }
 }
+

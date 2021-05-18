@@ -1,6 +1,8 @@
 package Monopoly.SpecialCard;
 
 import Monopoly.Board.Field;
+import Monopoly.Player.Pawn;
+import Monopoly.Player.Player;
 import Monopoly.Player.PlayerInterface;
 
 public class MoveCard extends SpecialCard{
@@ -20,7 +22,7 @@ public class MoveCard extends SpecialCard{
     }
 
     @Override
-    public void performAction() {
-        super.performAction();
+    public void performAction(Player Player) {
+        Player.getPawn().setCurrentLocation(destinationField);
     }
 }

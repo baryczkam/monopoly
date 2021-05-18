@@ -11,6 +11,14 @@ public class Pawn {
         this.currentLocation = currentLocation;
     }
 
+    public Field getCurrentLocation() {
+        return currentLocation;
+    }
+
+    public void setCurrentLocation(Field currentLocation) {
+        this.currentLocation = currentLocation;
+    }
+
     public void move(){
 
     }

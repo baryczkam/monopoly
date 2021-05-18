@@ -1,5 +1,6 @@
 package Monopoly.SpecialCard;
 
+import Monopoly.Player.Player;
 import Monopoly.Player.PlayerInterface;
 
 public class GiftCard extends SpecialCard{
@@ -19,7 +20,7 @@ public class GiftCard extends SpecialCard{
     }
 
     @Override
-    public void performAction() {
-        super.performAction();
+    public void performAction(Player Player) {
+        Player.setMoney(Player.getMoney() + this.getMoney());
     }
 }

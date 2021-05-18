@@ -1,23 +1,24 @@
 package Monopoly.SpecialCard;
 
+import Monopoly.Player.Player;
 import Monopoly.Player.PlayerInterface;
 
 public class SpecialCard {
-    private PlayerInterface player;
+    protected PlayerInterface Player;
 
     public SpecialCard(PlayerInterface player) {
-        this.player = player;
+        this.Player = player;
     }
 
     public PlayerInterface getPlayer() {
-        return player;
+        return Player;
     }
 
     public void setPlayer(PlayerInterface player) {
-        this.player = player;
+        this.Player = player;
     }
 
-    public void performAction(){
+    public void performAction(Player player){
 
     }
 }
