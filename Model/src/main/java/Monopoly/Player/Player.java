@@ -1,5 +1,6 @@
 package Monopoly.Player;
 
+import Monopoly.Board.JailField;
 import Monopoly.Board.PropertyField;
 import Monopoly.SpecialCard.JailCard;
 import Monopoly.SpecialCard.Status;
@@ -11,15 +12,13 @@ public class Player extends Participant{
     private Pawn pawn;
     private Status isInJail = Status.OUT_JAIL;
     private boolean canExitJail = false;
-    private List<JailCard> cards;
 
-    public Player(int money, List<PropertyField> listOfProperties, Pawn pawn, Status isInJail, boolean canExitJail,List<JailCard> cards) {
+    public Player(int money, List<PropertyField> listOfProperties, Pawn pawn, Status isInJail, boolean canExitJail) {
         super(listOfProperties);
         this.money = money;
         this.pawn = pawn;
         this.isInJail = isInJail;
         this.canExitJail = canExitJail;
-        this.cards = cards;
     }
 
     public int getMoney() {
@@ -54,23 +53,11 @@ public class Player extends Participant{
         this.canExitJail = canExitJail;
     }
 
-    public List<JailCard> getCards() {
-        return cards;
-    }
-
-    public void setCards(List<JailCard> cards) {
-        this.cards = cards;
-    }
-
     public void setStatus(){
-        if(!getCards().isEmpty() && getIsInJail() == Status.IN_JAIL){
-            setIsInJail(Status.OUT_JAIL);
-            getCards().remove(getCards().get(0));
+        if(getPawn().getCurrentLocation() instanceof JailField)
+            {
+                this.setIsInJail(Status.IN_JAIL);
+            }
         }
-    }
-
-    public void jailCardAdd(JailCard card){
-        getCards().add(card);
-    }
 
 }

@@ -21,8 +21,6 @@ public class JailCard extends SpecialCard{
 
     @Override
     public void performAction(Player Player) {
-        if(!Player.getCanExitJail())
-        Player.setCanExitJail(true);
         }
 }
 
