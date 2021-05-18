@@ -5,9 +5,11 @@ import Monopoly.Board.PropertyField;
 import java.util.List;
 
 public class Participant {
+    private int money;
     private List<PropertyField> listOfProperties;
 
-    public Participant(List<PropertyField> listOfProperties) {
+    public Participant(int money, List<PropertyField> listOfProperties) {
+        this.money = money;
         this.listOfProperties = listOfProperties;
     }
 
@@ -19,6 +21,11 @@ public class Participant {
         this.listOfProperties = listOfProperties;
     }
 
-    public Participant() {
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 }

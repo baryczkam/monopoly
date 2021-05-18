@@ -10,6 +10,4 @@ public class Bank extends Participant{
         super(money, listOfProperties);
     }
 
-    public Bank() {
-    }
 }

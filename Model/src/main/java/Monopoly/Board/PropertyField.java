@@ -11,7 +11,7 @@ public class PropertyField extends Field{
     private int costPurchaseProperty;
 //    private int costPurchaseBuilding;
 //    private Status status;
-    private Participant owner = new Bank();
+    private Participant owner;
 //    private NumberOfBuildings numberOfBuildings;
 
     private int stayCost;
@@ -73,6 +73,12 @@ public class PropertyField extends Field{
                 setOwner(player);
                 player.getListOfProperties().add(this);
             }
+        }
+    }
+    public void payStayCost(Player player){
+        if(!(getOwner() == player) && !(getOwner() instanceof Bank)) {
+            player.setMoney(player.getMoney() - getStayCost());
+            getOwner().setMoney(getOwner().getMoney() + getStayCost());
         }
     }
 }
