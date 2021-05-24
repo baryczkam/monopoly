@@ -19,6 +19,5 @@ public class BoardTest {
         Board board2 = Board.getInstance(field2);
         Assertions.assertNotEquals(field,field2);
         Assertions.assertEquals(board,board2);
-
     }
 }

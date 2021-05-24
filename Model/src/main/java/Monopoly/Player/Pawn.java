@@ -1,17 +1,26 @@
 package Monopoly.Player;
 
 import Monopoly.Board.Field;
-
-import java.util.Random;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Pawn {
     private Field currentLocation;
-//    private PlayerInterface owner;
+//    private boolean stun;
+//    private int stunTurn;
 
-
-    public Pawn(Field currentLocation) {
+    public Pawn(Field currentLocation, boolean stun) {
         this.currentLocation = currentLocation;
+//        this.stun = stun;
+//        this.stunTurn = 0;
     }
+
+//    public boolean isStun() {
+//        return stun;
+//    }
+//
+//    public void setStun(boolean stun) {
+//        this.stun = stun;
+//    }
 
     public Field getCurrentLocation() {
         return currentLocation;
@@ -21,22 +30,23 @@ public class Pawn {
         this.currentLocation = currentLocation;
     }
 
-    public void move(){
-
-    }
-    public int throwDice(){
-//        Random r = new Random();
-//        int ile = 0;
-//        int a = r.nextInt(7);
-//        int b = r.nextInt(7);
-//            if(a == b){
-//                ile++;
-//            }
-//        return a + b;
-        return 1;
-    }
     public void performActionField(){
 
     }
 
+//    public int getStunTurn() {
+//        return stunTurn;
+//    }
+//
+//    public void setStunTurn(int stunTurn) {
+//        this.stunTurn = stunTurn;
+//    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("currentLocation", currentLocation)
+//                .append("stun", stun)
+                .toString();
+    }
 }

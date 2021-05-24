@@ -7,8 +7,8 @@ import Monopoly.SpecialCard.Status;
 import java.util.List;
 
 public class ComputerPlayer extends Player{
-    public ComputerPlayer(int money, List<PropertyField> listOfProperties, Pawn pawn, Status isInJail, boolean canExitJail) {
-        super(money, listOfProperties, pawn, isInJail, canExitJail);
+    public ComputerPlayer(int money, List<PropertyField> listOfProperties, Pawn pawn) {
+        super(money, listOfProperties, pawn);
     }
 
     public void simulateBuy(){

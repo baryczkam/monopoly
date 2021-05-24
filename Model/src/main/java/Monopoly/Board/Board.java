@@ -26,7 +26,18 @@ public class Board implements BoardInterface{
         return instance;
     }
 
+    public Field getField(int index){
+        return fieldList.get(index);
+    }
 
+    public JailField getJailField() {
+        for(Field field : fieldList) {
+            if(field instanceof JailField) {
+                return (JailField) field;
+            }
+        }
+        return null;
+    }
 
     public List<Field> getFieldList() {
         return fieldList;
