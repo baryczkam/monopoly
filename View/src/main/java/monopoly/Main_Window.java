@@ -11,9 +11,6 @@ import java.util.ResourceBundle;
 
 public class Main_Window {
 
-    //logger.info("Monopoly - MENU");
-    //primaryStage.setTitle("Monopoly - MENU");
-
     @FXML
     private Button newGameBtn;
 
@@ -23,8 +20,8 @@ public class Main_Window {
     @FXML
     private Button informationBtn;
 
-//    @FXML
-//    public void openNewGameWindow() {
-//        BuildingStage.buildStage("/newGame_Window.fxml", setBundle(locale));
-//    }
+    @FXML
+    public void openNewGameWindow() {
+        BuildingStage.buildStage("/newGame_Window.fxml");
+    }
 }

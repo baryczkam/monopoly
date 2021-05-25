@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monopoly.newGame_Window">
    <children>
-      <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 50%;">
+      <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 75%;">
          <image>
             <Image url="@images/Menu1.png" />
          </image>
@@ -54,7 +54,7 @@
             <DropShadow spread="0.75" />
          </effect>
       </Pane>
-      <Button layoutX="306.0" layoutY="562.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="187.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="START" textFill="#2a5e5b">
+      <Button fx:id="startNewGame" layoutX="306.0" layoutY="562.0" mnemonicParsing="false" onAction="#startNewGameWindow" prefHeight="65.0" prefWidth="187.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="START" textFill="#2a5e5b">
          <font>
             <Font name="Arial Black" size="22.0" />
          </font>
