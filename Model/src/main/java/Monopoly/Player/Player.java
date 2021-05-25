@@ -96,14 +96,13 @@ public class Player extends Participant{
         if(a == b){
             if (this.isInJail.equals(Status.IN_JAIL)) {
                 this.canExitJail = true;
-                return 0;
+                return a + b;
             }
             int c = r.nextInt(6) + 1;
             int d = r.nextInt(6) + 1;
             if(c == d){
                 int e = r.nextInt(6) + 1;
                 int f = r.nextInt(6) + 1;
-//                    int f = e;
                 if(e == f){
                     return -1;
                 }

@@ -75,6 +75,7 @@ public class PropertyField extends Field{
             }
         }
     }
+
     public void payStayCost(Player player){
         if(!(getOwner() == player) && !(getOwner() instanceof Bank)) {
             player.setMoney(player.getMoney() - getStayCost());

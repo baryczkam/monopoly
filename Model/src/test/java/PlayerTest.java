@@ -240,6 +240,12 @@ public class PlayerTest {
         player.move(board, 10);
         Assertions.assertEquals(player.getInJailTurn(), 0);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(), field17);
+
+//        player.move(board, -1);
+//        Assertions.assertEquals(player.getPawn().getCurrentLocation(), field7);
+//        player.move(board);
+//        System.out.println(player.getPawn().getCurrentLocation().getFieldIndex());
+
     }
 
     @Test
