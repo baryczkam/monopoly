@@ -1,8 +1,10 @@
-public class TextBox extends javafx.scene.control.TextField implements Component {
+package monopoly;
+
+public class Button extends javafx.scene.control.Button implements Component {
     private Mediator mediator;
 
-    public TextBox() {
-        super("TextBox");
+    public Button() {
+        super("monopoly.Button");
     }
     @Override
     public void setMediator(Mediator mediator) {
@@ -11,6 +13,6 @@ public class TextBox extends javafx.scene.control.TextField implements Component
 
     @Override
     public String getName() {
-        return "TextBox";
+        return "monopoly.Button";
     }
 }

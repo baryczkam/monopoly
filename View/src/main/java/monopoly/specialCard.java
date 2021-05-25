@@ -1,3 +1,5 @@
+package monopoly;
+
 public class specialCard extends Cards{
 
     public void executeCommand() {}

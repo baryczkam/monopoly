@@ -1,3 +1,5 @@
+package monopoly;
+
 public class Pawn {
     private String nameOfPawn;
     private int numberOfField;

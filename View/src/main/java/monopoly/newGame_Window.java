@@ -1,7 +1,9 @@
+package monopoly;
+
 import javafx.fxml.FXML;
-//import javafx.scene.control.Button;
+//import javafx.scene.control.monopoly.Button;
 //import javafx.scene.control.ChoiceBox;
-//import javafx.scene.control.ComboBox;
+//import javafx.scene.control.monopoly.ComboBox;
 //import javafx.scene.control.TextField;
 
 public class newGame_Window implements Mediator {

@@ -1,9 +1,9 @@
-public class Button extends javafx.scene.control.Button implements Component {
+package monopoly;
+
+public class ComboBox extends javafx.scene.control.ComboBox implements Component {
     private Mediator mediator;
 
-    public Button() {
-        super("Button");
-    }
+
     @Override
     public void setMediator(Mediator mediator) {
         this.mediator = mediator;
@@ -11,6 +11,6 @@ public class Button extends javafx.scene.control.Button implements Component {
 
     @Override
     public String getName() {
-        return "Button";
+        return "monopoly.ComboBox";
     }
 }

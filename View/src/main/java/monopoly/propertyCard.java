@@ -1,3 +1,5 @@
+package monopoly;
+
 public class propertyCard extends Cards{
     private String nameOfProperty;
     private int homePurchasePrice;
