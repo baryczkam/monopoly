@@ -13,7 +13,7 @@ public class Player extends Participant{
     private Pawn pawn;
     private Status isInJail;
     private int inJailTurn;
-    private boolean canExitJail ;
+    private boolean canExitJail;
 
     public Player(int money, List<PropertyField> listOfProperties, Pawn pawn) {
         super(money, listOfProperties);
@@ -83,6 +83,7 @@ public class Player extends Participant{
         //ruch
         if (getPawn().getCurrentLocation().getFieldIndex() + iloscPol > 40) {
             getPawn().setCurrentLocation(board.getField(Math.abs(40 - (getPawn().getCurrentLocation().getFieldIndex() + iloscPol))));
+            setMoney(getMoney()+200);
         } else {
             getPawn().setCurrentLocation(board.getField(getPawn().getCurrentLocation().getFieldIndex() + iloscPol));
         }
@@ -90,10 +91,8 @@ public class Player extends Participant{
 
     public int throwDice(){
         Random r = new Random();
-        int ile = 0;
         int a = r.nextInt(6) + 1;
         int b = r.nextInt(6) + 1;
-
         if(a == b){
             if (this.isInJail.equals(Status.IN_JAIL)) {
                 this.canExitJail = true;
