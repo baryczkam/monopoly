@@ -132,12 +132,12 @@ public class PlayerTest {
         Player player = new Player(0, propertyFields, pawn);
         Board board = Board.getInstance(fields);
         player.move(board, 10);
-        Assertions.assertNotEquals(pawn.getCurrentLocation(), field40);
-        Assertions.assertEquals(pawn.getCurrentLocation(), field10);
-        System.out.println(pawn.toString());
+        Assertions.assertNotEquals(player.getPawn().getCurrentLocation(), field40);
+        Assertions.assertEquals(player.getPawn().getCurrentLocation(), field10);
+        System.out.println(player.getPawn().toString());
         player.move(board);
-        System.out.println("aktualna lokalizacja: " + pawn.getCurrentLocation().getFieldIndex());
-        System.out.println(pawn.toString());
+        System.out.println("aktualna lokalizacja: " + player.getPawn().getCurrentLocation().getFieldIndex());
+        System.out.println(player.getPawn().toString());
     }
 
     @Test
@@ -227,19 +227,19 @@ public class PlayerTest {
         Pawn pawn = new Pawn(field40, false);
         Player player = new Player(0, propertyFields, pawn);
         Board board = Board.getInstance(fields);
-        Assertions.assertEquals(pawn.getCurrentLocation(), field40);
+        Assertions.assertEquals(player.getPawn().getCurrentLocation(), field40);
         player.move(board, -1);
         Assertions.assertEquals(player.getInJailTurn(), 0);
-        Assertions.assertEquals(pawn.getCurrentLocation(), field7);
+        Assertions.assertEquals(player.getPawn().getCurrentLocation(), field7);
         player.move(board, 10);
         Assertions.assertEquals(player.getInJailTurn(), 1);
-        Assertions.assertEquals(pawn.getCurrentLocation(), field7);
+        Assertions.assertEquals(player.getPawn().getCurrentLocation(), field7);
         player.move(board, 10);
         Assertions.assertEquals(player.getInJailTurn(), 2);
-        Assertions.assertEquals(pawn.getCurrentLocation(), field7);
+        Assertions.assertEquals(player.getPawn().getCurrentLocation(), field7);
         player.move(board, 10);
         Assertions.assertEquals(player.getInJailTurn(), 0);
-        Assertions.assertEquals(pawn.getCurrentLocation(), field17);
+        Assertions.assertEquals(player.getPawn().getCurrentLocation(), field17);
     }
 
     @Test
@@ -329,13 +329,13 @@ public class PlayerTest {
         Pawn pawn = new Pawn(field40, false);
         Player player = new Player(0, propertyFields, pawn);
         Board board = Board.getInstance(fields);
-        Assertions.assertEquals(pawn.getCurrentLocation(), field40);
+        Assertions.assertEquals(player.getPawn().getCurrentLocation(), field40);
         player.move(board, -1);
         Assertions.assertEquals(player.getInJailTurn(), 0);
-        Assertions.assertEquals(pawn.getCurrentLocation(), field7);
+        Assertions.assertEquals(player.getPawn().getCurrentLocation(), field7);
         player.setCanExitJail(true);
         player.move(board, 5);
-        Assertions.assertEquals(pawn.getCurrentLocation(), field12);
+        Assertions.assertEquals(player.getPawn().getCurrentLocation(), field12);
         Assertions.assertEquals(player.getInJailTurn(), 0);
     }
 }
