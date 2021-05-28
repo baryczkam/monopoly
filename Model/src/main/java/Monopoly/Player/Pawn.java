@@ -5,22 +5,13 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Pawn {
     private Field currentLocation;
-//    private boolean stun;
-//    private int stunTurn;
+    private String pawnName;
 
-    public Pawn(Field currentLocation, boolean stun) {
+    public Pawn(Field currentLocation, String pawnName) {
         this.currentLocation = currentLocation;
-//        this.stun = stun;
-//        this.stunTurn = 0;
+        this.pawnName = pawnName;
     }
 
-//    public boolean isStun() {
-//        return stun;
-//    }
-//
-//    public void setStun(boolean stun) {
-//        this.stun = stun;
-//    }
 
     public Field getCurrentLocation() {
         return currentLocation;
@@ -34,19 +25,19 @@ public class Pawn {
 
     }
 
-//    public int getStunTurn() {
-//        return stunTurn;
-//    }
-//
-//    public void setStunTurn(int stunTurn) {
-//        this.stunTurn = stunTurn;
-//    }
+    public String getPawnName() {
+        return pawnName;
+    }
+
+    public void setPawnName(String pawnName) {
+        this.pawnName = pawnName;
+    }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this)
-                .append("currentLocation", currentLocation)
-//                .append("stun", stun)
-                .toString();
+        return "Pawn{" +
+                "currentLocation=" + currentLocation +
+                ", pawnName='" + pawnName + '\'' +
+                '}';
     }
 }

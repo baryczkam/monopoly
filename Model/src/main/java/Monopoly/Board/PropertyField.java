@@ -16,7 +16,7 @@ public class PropertyField extends Field{
 
     private int stayCost;
 
-    public PropertyField(int fieldIndex, int costPurchaseProperty, Player owner, int stayCost) {
+    public PropertyField(int fieldIndex, int costPurchaseProperty, Participant owner, int stayCost) {
         super(fieldIndex);
         this.costPurchaseProperty = costPurchaseProperty;
         this.owner = owner;
@@ -66,20 +66,20 @@ public class PropertyField extends Field{
                 .toString();
     }
 
-    public void buyProperty(Player player){
-        if(getOwner() instanceof Bank) {
-            if(player.getMoney() - getCostPurchaseProperty() >= 0){
-                player.setMoney(player.getMoney() - getCostPurchaseProperty());
-                setOwner(player);
-                player.getListOfProperties().add(this);
-            }
-        }
-    }
-
-    public void payStayCost(Player player){
-        if(!(getOwner() == player) && !(getOwner() instanceof Bank)) {
-            player.setMoney(player.getMoney() - getStayCost());
-            getOwner().setMoney(getOwner().getMoney() + getStayCost());
-        }
-    }
+//    public void buyProperty(Player player){
+//        if(getOwner() instanceof Bank) {
+//            if(player.getMoney() - getCostPurchaseProperty() >= 0){
+//                player.setMoney(player.getMoney() - getCostPurchaseProperty());
+//                setOwner(player);
+//                player.getListOfProperties().add(this);
+//            }
+//        }
+//    }
+//
+//    public void payStayCost(Player player){
+//        if(!(getOwner() == player) && !(getOwner() instanceof Bank)) {
+//            player.setMoney(player.getMoney() - getStayCost());
+//            getOwner().setMoney(getOwner().getMoney() + getStayCost());
+//        }
+//    }
 }
