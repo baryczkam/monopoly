@@ -24,4 +24,9 @@ public class Main_Window {
     public void openNewGameWindow() {
         BuildingStage.buildStage("/newGame_Window.fxml");
     }
+
+    @FXML
+    public void openLoadGameWindow() {
+        BuildingStage.buildStage("/loadGame_Window.fxml");
+    }
 }

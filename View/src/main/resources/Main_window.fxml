@@ -21,7 +21,7 @@
          <effect>
             <DropShadow spread="0.75" />
          </effect></Button>
-      <Button fx:id="loadGameBtn" layoutX="521.0" layoutY="313.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="187.0" style="-fx-background-color: #2a5e5b; -fx-background-radius: 15;" text="WCZYTAJ GRĘ" textFill="#a2bfbe">
+      <Button fx:id="loadGameBtn" layoutX="521.0" layoutY="313.0" mnemonicParsing="false" onAction="#openLoadGameWindow" prefHeight="65.0" prefWidth="187.0" style="-fx-background-color: #2a5e5b; -fx-background-radius: 15;" text="WCZYTAJ GRĘ" textFill="#a2bfbe">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>

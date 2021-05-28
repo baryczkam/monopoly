@@ -2,7 +2,7 @@ package monopoly;
 
 import Monopoly.Player.Pawn;
 
-public class Player {
+public class Player2 {
 
     private String name;
     private Pawn pawn;
