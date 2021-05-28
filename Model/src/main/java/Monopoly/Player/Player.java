@@ -149,18 +149,22 @@ public class Player extends Participant{
 //            }
 //        }
 //    }
-
-    public void buyProperty(){
+    public boolean checkProperty(){
         if(Objects.nonNull(getPawn()) && Objects.nonNull(getPawn().getCurrentLocation()) && getPawn().getCurrentLocation() instanceof PropertyField && ((PropertyField) getPawn().getCurrentLocation()).getOwner() instanceof Bank){
             if(Objects.nonNull(getMoney()) && getMoney() - ((PropertyField) getPawn().getCurrentLocation()).getCostPurchaseProperty() >= 0){
-                setMoney(getMoney() - ((PropertyField) getPawn().getCurrentLocation()).getCostPurchaseProperty());
-                ((PropertyField) getPawn().getCurrentLocation()).getOwner().getListOfProperties().remove(getPawn().getCurrentLocation());
-                ((PropertyField) getPawn().getCurrentLocation()).setOwner(this);
-                getListOfProperties().add(((PropertyField) getPawn().getCurrentLocation()));
-
-
+                buyProperty();
+                return true;
             }
         }
+        return false;
+    }
+
+
+    private void buyProperty(){
+        setMoney(getMoney() - ((PropertyField) getPawn().getCurrentLocation()).getCostPurchaseProperty());
+        ((PropertyField) getPawn().getCurrentLocation()).getOwner().getListOfProperties().remove(getPawn().getCurrentLocation());
+        ((PropertyField) getPawn().getCurrentLocation()).setOwner(this);
+        getListOfProperties().add(((PropertyField) getPawn().getCurrentLocation()));
     }
 
     public void payStayCost(){

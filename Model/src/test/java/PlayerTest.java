@@ -436,7 +436,7 @@ public class PlayerTest {
         Player player = new Player(100,propertyFields2,pawn,"0");
         player.move(board,1);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(),field2);
-        player.buyProperty();
+        player.checkProperty();
         Assertions.assertEquals(player.getListOfProperties().get(0),field2);
         Assertions.assertEquals(player.getListOfProperties().size(),1);
         Assertions.assertEquals(player.getMoney(),50);
@@ -540,22 +540,22 @@ public class PlayerTest {
         Player player2 = new Player(100,propertyFields3,pawn2,"1");
         player1.move(board,1);
         Assertions.assertEquals(player1.getPawn().getCurrentLocation(),field2);
-        player1.buyProperty();
+        player1.checkProperty();
 
         player2.move(board,1);
         Assertions.assertEquals(player2.getPawn().getCurrentLocation(),field2);
         Assertions.assertEquals(player1.getMoney(),60);
         Assertions.assertEquals(player2.getMoney(),90);
-        player2.buyProperty();
+        player2.checkProperty();
         Assertions.assertEquals(player2.getListOfProperties().size(),0);
         player1.move(board,1);
-        player1.buyProperty();
+        player1.checkProperty();
         Assertions.assertEquals(player1.getListOfProperties().size(),1);
         player1.move(board,1);
-        player1.buyProperty();
+        player1.checkProperty();
         Assertions.assertEquals(player1.getListOfProperties().size(),1);
         player1.move(board,1);
-        player1.buyProperty();
+        player1.checkProperty();
         Assertions.assertEquals(player1.getListOfProperties().get(1),field5);
         Assertions.assertEquals(player1.getListOfProperties().size(),2);
         player2.move(board,3);
