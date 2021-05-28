@@ -94,7 +94,10 @@
             </Label>
             </children>
         </Pane>
-      <ImageView fx:id="pole1" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="pionekAuto" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/pionki/Pionek_auto.png" />
+         </image></ImageView>
       <ImageView fx:id="pole2" fitHeight="65.0" fitWidth="65.0" layoutX="631.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="pole3" fitHeight="65.0" fitWidth="65.0" layoutX="566.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="pole4" fitHeight="65.0" fitWidth="65.0" layoutX="501.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
@@ -104,7 +107,10 @@
       <ImageView fx:id="pole8" fitHeight="65.0" fitWidth="65.0" layoutX="237.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="pole9" fitHeight="65.0" fitWidth="65.0" layoutX="172.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="pole10" fitHeight="65.0" fitWidth="65.0" layoutX="107.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole11" fitHeight="65.0" fitWidth="65.0" layoutX="22.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="pole11" fitHeight="65.0" fitWidth="65.0" layoutY="740.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/pionki/Pionek_pies.png" />
+         </image></ImageView>
       <ImageView fx:id="pole12" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="pole13" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="pole14" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true" />

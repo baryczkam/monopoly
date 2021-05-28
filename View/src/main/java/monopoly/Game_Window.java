@@ -8,6 +8,7 @@ import Monopoly.Player.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,11 +18,17 @@ public class Game_Window {
     private Dice dice;
     private Player player;
     private Board board;
+    private PawnPosition pawnPosition;
+
+    @FXML
+    private ImageView pionekAuto;
 
     @FXML
     private Label eyelets;
 
-    public void rollTheDice() {
+
+
+    public void rollTheDice() throws InterruptedException {
         Field field1 = new Field(0);
         Field field2 = new Field(1);
         Field field3 = new Field(2);
@@ -64,9 +71,9 @@ public class Game_Window {
         Field field40 = new Field(39);
         dice = new Dice();
         Field field = new Field(0);
-        Pawn pawn = new Pawn(field,false);
+        Pawn pawn = new Pawn(field1,false);
         List<PropertyField> propertyFields = new ArrayList<>();
-        player = new Player(100,propertyFields,pawn);
+
 //        List<Field> fieldList = new ArrayList<>();
 //        board = new Board(fieldList);
         List<Field> fields = new ArrayList<>();
@@ -111,10 +118,15 @@ public class Game_Window {
         fields.add(field39);
         fields.add(field40);
         Board board = Board.getInstance(fields);
-
+        pawnPosition = new PawnPosition("auto");
+        player = new Player(100,propertyFields,pawn);
         dice.throwTheDice(player);
         eyelets.setText("" + dice.getNumberOfEyelets());
+        int whichField = player.getPawn().getCurrentLocation().getFieldIndex();
         dice.movePawn(board,player);
+        pawnPosition.changePawnPosition(pionekAuto,player.getPawn().getCurrentLocation().getFieldIndex(),dice.getNumberOfEyelets());
+
+
     }
 
 
