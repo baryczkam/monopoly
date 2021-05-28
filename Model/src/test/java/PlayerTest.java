@@ -436,8 +436,10 @@ public class PlayerTest {
         Player player = new Player(100,propertyFields2,pawn,"0");
         player.move(board,1);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(),field2);
+        Assertions.assertNotEquals(((PropertyField) player.getPawn().getCurrentLocation()).getOwner(),player);
         player.checkProperty();
         Assertions.assertEquals(player.getListOfProperties().get(0),field2);
+        Assertions.assertEquals(((PropertyField) player.getPawn().getCurrentLocation()).getOwner(),player);
         Assertions.assertEquals(player.getListOfProperties().size(),1);
         Assertions.assertEquals(player.getMoney(),50);
         Assertions.assertEquals(bank.getListOfProperties().size(),0);

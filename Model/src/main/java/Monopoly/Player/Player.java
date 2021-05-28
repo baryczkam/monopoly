@@ -159,7 +159,6 @@ public class Player extends Participant{
         return false;
     }
 
-
     private void buyProperty(){
         setMoney(getMoney() - ((PropertyField) getPawn().getCurrentLocation()).getCostPurchaseProperty());
         ((PropertyField) getPawn().getCurrentLocation()).getOwner().getListOfProperties().remove(getPawn().getCurrentLocation());
