@@ -71,7 +71,7 @@ public class Game_Window {
         Field field40 = new Field(39);
         dice = new Dice();
         Field field = new Field(0);
-        Pawn pawn = new Pawn(field1,false);
+        Pawn pawn = new Pawn(field1,"auto");
         List<PropertyField> propertyFields = new ArrayList<>();
 
 //        List<Field> fieldList = new ArrayList<>();
@@ -119,7 +119,7 @@ public class Game_Window {
         fields.add(field40);
         Board board = Board.getInstance(fields);
         pawnPosition = new PawnPosition("auto");
-        player = new Player(100,propertyFields,pawn);
+        player = new Player(100,propertyFields,pawn,"gracz");
         dice.throwTheDice(player);
         eyelets.setText("" + dice.getNumberOfEyelets());
         int whichField = player.getPawn().getCurrentLocation().getFieldIndex();
