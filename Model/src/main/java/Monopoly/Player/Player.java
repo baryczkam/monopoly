@@ -208,6 +208,7 @@ public class Player extends Participant{
     }
 
 
+
     public int getInJailTurn() {
         return inJailTurn;
     }
