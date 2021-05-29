@@ -19,8 +19,4 @@ public class TaxField extends SpecialField{
         this.taxCost = taxCost;
     }
 
-//    public int payTax(){
-//
-//
-//    }
 }

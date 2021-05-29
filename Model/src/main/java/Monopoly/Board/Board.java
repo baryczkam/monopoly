@@ -1,10 +1,12 @@
 package Monopoly.Board;
 
+import Monopoly.SpecialCard.SpecialCard;
+
 import java.util.List;
 
 public class Board implements BoardInterface{
     private List<Field> fieldList;
-
+//    private List<SpecialCard> specialCards;
 
     private static volatile Board instance = null;
 
@@ -38,6 +40,15 @@ public class Board implements BoardInterface{
         }
         return null;
     }
+    public ParkingField getParkingField(){
+        for(Field field : fieldList){
+            if(field instanceof ParkingField){
+                return (ParkingField) field;
+            }
+        }
+        return null;
+    }
+
 
     public List<Field> getFieldList() {
         return fieldList;
