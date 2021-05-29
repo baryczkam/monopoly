@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -18,43 +21,24 @@
             <Image url="@images/Menu1.png" />
          </image>
       </ImageView>
-      <Pane layoutX="197.0" layoutY="177.0" prefHeight="47.0" prefWidth="406.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;">
+      <Pane layoutX="197.0" layoutY="208.0" prefHeight="47.0" prefWidth="406.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;">
          <children>
             <Text fill="#2a5e5b" layoutX="21.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WYBIERZ LICZBĘ GRACZY">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font></Text>
-            <ComboBox layoutX="233.0" layoutY="11.0" prefWidth="150.0" style="-fx-background-color: #2a5e5b; -fx-text-fill: #a2bfbe;" />
+            <ComboBox fx:id="chooseNumberOfPlayers" layoutX="233.0" layoutY="11.0" onAction="#initialize" prefWidth="150.0" style="-fx-background-color: #2a5e5b;" stylesheets="@style3.css">
+               <styleClass>
+                  <String fx:value="cell" />
+                  <String fx:value="list-view" />
+                  <String fx:value="list-cell" />
+               </styleClass></ComboBox>
          </children>
          <effect>
             <DropShadow spread="0.75" />
          </effect>
       </Pane>
-      <Pane layoutX="197.0" layoutY="332.0" prefHeight="47.0" prefWidth="406.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;">
-         <children>
-            <Text fill="#2a5e5b" layoutX="21.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PODAJ IMIĘ">
-               <font>
-                  <Font name="Arial Black" size="12.0" />
-               </font></Text>
-            <TextField layoutX="233.0" layoutY="11.0" style="-fx-background-color: #2a5e5b; -fx-text-fill: #a2bfbe;" />
-         </children>
-         <effect>
-            <DropShadow spread="0.75" />
-         </effect>
-      </Pane>
-      <Pane layoutX="197.0" layoutY="400.0" prefHeight="47.0" prefWidth="406.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;">
-         <children>
-            <Text fill="#2a5e5b" layoutX="21.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WYBIERZ PIONEK">
-               <font>
-                  <Font name="Arial Black" size="12.0" />
-               </font></Text>
-            <ComboBox layoutX="233.0" layoutY="11.0" prefWidth="150.0" style="-fx-background-color: #2a5e5b; -fx-text-fill: #a2bfbe;" />
-         </children>
-         <effect>
-            <DropShadow spread="0.75" />
-         </effect>
-      </Pane>
-      <Button fx:id="startNewGame" layoutX="306.0" layoutY="562.0" mnemonicParsing="false" onAction="#startNewGameWindow" prefHeight="65.0" prefWidth="187.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="START" textFill="#2a5e5b">
+      <Button fx:id="startNewGame" layoutX="571.0" layoutY="703.0" mnemonicParsing="false" onAction="#startNewGameWindow" prefHeight="65.0" prefWidth="187.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="START" textFill="#2a5e5b">
          <font>
             <Font name="Arial Black" size="22.0" />
          </font>
@@ -68,5 +52,193 @@
          <effect>
             <DropShadow spread="0.75" />
          </effect></Button>
+      <TabPane fx:id="backgroundid" layoutX="197.0" layoutY="337.0" prefHeight="274.0" prefWidth="406.0" style="-fx-background-color: #2a5e5b; -fx-background-radius: 15 15 15 15; -fx-border-color: black; -fx-border-radius: 15 15 15 15; -fx-border-width: 4;" styleClass="tab-header-background-2" stylesheets="@style2.css" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab style="-fx-background-color: #a2bfbe; -fx-text-base-color: #2a5e5b; -fx-font-family: Arial Black; -fx-font-weight: 900; -fx-pref-width: 95;" text="    GRACZ 1">
+              <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <children>
+                          <Pane layoutX="38.0" layoutY="31.0" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;">
+                              <children>
+                                  <Text fill="#2a5e5b" layoutX="21.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PODAJ IMIĘ">
+                                      <font>
+                                          <Font name="Arial Black" size="12.0" />
+                                      </font>
+                                  </Text>
+                                  <TextField fx:id="writeName1" layoutX="166.0" layoutY="11.0" style="-fx-background-color: #2a5e5b; -fx-text-fill: #a2bfbe;" />
+                              </children>
+                              <effect>
+                                  <DropShadow spread="0.75" />
+                              </effect>
+                          </Pane>
+                          <Pane layoutX="38.0" layoutY="99.0" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;">
+                              <children>
+                                  <Text fill="#2a5e5b" layoutX="21.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WYBIERZ PIONEK">
+                                      <font>
+                                          <Font name="Arial Black" size="12.0" />
+                                      </font>
+                                  </Text>
+                                  <ComboBox fx:id="choosePawn1" layoutX="165.0" layoutY="11.0" prefWidth="150.0" style="-fx-background-color: #2a5e5b;" stylesheets="@style3.css">
+                                 <styleClass>
+                                    <String fx:value="cell" />
+                                    <String fx:value="list-cell" />
+                                    <String fx:value="list-view" />
+                                 </styleClass></ComboBox>
+                              </children>
+                              <effect>
+                                  <DropShadow spread="0.75" />
+                              </effect>
+                          </Pane>
+                          <Button fx:id="addPlayer1" layoutX="38.0" layoutY="168.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="DODAJ GRACZA" textFill="#2a5e5b">
+                              <font>
+                                  <Font name="Arial Black" size="14.0" />
+                              </font>
+                              <effect>
+                                  <DropShadow spread="0.75" />
+                              </effect></Button>
+                      </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+          <Tab style="-fx-background-color: #a2bfbe; -fx-text-base-color: #2a5e5b; -fx-font-family: Arial Black; -fx-font-weight: 900; -fx-pref-width: 95;" text="    GRACZ 2">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="221.0" prefWidth="406.0">
+                     <children>
+                        <Pane layoutX="38.0" layoutY="31.0" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;">
+                           <children>
+                              <Text fill="#2a5e5b" layoutX="21.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PODAJ IMIĘ">
+                                 <font>
+                                    <Font name="Arial Black" size="12.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="writeName2" layoutX="166.0" layoutY="11.0" style="-fx-background-color: #2a5e5b; -fx-text-fill: #a2bfbe;" />
+                           </children>
+                           <effect>
+                              <DropShadow spread="0.75" />
+                           </effect>
+                        </Pane>
+                        <Pane layoutX="38.0" layoutY="99.0" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;">
+                           <children>
+                              <Text fill="#2a5e5b" layoutX="21.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WYBIERZ PIONEK">
+                                 <font>
+                                    <Font name="Arial Black" size="12.0" />
+                                 </font>
+                              </Text>
+                              <ComboBox fx:id="choosePawn2" layoutX="165.0" layoutY="11.0" prefWidth="150.0" style="-fx-background-color: #2a5e5b;" stylesheets="@style3.css">
+                                 <styleClass>
+                                    <String fx:value="cell" />
+                                    <String fx:value="list-cell" />
+                                    <String fx:value="list-view" />
+                                 </styleClass></ComboBox>
+                           </children>
+                           <effect>
+                              <DropShadow spread="0.75" />
+                           </effect>
+                        </Pane>
+                         <Button fx:id="addPlayer2" layoutX="38.0" layoutY="168.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="DODAJ GRACZA" textFill="#2a5e5b">
+                         <font>
+                             <Font name="Arial Black" size="14.0" />
+                         </font>
+                         <effect>
+                             <DropShadow spread="0.75" />
+                         </effect></Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab style="-fx-background-color: #a2bfbe; -fx-text-base-color: #2a5e5b; -fx-font-family: Arial Black; -fx-font-weight: 900; -fx-pref-width: 95;" text="    GRACZ 3">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@style2.css">
+                    <children>
+                        <Pane layoutX="38.0" layoutY="31.0" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;">
+                            <children>
+                                <Text fill="#2a5e5b" layoutX="21.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PODAJ IMIĘ">
+                                    <font>
+                                        <Font name="Arial Black" size="12.0" />
+                                    </font>
+                                </Text>
+                                <TextField fx:id="writeName3" layoutX="166.0" layoutY="11.0" style="-fx-background-color: #2a5e5b; -fx-text-fill: #a2bfbe;" />
+                            </children>
+                            <effect>
+                                <DropShadow spread="0.75" />
+                            </effect>
+                        </Pane>
+                        <Pane layoutX="38.0" layoutY="99.0" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;">
+                            <children>
+                                <Text fill="#2a5e5b" layoutX="21.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WYBIERZ PIONEK">
+                                    <font>
+                                        <Font name="Arial Black" size="12.0" />
+                                    </font>
+                                </Text>
+                                <ComboBox fx:id="choosePawn3" layoutX="165.0" layoutY="11.0" prefWidth="150.0" style="-fx-background-color: #2a5e5b;" stylesheets="@style3.css">
+                                 <styleClass>
+                                    <String fx:value="cell" />
+                                    <String fx:value="list-cell" />
+                                    <String fx:value="list-view" />
+                                 </styleClass></ComboBox>
+                            </children>
+                            <effect>
+                                <DropShadow spread="0.75" />
+                            </effect>
+                        </Pane>
+                        <Button fx:id="addPlayer3" layoutX="38.0" layoutY="168.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="DODAJ GRACZA" textFill="#2a5e5b">
+                            <font>
+                                <Font name="Arial Black" size="14.0" />
+                            </font>
+                            <effect>
+                                <DropShadow spread="0.75" />
+                            </effect></Button>
+                    </children>
+                </AnchorPane>
+            </content>
+          </Tab>
+            <Tab style="-fx-background-color: #a2bfbe; -fx-text-base-color: #2a5e5b; -fx-font-family: Arial Black; -fx-font-weight: 900; -fx-pref-width: 95;" text="    GRACZ 4">
+              <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@style2.css">
+                      <children>
+                          <Pane layoutX="38.0" layoutY="31.0" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;">
+                              <children>
+                                  <Text fill="#2a5e5b" layoutX="21.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PODAJ IMIĘ">
+                                      <font>
+                                          <Font name="Arial Black" size="12.0" />
+                                      </font>
+                                  </Text>
+                                  <TextField fx:id="writeName4" layoutX="166.0" layoutY="11.0" style="-fx-background-color: #2a5e5b; -fx-text-fill: #a2bfbe;" />
+                              </children>
+                              <effect>
+                                  <DropShadow spread="0.75" />
+                              </effect>
+                          </Pane>
+                          <Pane layoutX="38.0" layoutY="99.0" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;">
+                              <children>
+                                  <Text fill="#2a5e5b" layoutX="21.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WYBIERZ PIONEK">
+                                      <font>
+                                          <Font name="Arial Black" size="12.0" />
+                                      </font>
+                                  </Text>
+                                  <ComboBox fx:id="choosePawn4" layoutX="165.0" layoutY="11.0" prefWidth="150.0" style="-fx-background-color: #2a5e5b;" stylesheets="@style3.css">
+                                 <styleClass>
+                                    <String fx:value="cell" />
+                                    <String fx:value="list-cell" />
+                                    <String fx:value="list-view" />
+                                 </styleClass></ComboBox>
+                              </children>
+                              <effect>
+                                  <DropShadow spread="0.75" />
+                              </effect>
+                          </Pane>
+                          <Button fx:id="addPlayer4" layoutX="38.0" layoutY="168.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="DODAJ GRACZA" textFill="#2a5e5b">
+                              <font>
+                                  <Font name="Arial Black" size="14.0" />
+                              </font>
+                              <effect>
+                                  <DropShadow spread="0.75" />
+                              </effect></Button>
+                      </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </AnchorPane>

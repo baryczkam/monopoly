@@ -1,0 +1,14 @@
+.combo-box .cell:selected {
+  -fx-text-fill: #a2bfbe;
+  -fx-font-family: Arial Black;
+}
+
+.combo-box-popup .list-view .list-cell {
+    -fx-text-fill: #a2bfbe;
+    -fx-background-color: #2a5e5b
+}
+
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-text-fill: #2a5e5b;
+    -fx-background-color: #a2bfbe
+}
