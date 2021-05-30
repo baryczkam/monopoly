@@ -128,11 +128,16 @@ public class PlayerTest {
         Board board = Board.getInstance(fields);
         player.move(board, 10);
         Assertions.assertNotEquals(player.getPawn().getCurrentLocation(), field40);
+        System.out.println("aktualna lokalizacja: " + player.getPawn().getCurrentLocation().getFieldIndex());
         Assertions.assertEquals(player.getPawn().getCurrentLocation(), field10);
+        player.move(board,31);
+        System.out.println("aktualna lokalizacja: " + player.getPawn().getCurrentLocation().getFieldIndex());
         System.out.println(player.getPawn().toString());
         player.move(board);
         System.out.println("aktualna lokalizacja: " + player.getPawn().getCurrentLocation().getFieldIndex());
         System.out.println(player.getPawn().toString());
+        player.move(board,30);
+
     }
 
     @Test

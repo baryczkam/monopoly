@@ -94,7 +94,7 @@ public class Player extends Participant{
         }
 
         //ruch
-        if (getPawn().getCurrentLocation().getFieldIndex() + iloscPol > 40) {
+        if (getPawn().getCurrentLocation().getFieldIndex() + iloscPol > 39) {
             getPawn().setCurrentLocation(board.getField(Math.abs(40 - (getPawn().getCurrentLocation().getFieldIndex() + iloscPol))));
             setMoney(getMoney()+200);
             payStayCost();
