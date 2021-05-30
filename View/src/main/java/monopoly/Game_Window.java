@@ -1,6 +1,7 @@
 package monopoly;
 
 import Monopoly.Board.Board;
+import Monopoly.GameManager.GameManager;
 import Monopoly.Board.Field;
 import Monopoly.Board.PropertyField;
 import Monopoly.Player.Pawn;
@@ -12,12 +13,15 @@ import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class Game_Window {
 
-    private Dice dice;
-    private PawnPosition pawnPosition;
-    private newGame_Window newGame_window;
+    public Dice dice;
+    public PawnPosition pawnPosition;
+    public newGame_Window newGame_window;
+//    public Vector<Player> players;
+//    public Board board;
 
     @FXML
     private ImageView pionekAuto;
@@ -37,9 +41,30 @@ public class Game_Window {
     @FXML
     private Button endOfTurn;
 
-    public Game_Window(newGame_Window newGame_window) {
+    public Game_Window() {
+//        this.newGame_window = newGame_window;
+    }
+
+    @FXML
+    public void initialize() {
+        GameManager gameManager = new GameManager();
+        gameManager.initializeBoard();
+    }
+//    public void createBoard(Board board){
+//        this.board = board;
+//    }
+
+    public void createWindow(newGame_Window newGame_window){
         this.newGame_window = newGame_window;
     }
+
+//    public void createPlayers(Vector<Player> players) {
+//        this.players = players;
+//    }
+
+//    public void setPlayers(Vector<Player> players) {
+//        this.players = players;
+//    }
 
     public void rollTheDice() throws InterruptedException {
         dice = new Dice();
@@ -61,4 +86,7 @@ public class Game_Window {
         newGame_window.getPlayers().get(0).setPlayerName("Marian");
     }
 
+    public newGame_Window getNewGame_window() {
+        return newGame_window;
+    }
 }
