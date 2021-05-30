@@ -56,39 +56,39 @@ public class PawnPosition {
         }
         if (field == 11) {
             pionek.setLayoutX(14);
-            pionek.setLayoutY(625);
+            pionek.setLayoutY(635);
         }
         if (field == 12) {
             pionek.setLayoutX(14);
-            pionek.setLayoutY(560);
+            pionek.setLayoutY(570);
         }
         if (field == 13) {
             pionek.setLayoutX(14);
-            pionek.setLayoutY(495);
+            pionek.setLayoutY(505);
         }
         if (field == 14) {
             pionek.setLayoutX(14);
-            pionek.setLayoutY(430);
+            pionek.setLayoutY(440);
         }
         if (field == 15) {
             pionek.setLayoutX(14);
-            pionek.setLayoutY(365);
+            pionek.setLayoutY(375);
         }
         if (field == 16) {
             pionek.setLayoutX(14);
-            pionek.setLayoutY(300);
+            pionek.setLayoutY(310);
         }
         if (field == 17) {
             pionek.setLayoutX(14);
-            pionek.setLayoutY(235);
+            pionek.setLayoutY(245);
         }
         if (field == 18) {
             pionek.setLayoutX(14);
-            pionek.setLayoutY(170);
+            pionek.setLayoutY(180);
         }
         if (field == 19) {
             pionek.setLayoutX(14);
-            pionek.setLayoutY(105);
+            pionek.setLayoutY(115);
         }
         if (field == 20) {
             pionek.setLayoutX(22);

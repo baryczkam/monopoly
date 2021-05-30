@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ public class loadGame_Window implements Initializable {
         fc.getExtensionFilters().add(new ExtensionFilter("File",lstFile));
         File f = fc.showOpenDialog(null);
         if (f != null) {
-            labSingleFile.setText("Selected file: " + f.getAbsolutePath());
+            labSingleFile.setText("Wybrany plik: " + f.getAbsolutePath());
         }
     }
 

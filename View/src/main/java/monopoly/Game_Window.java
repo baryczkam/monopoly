@@ -53,7 +53,7 @@ public class Game_Window {
         dice.throwTheDice(players.get(0));
         eyelets.setText("" + dice.getNumberOfEyelets());
         int whichField = players.get(0).getPawn().getCurrentLocation().getFieldIndex();
-        dice.movePawn(Board.getInstance(null),players.get(0));
+        dice.movePawn(Board.getInstance(null,null),players.get(0));
         pawnPosition.changePawnPosition(pionekAuto,players.get(0).getPawn().getCurrentLocation().getFieldIndex());
     }
 

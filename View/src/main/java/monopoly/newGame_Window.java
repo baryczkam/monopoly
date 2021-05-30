@@ -4,6 +4,7 @@ import Monopoly.Board.Field;
 import Monopoly.Board.Board;
 import Monopoly.Board.PropertyField;
 import Monopoly.Player.Pawn;
+import Monopoly.SpecialCard.SpecialCard;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -177,7 +178,8 @@ public class newGame_Window implements Mediator {
         fields.add(field38);
         fields.add(field39);
         fields.add(field40);
-        board = Board.getInstance(fields);
+        List<SpecialCard> specialCards = new ArrayList<>();
+        board = Board.getInstance(fields,specialCards);
         players = new Vector<>();
     }
 
