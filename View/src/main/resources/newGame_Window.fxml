@@ -27,7 +27,7 @@
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font></Text>
-            <ComboBox fx:id="chooseNumberOfPlayers" layoutX="233.0" layoutY="11.0" onAction="#initialize" prefWidth="150.0" style="-fx-background-color: #2a5e5b;" stylesheets="@style3.css">
+            <ComboBox fx:id="chooseNumberOfPlayers" layoutX="233.0" layoutY="11.0" onAction="#initialize" onHiding="#setNumberOfPlayers" prefWidth="150.0" style="-fx-background-color: #2a5e5b;" stylesheets="@style3.css">
                <styleClass>
                   <String fx:value="cell" />
                   <String fx:value="list-view" />
@@ -54,7 +54,7 @@
          </effect></Button>
       <TabPane fx:id="backgroundid" layoutX="197.0" layoutY="337.0" prefHeight="274.0" prefWidth="406.0" style="-fx-background-color: #2a5e5b; -fx-background-radius: 15 15 15 15; -fx-border-color: black; -fx-border-radius: 15 15 15 15; -fx-border-width: 4;" styleClass="tab-header-background-2" stylesheets="@style2.css" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-            <Tab style="-fx-background-color: #a2bfbe; -fx-text-base-color: #2a5e5b; -fx-font-family: Arial Black; -fx-font-weight: 900; -fx-pref-width: 95;" text="    GRACZ 1">
+            <Tab fx:id="player1" disable="true" style="-fx-background-color: #a2bfbe; -fx-text-base-color: #2a5e5b; -fx-font-family: Arial Black; -fx-font-weight: 900; -fx-pref-width: 95;" text="    GRACZ 1">
               <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                       <children>
@@ -89,7 +89,7 @@
                                   <DropShadow spread="0.75" />
                               </effect>
                           </Pane>
-                          <Button fx:id="addPlayer1" layoutX="38.0" layoutY="168.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="DODAJ GRACZA" textFill="#2a5e5b">
+                          <Button fx:id="addPlayer1" layoutX="38.0" layoutY="168.0" mnemonicParsing="false" onAction="#createPlayer1" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="DODAJ GRACZA" textFill="#2a5e5b">
                               <font>
                                   <Font name="Arial Black" size="14.0" />
                               </font>
@@ -100,7 +100,7 @@
                   </AnchorPane>
               </content>
             </Tab>
-          <Tab style="-fx-background-color: #a2bfbe; -fx-text-base-color: #2a5e5b; -fx-font-family: Arial Black; -fx-font-weight: 900; -fx-pref-width: 95;" text="    GRACZ 2">
+          <Tab fx:id="player2" disable="true" style="-fx-background-color: #a2bfbe; -fx-text-base-color: #2a5e5b; -fx-font-family: Arial Black; -fx-font-weight: 900; -fx-pref-width: 95;" text="    GRACZ 2">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="221.0" prefWidth="406.0">
                      <children>
@@ -135,7 +135,7 @@
                               <DropShadow spread="0.75" />
                            </effect>
                         </Pane>
-                         <Button fx:id="addPlayer2" layoutX="38.0" layoutY="168.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="DODAJ GRACZA" textFill="#2a5e5b">
+                         <Button fx:id="addPlayer2" layoutX="38.0" layoutY="168.0" mnemonicParsing="false" onAction="#createPlayer2" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="DODAJ GRACZA" textFill="#2a5e5b">
                          <font>
                              <Font name="Arial Black" size="14.0" />
                          </font>
@@ -146,7 +146,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab style="-fx-background-color: #a2bfbe; -fx-text-base-color: #2a5e5b; -fx-font-family: Arial Black; -fx-font-weight: 900; -fx-pref-width: 95;" text="    GRACZ 3">
+          <Tab fx:id="player3" disable="true" style="-fx-background-color: #a2bfbe; -fx-text-base-color: #2a5e5b; -fx-font-family: Arial Black; -fx-font-weight: 900; -fx-pref-width: 95;" text="    GRACZ 3">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@style2.css">
                     <children>
@@ -181,7 +181,7 @@
                                 <DropShadow spread="0.75" />
                             </effect>
                         </Pane>
-                        <Button fx:id="addPlayer3" layoutX="38.0" layoutY="168.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="DODAJ GRACZA" textFill="#2a5e5b">
+                        <Button fx:id="addPlayer3" layoutX="38.0" layoutY="168.0" mnemonicParsing="false" onAction="#createPlayer3" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="DODAJ GRACZA" textFill="#2a5e5b">
                             <font>
                                 <Font name="Arial Black" size="14.0" />
                             </font>
@@ -192,7 +192,7 @@
                 </AnchorPane>
             </content>
           </Tab>
-            <Tab style="-fx-background-color: #a2bfbe; -fx-text-base-color: #2a5e5b; -fx-font-family: Arial Black; -fx-font-weight: 900; -fx-pref-width: 95;" text="    GRACZ 4">
+            <Tab fx:id="player4" disable="true" style="-fx-background-color: #a2bfbe; -fx-text-base-color: #2a5e5b; -fx-font-family: Arial Black; -fx-font-weight: 900; -fx-pref-width: 95;" text="    GRACZ 4">
               <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@style2.css">
                       <children>
@@ -227,7 +227,7 @@
                                   <DropShadow spread="0.75" />
                               </effect>
                           </Pane>
-                          <Button fx:id="addPlayer4" layoutX="38.0" layoutY="168.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="DODAJ GRACZA" textFill="#2a5e5b">
+                          <Button fx:id="addPlayer4" layoutX="38.0" layoutY="168.0" mnemonicParsing="false" onAction="#createPlayer4" prefHeight="47.0" prefWidth="330.0" style="-fx-background-color: a2bfbe; -fx-background-radius: 15;" text="DODAJ GRACZA" textFill="#2a5e5b">
                               <font>
                                   <Font name="Arial Black" size="14.0" />
                               </font>

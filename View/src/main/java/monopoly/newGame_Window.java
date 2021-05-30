@@ -3,6 +3,7 @@ package monopoly;
 import Monopoly.Board.Field;
 import Monopoly.Board.Board;
 import Monopoly.Board.PropertyField;
+import Monopoly.GameManager.GameManager;
 import Monopoly.Player.Pawn;
 import Monopoly.SpecialCard.SpecialCard;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextField;
 import Monopoly.Player.Player;
 import javafx.stage.Stage;
@@ -27,9 +29,11 @@ public class newGame_Window implements Mediator {
     public Vector<Player> players;
     public Board board;
     private static Stage stage;
+    public int numberOfPlayers;
+    List<PropertyField> propertyFields = new ArrayList<>();
 
     @FXML
-    private ComboBox<String> chooseNumberOfPlayers;
+    private ComboBox<Integer> chooseNumberOfPlayers;
 
     @FXML
     private ComboBox<String> choosePawn1;
@@ -44,12 +48,124 @@ public class newGame_Window implements Mediator {
     private ComboBox<String> choosePawn4;
 
     @FXML
+    private Tab player1;
+
+    @FXML
+    private Tab player2;
+
+    @FXML
+    private Tab player3;
+
+    @FXML
+    private Tab player4;
+
+    @FXML
+    private Button addPlayer1;
+
+    @FXML
+    private Button addPlayer2;
+
+    @FXML
+    private Button addPlayer3;
+
+    @FXML
+    private Button addPlayer4;
+
+    @FXML
     public void initialize() {
-        chooseNumberOfPlayers.setItems(observableArrayList("1","2","3","4"));
+        chooseNumberOfPlayers.setItems(observableArrayList(1,2,3,4));
         choosePawn1.setItems(observableArrayList("Auto","But","Kapelusz","Pies","Statek","Taczka"));
         choosePawn2.setItems(observableArrayList("Auto","But","Kapelusz","Pies","Statek","Taczka"));
         choosePawn3.setItems(observableArrayList("Auto","But","Kapelusz","Pies","Statek","Taczka"));
         choosePawn4.setItems(observableArrayList("Auto","But","Kapelusz","Pies","Statek","Taczka"));
+        GameManager gameManager = new GameManager();
+        gameManager.initializeBoard();
+        players = new Vector<>();
+    }
+
+    public void setNumberOfPlayers() {
+        numberOfPlayers = chooseNumberOfPlayers.getValue();
+        if (numberOfPlayers == 1) {
+            player1.setDisable(false);
+            player2.setDisable(true);
+            player3.setDisable(true);
+            player4.setDisable(true);
+        }
+        if (numberOfPlayers == 2) {
+            player1.setDisable(false);
+            player2.setDisable(false);
+            player3.setDisable(true);
+            player4.setDisable(true);
+        }
+        if (numberOfPlayers == 3) {
+            player1.setDisable(false);
+            player2.setDisable(false);
+            player3.setDisable(false);
+            player4.setDisable(true);
+        }
+        if (numberOfPlayers == 4) {
+            player1.setDisable(false);
+            player2.setDisable(false);
+            player3.setDisable(false);
+            player4.setDisable(false);
+        }
+    }
+
+    public void createPlayer1() {
+        if (writeName1.getText() != "" && choosePawn1.getValue() != null) {
+            Pawn pawn1 = new Pawn(Board.getInstance(null,null).getField(0),choosePawn1.getValue());
+            Player player1 = new Player(100,propertyFields,pawn1,writeName1.getText());
+            players.add(player1);
+//            System.out.println(players.get(0).getPawn().getPawnName());
+            addPlayer1.setDisable(true);
+            choosePawn2.getItems().removeAll(choosePawn1.getValue());
+            choosePawn3.getItems().removeAll(choosePawn1.getValue());
+            choosePawn4.getItems().removeAll(choosePawn1.getValue());
+            choosePawn1.setDisable(true);
+            writeName1.setDisable(true);
+        }
+    }
+
+    public void createPlayer2() {
+        if (writeName2.getText() != "" && choosePawn2.getValue() != null) {
+            Pawn pawn2 = new Pawn(Board.getInstance(null,null).getField(0),choosePawn2.getValue());
+            Player player2 = new Player(100,propertyFields,pawn2,writeName2.getText());
+            players.add(player2);
+            addPlayer2.setDisable(true);
+            choosePawn1.getItems().removeAll(choosePawn2.getValue());
+            choosePawn3.getItems().removeAll(choosePawn2.getValue());
+            choosePawn4.getItems().removeAll(choosePawn2.getValue());
+            choosePawn2.setDisable(true);
+            writeName2.setDisable(true);
+        }
+    }
+
+    public void createPlayer3() {
+        if (writeName3.getText() != "" && choosePawn3.getValue() != null) {
+            Pawn pawn3 = new Pawn(Board.getInstance(null,null).getField(0),choosePawn3.getValue());
+            Player p3 = new Player(100,propertyFields,pawn3,writeName3.getText());
+            players.add(p3);
+            addPlayer3.setDisable(true);
+            choosePawn1.getItems().removeAll(choosePawn3.getValue());
+            choosePawn2.getItems().removeAll(choosePawn3.getValue());
+            choosePawn4.getItems().removeAll(choosePawn3.getValue());
+            choosePawn3.setDisable(true);
+            writeName3.setDisable(true);
+        }
+    }
+
+    public void createPlayer4() {
+        if (writeName4.getText() != "" && choosePawn4.getValue() != null) {
+            Pawn pawn4 = new Pawn(Board.getInstance(null, null).getField(0), choosePawn4.getValue());
+            Player player4 = new Player(100, propertyFields, pawn4, writeName4.getText());
+            players.add(player4);
+            addPlayer4.setDisable(true);
+            choosePawn1.getItems().removeAll(choosePawn4.getValue());
+            choosePawn2.getItems().removeAll(choosePawn4.getValue());
+            choosePawn3.getItems().removeAll(choosePawn4.getValue());
+            choosePawn4.setDisable(true);
+            writeName4.setDisable(true);
+        }
     }
 
     @FXML
@@ -76,12 +192,12 @@ public class newGame_Window implements Mediator {
         BuildingStage.setStage(stage);
         Scene scene = null;
         try {
-            createBoard();
-            createPlayer();
+//            createBoard();
+//            createPlayer();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_Window.fxml"));
             Parent root = loader.load();
             Game_Window scene2Controller = loader.getController();
-            scene2Controller.transferMessage(players);
+            scene2Controller.transferMessage(players,numberOfPlayers);
             scene = new Scene(root);
         } catch (IOException ex) {
             System.err.println(ex);
@@ -89,6 +205,7 @@ public class newGame_Window implements Mediator {
         stage.setScene(scene);
         stage.sizeToScene();
         stage.show();
+        System.out.println(players.get(0).getPawn().getPawnName());
     }
 
     @FXML
@@ -183,10 +300,10 @@ public class newGame_Window implements Mediator {
         players = new Vector<>();
     }
 
-    public void createPlayer() {
-        Pawn pawn = new Pawn(board.getField(0),"auto");
-        List<PropertyField> propertyFields = new ArrayList<>();
-        Player player1 = new Player(100,propertyFields,pawn,"gracz");
-        players.add(player1);
-    }
+//    public void createPlayer() {
+//        Pawn pawn = new Pawn(board.getField(0),"auto");
+//        List<PropertyField> propertyFields = new ArrayList<>();
+//        Player player1 = new Player(100,propertyFields,pawn,"gracz");
+//        players.add(player1);
+//    }
 }

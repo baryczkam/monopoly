@@ -40,7 +40,7 @@
             <effect>
                 <DropShadow spread="0.5" />
             </effect></Button>
-        <Button layoutX="836.0" layoutY="703.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="140.0" style="-fx-background-color: #0071BC; -fx-background-radius: 15;" text="KONIEC TURY" textFill="WHITE">
+        <Button fx:id="endOfTurn" layoutX="836.0" layoutY="703.0" mnemonicParsing="false" onAction="#changeTurn" prefHeight="65.0" prefWidth="140.0" style="-fx-background-color: #0071BC; -fx-background-radius: 15;" text="KONIEC TURY" textFill="WHITE">
             <font>
                 <Font name="Arial Black" size="12.0" />
             </font>
@@ -94,51 +94,9 @@
             </Label>
             </children>
         </Pane>
-      <ImageView fx:id="pionekAuto" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/pionki/Pionek_auto.png" />
-         </image></ImageView>
-      <ImageView fx:id="pole2" fitHeight="65.0" fitWidth="65.0" layoutX="631.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole3" fitHeight="65.0" fitWidth="65.0" layoutX="566.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole4" fitHeight="65.0" fitWidth="65.0" layoutX="501.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole5" fitHeight="65.0" fitWidth="65.0" layoutX="436.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole6" fitHeight="65.0" fitWidth="65.0" layoutX="367.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole7" fitHeight="65.0" fitWidth="65.0" layoutX="302.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole8" fitHeight="65.0" fitWidth="65.0" layoutX="237.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole9" fitHeight="65.0" fitWidth="65.0" layoutX="172.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole10" fitHeight="65.0" fitWidth="65.0" layoutX="107.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole11" fitHeight="65.0" fitWidth="65.0" layoutY="740.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/pionki/Pionek_pies.png" />
-         </image></ImageView>
-      <ImageView fx:id="pole12" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole13" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole14" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole15" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="432.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole16" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole17" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole18" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole19" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole20" fitHeight="65.0" fitWidth="65.0" layoutX="14.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole21" fitHeight="65.0" fitWidth="65.0" layoutX="22.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole22" fitHeight="65.0" fitWidth="65.0" layoutX="107.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole23" fitHeight="65.0" fitWidth="65.0" layoutX="172.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole24" fitHeight="65.0" fitWidth="65.0" layoutX="237.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole25" fitHeight="65.0" fitWidth="65.0" layoutX="302.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole26" fitHeight="65.0" fitWidth="65.0" layoutX="367.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole27" fitHeight="65.0" fitWidth="65.0" layoutX="436.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole28" fitHeight="65.0" fitWidth="65.0" layoutX="501.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole29" fitHeight="65.0" fitWidth="65.0" layoutX="566.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole30" fitHeight="65.0" fitWidth="65.0" layoutX="631.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole31" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole32" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole33" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole34" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="232.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole35" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole36" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole37" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="432.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole38" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole39" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="pole40" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView1" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView2" fitHeight="65.0" fitWidth="65.0" layoutX="631.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView3" fitHeight="65.0" fitWidth="65.0" layoutX="566.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView4" fitHeight="65.0" fitWidth="65.0" layoutX="501.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>
