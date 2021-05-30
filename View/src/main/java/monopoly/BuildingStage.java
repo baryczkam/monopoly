@@ -2,6 +2,9 @@ package monopoly;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
+import java.util.Vector;
+
+import Monopoly.Player.Player;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -10,7 +13,7 @@ import javafx.stage.Stage;
 public class BuildingStage {
     private static Stage stage;
 
-    private static void setStage(Stage stage) {
+    public static void setStage(Stage stage) {
         BuildingStage.stage = stage;
     }
 
@@ -48,5 +51,4 @@ public class BuildingStage {
         stage.sizeToScene();
         stage.show();
     }
-
 }

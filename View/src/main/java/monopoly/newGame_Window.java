@@ -5,11 +5,16 @@ import Monopoly.Board.Board;
 import Monopoly.Board.PropertyField;
 import Monopoly.Player.Pawn;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import Monopoly.Player.Player;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -20,6 +25,7 @@ public class newGame_Window implements Mediator {
 
     public Vector<Player> players;
     public Board board;
+    private static Stage stage;
 
     @FXML
     private ComboBox<String> chooseNumberOfPlayers;
@@ -63,34 +69,31 @@ public class newGame_Window implements Mediator {
     @FXML
     private Button returnBtn;
 
-    public newGame_Window() {
-//        this.players = players;
-//        this.board = board;
-    }
-//
-    public Vector<Player> getPlayers() {
-        return players;
-    }
-
-    public Board getBoard() {
-        return board;
-    }
-
     @FXML
-    public void startNewGameWindow() {
-        BuildingStage.buildStage("/Game_Window.fxml");
+    private void startNewGameWindow() {
+        stage = BuildingStage.getStage();
+        BuildingStage.setStage(stage);
+        Scene scene = null;
+        try {
+            createBoard();
+            createPlayer();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_Window.fxml"));
+            Parent root = loader.load();
+            Game_Window scene2Controller = loader.getController();
+            scene2Controller.transferMessage(players);
+            scene = new Scene(root);
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+        stage.setScene(scene);
+        stage.sizeToScene();
+        stage.show();
     }
 
     @FXML
     public void returnToMainWindow() {
         BuildingStage.buildStage("/Main_Window.fxml");
     }
-
-
-
-//    public void createPlayers(Vector<Player> players) {
-//        this.players = players;
-//    }
 
     public void createBoard() {
         Field field1 = new Field(0);

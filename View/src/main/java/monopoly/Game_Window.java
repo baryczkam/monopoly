@@ -19,9 +19,7 @@ public class Game_Window {
 
     public Dice dice;
     public PawnPosition pawnPosition;
-    public newGame_Window newGame_window;
-//    public Vector<Player> players;
-//    public Board board;
+    public Vector<Player> players;
 
     @FXML
     private ImageView pionekAuto;
@@ -41,39 +39,22 @@ public class Game_Window {
     @FXML
     private Button endOfTurn;
 
-    public Game_Window() {
-//        this.newGame_window = newGame_window;
-    }
+    public Game_Window() {}
 
     @FXML
     public void initialize() {
         GameManager gameManager = new GameManager();
         gameManager.initializeBoard();
     }
-//    public void createBoard(Board board){
-//        this.board = board;
-//    }
-
-    public void createWindow(newGame_Window newGame_window){
-        this.newGame_window = newGame_window;
-    }
-
-//    public void createPlayers(Vector<Player> players) {
-//        this.players = players;
-//    }
-
-//    public void setPlayers(Vector<Player> players) {
-//        this.players = players;
-//    }
 
     public void rollTheDice() throws InterruptedException {
         dice = new Dice();
-        pawnPosition = new PawnPosition("auto");
-        dice.throwTheDice(newGame_window.getPlayers().get(0));
+        pawnPosition = new PawnPosition();
+        dice.throwTheDice(players.get(0));
         eyelets.setText("" + dice.getNumberOfEyelets());
-        int whichField = newGame_window.getPlayers().get(0).getPawn().getCurrentLocation().getFieldIndex();
-        dice.movePawn(newGame_window.getBoard(),newGame_window.getPlayers().get(0));
-        pawnPosition.changePawnPosition(pionekAuto,newGame_window.getPlayers().get(0).getPawn().getCurrentLocation().getFieldIndex(),dice.getNumberOfEyelets());
+        int whichField = players.get(0).getPawn().getCurrentLocation().getFieldIndex();
+        dice.movePawn(Board.getInstance(null),players.get(0));
+        pawnPosition.changePawnPosition(pionekAuto,players.get(0).getPawn().getCurrentLocation().getFieldIndex());
     }
 
     public void buyProperty() {}
@@ -82,11 +63,7 @@ public class Game_Window {
     public void whoseTurn() {}
     public void prisonField() {}
 
-    public void changePlayer(){
-        newGame_window.getPlayers().get(0).setPlayerName("Marian");
-    }
-
-    public newGame_Window getNewGame_window() {
-        return newGame_window;
+    public void transferMessage(Vector<Player> players) {
+        this.players = players;
     }
 }
