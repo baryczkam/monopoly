@@ -1,5 +1,6 @@
 package Monopoly.SpecialCard;
 
+import Monopoly.Board.Board;
 import Monopoly.Board.Field;
 import Monopoly.Player.Player;
 

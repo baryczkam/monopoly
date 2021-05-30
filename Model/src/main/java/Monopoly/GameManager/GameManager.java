@@ -13,14 +13,14 @@ public class GameManager {
         List<PropertyField> propertyFields = new ArrayList<>();
         List<SpecialCard> specialCards = new ArrayList<>();
         Bank bank = new Bank(0,propertyFields);
-        Field field1 = new Field(0);
+        StartField field1 = new StartField(0);
         PropertyField field2 = new DistrictField(1,60,bank,2,ColorDistrictField.BROWN);
-        SpecialCardField field3 = new SpecialCardField(2);
+        SocialSecurityCardField field3 = new SocialSecurityCardField(2);
         PropertyField field4 = new DistrictField(3,60,bank,4,ColorDistrictField.BROWN);
         TaxField field5 = new TaxField(4,200);
         StationField field6 = new StationField(5,200,bank,50);
         PropertyField field7 = new DistrictField(6,100,bank,6,ColorDistrictField.AQUAMARINE);
-        SpecialCardField field8 = new SpecialCardField(7);
+        ChanceCardField field8 = new ChanceCardField(7);
         PropertyField field9 = new DistrictField(8,100,bank,6,ColorDistrictField.AQUAMARINE);
         PropertyField field10 = new DistrictField(9,120,bank,8,ColorDistrictField.AQUAMARINE);
         JailField field11 = new JailField(10);
@@ -30,12 +30,12 @@ public class GameManager {
         PropertyField field15 = new DistrictField(14,160,bank,12,ColorDistrictField.PURPLE);
         StationField field16 = new StationField(15,200,bank,50);
         PropertyField field17 = new DistrictField(16,180,bank,14,ColorDistrictField.ORANGE);
-        SpecialCardField field18 = new SpecialCardField(17);
+        SocialSecurityCardField field18 = new SocialSecurityCardField(17);
         PropertyField field19 = new DistrictField(18,180,bank,14,ColorDistrictField.ORANGE);
         PropertyField field20 = new DistrictField(19,200,bank,16,ColorDistrictField.ORANGE);
         ParkingField field21 = new ParkingField(20,0);
         PropertyField field22 = new DistrictField(21,220,bank,18,ColorDistrictField.RED);
-        SpecialCardField field23 = new SpecialCardField(22);
+        ChanceCardField field23 = new ChanceCardField(22);
         PropertyField field24 = new DistrictField(23,220,bank,18,ColorDistrictField.RED);
         PropertyField field25 = new DistrictField(24,240,bank,20,ColorDistrictField.RED);
         StationField field26 = new StationField(25,200,bank,50);
@@ -46,10 +46,10 @@ public class GameManager {
         GoToJailField field31 = new GoToJailField(30);
         PropertyField field32 = new DistrictField(31,300,bank,26,ColorDistrictField.GREEN);
         PropertyField field33 = new DistrictField(32,300,bank,26,ColorDistrictField.GREEN);
-        SpecialCardField field34 = new SpecialCardField(33);
+        SocialSecurityCardField field34 = new SocialSecurityCardField(33);
         PropertyField field35 = new DistrictField(34,320,bank,28,ColorDistrictField.GREEN);
         StationField field36 = new StationField(35,200,bank,50);
-        SpecialCardField field37 = new SpecialCardField(36);
+        ChanceCardField field37 = new ChanceCardField(36);
         PropertyField field38 = new DistrictField(37,350,bank,35,ColorDistrictField.BLUE);
         TaxField field39 = new TaxField(38,100);
         PropertyField field40 = new DistrictField(39,400,bank,50,ColorDistrictField.BLUE);
@@ -123,35 +123,79 @@ public class GameManager {
         propertyFields.add(field38);
         propertyFields.add(field40);
 
-        MoveFieldCard card1 = new MoveFieldCard(field1);
+        Board.getInstance(fields,specialCards);
+        // karty szansa
+        GoToStartCard card1 = new GoToStartCard();
         MoveFieldCard card2 = new MoveFieldCard(field6);
         MoveFieldCard card3 = new MoveFieldCard(field25);
         MoveFieldCard card4 = new MoveFieldCard(field12);
         MoveFieldCard card5 = new MoveFieldCard(field40);
-//        MoveCard card6 = new MoveCard(field6);
-//        MoveCard card7 = new MoveCard(field40);
+        MoveFieldCard card6 = new MoveFieldCard(Board.getInstance(null,null).getStationField());
+        MoveFieldCard card7 = new MoveFieldCard(Board.getInstance(null,null).getStationField());
         MoveFieldCard card8 = new MoveFieldCard(field13);
         MoveIndexCard card9 = new MoveIndexCard(-3);
         PayCard card10 = new PayCard(50);
         PayCard card11 = new PayCard(15);
         GiftCard card12 = new GiftCard(150);
         GiftCard card13 = new GiftCard(50);
+        RenovationCard card14 = new RenovationCard(25);
+        SendToJailCard card15 = new SendToJailCard();
+        ReleaseFromJailCard card16 = new ReleaseFromJailCard();
+        //karty kasa spoleczna
+        GoToStartCard card17 = new GoToStartCard();
+        GiftCard card18 = new GiftCard(50);
+        PayCard card19 = new PayCard(100);
+        PayCard card20 = new PayCard(50);
+        PayCard card21 = new PayCard(50);
+        GiftCard card22 = new GiftCard(100);
+        GiftCard card23 = new GiftCard(100);
+        GiftCard card24 = new GiftCard(200);
+        GiftCard card25 = new GiftCard(100);
+        GiftCard card26 = new GiftCard(20);
+        GiftCard card27 = new GiftCard(25);
+        GiftCard card28 = new GiftCard(50);
+        RenovationCard card29 = new RenovationCard(40);
+        GiftCard card30 = new GiftCard(10);
+        SendToJailCard card31 = new SendToJailCard();
+        ReleaseFromJailCard card32 = new ReleaseFromJailCard();
+
 
         specialCards.add(card1);
         specialCards.add(card2);
         specialCards.add(card3);
         specialCards.add(card4);
         specialCards.add(card5);
-//        specialCards.add(card6);
-//        specialCards.add(card7);
+        specialCards.add(card6);
+        specialCards.add(card7);
         specialCards.add(card8);
         specialCards.add(card9);
         specialCards.add(card10);
         specialCards.add(card11);
         specialCards.add(card12);
         specialCards.add(card13);
+        specialCards.add(card14);
+        specialCards.add(card15);
+        specialCards.add(card16);
 
-        Board.getInstance(fields,specialCards);
+        specialCards.add(card17);
+        specialCards.add(card18);
+        specialCards.add(card19);
+        specialCards.add(card20);
+        specialCards.add(card21);
+        specialCards.add(card22);
+        specialCards.add(card23);
+        specialCards.add(card24);
+        specialCards.add(card25);
+        specialCards.add(card26);
+        specialCards.add(card27);
+        specialCards.add(card28);
+        specialCards.add(card29);
+        specialCards.add(card30);
+        specialCards.add(card31);
+        specialCards.add(card32);
+
+
+
     }
 
 }

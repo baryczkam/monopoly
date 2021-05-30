@@ -21,6 +21,6 @@ public class MoveIndexCard extends MoveCard{
 
     @Override
     public void performAction(Player player) {
-        player.getPawn().setCurrentLocation(Board.getInstance(null,null).getField(player.getPawn().getCurrentLocation().getFieldIndex() + getIndex()));
+        player.move(index);
     }
 }

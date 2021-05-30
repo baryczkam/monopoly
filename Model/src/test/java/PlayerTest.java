@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class PlayerTest {
 
@@ -128,17 +129,17 @@ public class PlayerTest {
         Player player = new Player(0, propertyFields, pawn,"0");
         List<SpecialCard> specialCards = new ArrayList<>();
         Board board = Board.getInstance(fields,specialCards);
-        player.move(board, 10);
+        player.move(10);
         Assertions.assertNotEquals(player.getPawn().getCurrentLocation(), field40);
         System.out.println("aktualna lokalizacja: " + player.getPawn().getCurrentLocation().getFieldIndex());
         Assertions.assertEquals(player.getPawn().getCurrentLocation(), field10);
-        player.move(board,31);
+        player.move(31);
         System.out.println("aktualna lokalizacja: " + player.getPawn().getCurrentLocation().getFieldIndex());
         System.out.println(player.getPawn().toString());
-        player.move(board);
+        player.move();
         System.out.println("aktualna lokalizacja: " + player.getPawn().getCurrentLocation().getFieldIndex());
         System.out.println(player.getPawn().toString());
-        player.move(board,30);
+        player.move(30);
 
     }
 
@@ -231,16 +232,16 @@ public class PlayerTest {
         List<SpecialCard> specialCards = new ArrayList<>();
         Board board = Board.getInstance(fields,specialCards);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(), field40);
-        player.move(board, -1);
+        player.move(-1);
         Assertions.assertEquals(player.getInJailTurn(), 0);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(), field7);
-        player.move(board, 10);
+        player.move(10);
         Assertions.assertEquals(player.getInJailTurn(), 1);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(), field7);
-        player.move(board, 10);
+        player.move(10);
         Assertions.assertEquals(player.getInJailTurn(), 2);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(), field7);
-        player.move(board, 10);
+        player.move(10);
         Assertions.assertEquals(player.getInJailTurn(), 0);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(), field17);
 
@@ -340,11 +341,11 @@ public class PlayerTest {
         List<SpecialCard> specialCards = new ArrayList<>();
         Board board = Board.getInstance(fields,specialCards);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(), field40);
-        player.move(board, -1);
+        player.move(-1);
         Assertions.assertEquals(player.getInJailTurn(), 0);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(), field7);
         player.setCanExitJail(true);
-        player.move(board, 5);
+        player.move(5);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(), field12);
         Assertions.assertEquals(player.getInJailTurn(), 0);
     }
@@ -441,7 +442,7 @@ public class PlayerTest {
         Board board = Board.getInstance(fields,specialCards);
         Pawn pawn = new Pawn(field1,"0");
         Player player = new Player(100,propertyFields2,pawn,"0");
-        player.move(board,1);
+        player.move(1);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(),field2);
         Assertions.assertNotEquals(((DistrictField) player.getPawn().getCurrentLocation()).getOwner(),player);
         player.checkProperty();
@@ -548,28 +549,28 @@ public class PlayerTest {
         Pawn pawn2 = new Pawn(field1,"1");
         Player player1 = new Player(100,propertyFields2,pawn,"0");
         Player player2 = new Player(100,propertyFields3,pawn2,"1");
-        player1.move(board,1);
+        player1.move(1);
         Assertions.assertEquals(player1.getPawn().getCurrentLocation(),field2);
         player1.checkProperty();
 
-        player2.move(board,1);
+        player2.move(1);
         Assertions.assertEquals(player2.getPawn().getCurrentLocation(),field2);
         Assertions.assertEquals(player1.getMoney(),60);
         Assertions.assertEquals(player2.getMoney(),90);
         player2.checkProperty();
         Assertions.assertEquals(player2.getListOfProperties().size(),0);
-        player1.move(board,1);
+        player1.move(1);
         player1.checkProperty();
         Assertions.assertEquals(player1.getListOfProperties().size(),1);
-        player1.move(board,1);
+        player1.move(1);
         player1.checkProperty();
         Assertions.assertEquals(player1.getListOfProperties().size(),1);
-        player1.move(board,1);
+        player1.move(1);
         player1.checkProperty();
         Assertions.assertEquals(player1.getListOfProperties().get(1),field5);
         Assertions.assertEquals(player1.getListOfProperties().size(),2);
-        player2.move(board,3);
-        Assertions.assertEquals(player2.getMoney(),-10);
+        player2.move(3);
+        Assertions.assertEquals(player2.getMoney(),-110);
 
     }
     @Test
@@ -660,11 +661,11 @@ public class PlayerTest {
         Pawn pawn = new Pawn(field1,"0");
         List<PropertyField> propertyFields = new ArrayList<>();
         Player player = new Player(110,propertyFields,pawn,"0");
-        player.move(board,1);
+        player.move(1);
         Assertions.assertEquals(player.getMoney(),10);
         Assertions.assertEquals(field3.getMoneyPayment(),100);
 
-        player.move(board,1);
+        player.move(1);
         Assertions.assertEquals(player.getMoney(),110);
         Assertions.assertEquals(field3.getMoneyPayment(),0);
     }
@@ -757,7 +758,7 @@ public class PlayerTest {
         Pawn pawn = new Pawn(field1,"0");
         List<PropertyField> propertyFields = new ArrayList<>();
         Player player = new Player(110,propertyFields,pawn,"0");
-        player.move(board,1);
+        player.move(1);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(),field7);
     }
 
@@ -768,35 +769,35 @@ public class PlayerTest {
 //        List<PropertyField> propertyFields = new ArrayList<>();
 //        Pawn pawn = new Pawn(Board.getInstance(null,null).getField(0),"0");
 //        Player player = new Player(110,propertyFields,pawn,"0");
-//        player.move(Board.getInstance(null,null),1);
+//        player.move(1);
 //        Assertions.assertEquals(player.getPawn().getCurrentLocation(),Board.getInstance(null,null).getField(1));
-//        player.move(Board.getInstance(null,null),1);
+//        player.move(1);
 //        // 1 karta
-//        player.takeCard(Board.getInstance(null,null),0);
+//        player.takeCard(0);
 //        Assertions.assertEquals(player.getPawn().getCurrentLocation(),Board.getInstance(null,null).getField(0));
-//        player.move(Board.getInstance(null,null),2);
+//        player.move(2);
 //        // 2 karta
-//        player.takeCard(Board.getInstance(null,null),1);
+//        player.takeCard(1);
 //        Assertions.assertEquals(player.getPawn().getCurrentLocation(),Board.getInstance(null,null).getField(5));
 //        // 3 karta
-//        player.move(Board.getInstance(null,null),2);
+//        player.move(2);
 //
-//        player.takeCard(Board.getInstance(null,null),2);
+//        player.takeCard(2);
 //        Assertions.assertEquals(player.getPawn().getCurrentLocation(),Board.getInstance(null,null).getField(24));
 //
 //        // 9 karta
-//        player.move(Board.getInstance(null,null),9);
-//        player.takeCard(Board.getInstance(null,null),7);
+//        player.move(9);
+//        player.takeCard(8);
 //        Assertions.assertEquals(player.getPawn().getCurrentLocation(),Board.getInstance(null,null).getField(33));
 //        Assertions.assertEquals(player.getMoney(),60);
 //
 //        // 10 karta
-//        player.takeCard(Board.getInstance(null,null),10);
+//        player.takeCard(9);
 //        Assertions.assertEquals(player.getMoney(),110);
 //
 //        // 8 karta
-//        player.takeCard(Board.getInstance(null,null),6);
-//        Assertions.assertEquals(player.getPawn().getCurrentLocation(),Board.getInstance(null,null).getField(30));
+//        player.takeCard(7);
+//        Assertions.assertEquals(player.getPawn().getCurrentLocation(),Board.getInstance(null,null).getField(10));
 
     }
 
@@ -810,38 +811,38 @@ public class PlayerTest {
         Pawn pawn2 = new Pawn(Board.getInstance(null,null).getField(0),"1");
         Player player1 = new Player(1000,propertyFields1,pawn1,"0");
         Player player2 = new Player(1040,propertyFields2,pawn2,"1");
-        player1.move(Board.getInstance(null,null),5);
+        player1.move(5);
         player1.checkProperty();
-        player2.move(Board.getInstance(null,null),5);
+        player2.move(5);
         Assertions.assertEquals(player1.getMoney(),850);
         Assertions.assertEquals(player2.getMoney(),990);
-        player1.move(Board.getInstance(null,null),10);
+        player1.move(10);
         player1.checkProperty();
-        player2.move(Board.getInstance(null,null),10);
+        player2.move(10);
         Assertions.assertEquals(player1.getMoney(),750);
         Assertions.assertEquals(player2.getMoney(),890);
-        player1.move(Board.getInstance(null,null),10);
+        player1.move(10);
         player1.checkProperty();
-        player2.move(Board.getInstance(null,null),10);
+        player2.move(10);
         Assertions.assertEquals(player1.getMoney(),750);
         Assertions.assertEquals(player2.getMoney(),690);
-        player1.move(Board.getInstance(null,null),10);
+        player1.move(10);
         player1.checkProperty();
-        player2.move(Board.getInstance(null,null),10);
+        player2.move(10);
         Assertions.assertEquals(player1.getMoney(),950);
         Assertions.assertEquals(player2.getMoney(),290);
         System.out.println(player1.toString());
-        player1.move(Board.getInstance(null,null),17);
+        player1.move(17);
         System.out.println(player1.toString());
         player1.checkProperty();
         System.out.println(player1.toString());
-        player2.move(Board.getInstance(null,null),17);
+        player2.move(17);
         System.out.println(player1.toString());
         Assertions.assertEquals(player1.getMoney(),1170);
         Assertions.assertEquals(player2.getMoney(),320);
-        player1.move(Board.getInstance(null,null),16);
+        player1.move(16);
         player1.checkProperty();
-        player2.move(Board.getInstance(null,null),16);
+        player2.move(16);
         Assertions.assertEquals(player1.getMoney(),1340);
         Assertions.assertEquals(player2.getMoney(),0);
     }
@@ -947,34 +948,103 @@ public class PlayerTest {
         Player player1 = new Player(1000,propertyFields2,pawn,"0");
         Player player2 = new Player(1000,propertyFields3,pawn2,"1");
 
-        player1.move(Board.getInstance(null,null),1);
+        player1.move(1);
         player1.checkProperty();
-        player2.move(Board.getInstance(null,null),1);
+        player2.move(1);
         Assertions.assertEquals(player1.getMoney(),960);
         Assertions.assertEquals(player2.getMoney(),990);
-        player1.move(Board.getInstance(null,null),1);
+        player1.move(1);
         player1.checkProperty();
-        player2.move(Board.getInstance(null,null),1);
+        player2.move(1);
         Assertions.assertEquals(player1.getMoney(),920);
         Assertions.assertEquals(player2.getMoney(),960);
-        player1.move(Board.getInstance(null,null),2);
+        player1.move(2);
         player1.checkProperty();
         Assertions.assertEquals(player1.getMoney(),880);
-        player2.move(Board.getInstance(null,null),2);
+        player2.move(2);
         Assertions.assertEquals(player1.getMoney(),980);
         Assertions.assertEquals(player2.getMoney(),860);
-        player1.move(Board.getInstance(null,null),4);
+        player1.move(4);
         player1.checkProperty();
         Assertions.assertEquals(player1.getMoney(),930);
-        player2.move(Board.getInstance(null,null),4);
+        player2.move(4);
         Assertions.assertEquals(player1.getMoney(),1080);
         Assertions.assertEquals(player2.getMoney(),710);
-        player1.move(Board.getInstance(null,null),1);
+        player1.move(1);
         player1.checkProperty();
         Assertions.assertEquals(player1.getMoney(),1030);
-        player2.move(Board.getInstance(null,null),1);
+        player2.move(1);
         Assertions.assertEquals(player1.getMoney(),1430);
         Assertions.assertEquals(player2.getMoney(),310);
+    }
+
+    @Test
+    public void takeRandomCardTest(){
+        GameManager game = new GameManager();
+        game.initializeBoard();
+        System.out.println(Board.getInstance(null,null).getSpecialCardList().size());
+        Random r = new Random();
+        int cos1 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos2 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos3 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos4 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos5 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos6 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos7 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos8 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos9 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos10 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos11 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos12 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos13 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos14 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        int cos15 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        System.out.println(cos1);
+        System.out.println(cos2);
+        System.out.println(cos3);
+        System.out.println(cos4);
+        System.out.println(cos5);
+        System.out.println(cos6);
+        System.out.println(cos7);
+        System.out.println(cos8);
+        System.out.println(cos9);
+        System.out.println(cos10);
+        System.out.println(cos11);
+        System.out.println(cos12);
+        System.out.println(cos13);
+        System.out.println(cos14);
+        System.out.println(cos15);
+        System.out.println("---------------------------------");
+        int cos16 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos17 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos18 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos19 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos20 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos21 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos22 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos23 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos24 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos25 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos26 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos27 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos28 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos29 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos30 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        System.out.println(cos16);
+        System.out.println(cos17);
+        System.out.println(cos18);
+        System.out.println(cos19);
+        System.out.println(cos20);
+        System.out.println(cos21);
+        System.out.println(cos22);
+        System.out.println(cos23);
+        System.out.println(cos24);
+        System.out.println(cos25);
+        System.out.println(cos26);
+        System.out.println(cos27);
+        System.out.println(cos28);
+        System.out.println(cos29);
+        System.out.println(cos30);
     }
 }
 

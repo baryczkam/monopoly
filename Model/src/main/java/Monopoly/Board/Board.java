@@ -53,6 +53,23 @@ public class Board implements BoardInterface{
         return null;
     }
 
+    public StationField getStationField(){
+        for(Field field : fieldList){
+            if(field instanceof StationField){
+                return (StationField) field;
+            }
+        }
+        return null;
+    }
+    public StartField getStartField(){
+        for(Field field : fieldList){
+            if(field instanceof StartField){
+                return (StartField) field;
+            }
+        }
+        return null;
+    }
+
     public List<SpecialCard> getSpecialCardList() {
         return specialCardList;
     }

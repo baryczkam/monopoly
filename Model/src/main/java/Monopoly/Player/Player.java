@@ -58,16 +58,16 @@ public class Player extends Participant{
         this.canExitJail = canExitJail;
     }
 
-    public void move(Board board){
+    public void move(){
         int rzutKostka = throwDice();
-        this.move(board, rzutKostka);
+        this.move(rzutKostka);
     }
 
-    public void move(Board board, int iloscPol){
+    public void move(int iloscPol){
 
         //wylosował 3 dublety wiec do wiezienia i sie nie rusza
         if(iloscPol == -1) {
-            getPawn().setCurrentLocation(board.getJailField());
+            getPawn().setCurrentLocation(Board.getInstance(null,null).getJailField());
             this.setIsInJail(Status.IN_JAIL);
             return;
         }
@@ -93,16 +93,16 @@ public class Player extends Participant{
 
         //ruch
         if (getPawn().getCurrentLocation().getFieldIndex() + iloscPol > 39) {
-            getPawn().setCurrentLocation(board.getField(Math.abs(40 - (getPawn().getCurrentLocation().getFieldIndex() + iloscPol))));
+            getPawn().setCurrentLocation(Board.getInstance(null,null).getField(Math.abs(40 - (getPawn().getCurrentLocation().getFieldIndex() + iloscPol))));
             setMoney(getMoney()+200);
         } else {
-            getPawn().setCurrentLocation(board.getField(getPawn().getCurrentLocation().getFieldIndex() + iloscPol));
+            getPawn().setCurrentLocation(Board.getInstance(null,null).getField(getPawn().getCurrentLocation().getFieldIndex() + iloscPol));
         }
         payStayCost(iloscPol);
         payTax();
         getMoneyFromParkingField();
         goToJail();
-        takeCard();
+//        takeCard();
     }
 
     public int throwDice(){
@@ -189,7 +189,13 @@ public class Player extends Participant{
     // pobieramy karte i wykonujemy czynnosc w zaleznosci jaka to jest karta
     public void takeCard(){
         Random r = new Random();
-        int numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size());
+        int numerKarty = 0;
+        if(getPawn().getCurrentLocation() instanceof ChanceCardField){
+            numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+        }
+        if(getPawn().getCurrentLocation() instanceof SocialSecurityCardField){
+            numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        }
         takeCard(numerKarty);
     }
 
