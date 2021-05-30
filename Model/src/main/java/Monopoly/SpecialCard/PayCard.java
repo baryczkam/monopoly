@@ -6,8 +6,7 @@ import Monopoly.Player.PlayerInterface;
 public class PayCard extends SpecialCard{
     private int amountMoneyToPay;
 
-    public PayCard(PlayerInterface player, int amountMoneyToPay) {
-        super(player);
+    public PayCard(int amountMoneyToPay) {
         this.amountMoneyToPay = amountMoneyToPay;
     }
 

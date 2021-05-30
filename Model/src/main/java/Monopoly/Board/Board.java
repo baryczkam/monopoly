@@ -6,22 +6,23 @@ import java.util.List;
 
 public class Board implements BoardInterface{
     private List<Field> fieldList;
-//    private List<SpecialCard> specialCards;
+    private List<SpecialCard> specialCardList;
 
     private static volatile Board instance = null;
 
-    private Board(List<Field> fieldList){
+    private Board(List<Field> fieldList,List<SpecialCard> specialCardList){
         if(instance != null){
             throw new RuntimeException("Not allowed. Please use getInstance() method");
         }
         this.fieldList = fieldList;
+        this.specialCardList = specialCardList;
     }
 
-    public static Board getInstance(List<Field> fieldList){
+    public static Board getInstance(List<Field> fieldList, List<SpecialCard> specialCardList){
         if(instance == null) {
             synchronized(Board.class){
                 if(instance == null){
-                    instance = new Board(fieldList);
+                    instance = new Board(fieldList,specialCardList);
                 }
             }
         }

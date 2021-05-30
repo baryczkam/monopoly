@@ -6,8 +6,7 @@ import Monopoly.Player.PlayerInterface;
 public class GiftCard extends SpecialCard{
     private int money;
 
-    public GiftCard(PlayerInterface player, int money) {
-        super(player);
+    public GiftCard(int money) {
         this.money = money;
     }
 

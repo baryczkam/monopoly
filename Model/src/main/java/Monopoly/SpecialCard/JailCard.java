@@ -6,8 +6,7 @@ import Monopoly.Player.PlayerInterface;
 public class JailCard extends SpecialCard{
     private Status status;
 
-    public JailCard(PlayerInterface player, Status status) {
-        super(player);
+    public JailCard(Status status) {
         this.status = status;
     }
 

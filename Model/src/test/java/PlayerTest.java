@@ -1,6 +1,7 @@
 import Monopoly.Board.*;
 import Monopoly.Player.*;
 import Monopoly.SpecialCard.JailCard;
+import Monopoly.SpecialCard.SpecialCard;
 import Monopoly.SpecialCard.Status;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -125,7 +126,8 @@ public class PlayerTest {
         List<PropertyField> propertyFields = new ArrayList<>();
         Pawn pawn = new Pawn(field40, "0");
         Player player = new Player(0, propertyFields, pawn,"0");
-        Board board = Board.getInstance(fields);
+        List<SpecialCard> specialCards = new ArrayList<>();
+        Board board = Board.getInstance(fields,specialCards);
         player.move(board, 10);
         Assertions.assertNotEquals(player.getPawn().getCurrentLocation(), field40);
         System.out.println("aktualna lokalizacja: " + player.getPawn().getCurrentLocation().getFieldIndex());
@@ -226,7 +228,8 @@ public class PlayerTest {
         List<PropertyField> propertyFields = new ArrayList<>();
         Pawn pawn = new Pawn(field40, "0");
         Player player = new Player(0, propertyFields, pawn,"0");
-        Board board = Board.getInstance(fields);
+        List<SpecialCard> specialCards = new ArrayList<>();
+        Board board = Board.getInstance(fields,specialCards);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(), field40);
         player.move(board, -1);
         Assertions.assertEquals(player.getInJailTurn(), 0);
@@ -334,7 +337,8 @@ public class PlayerTest {
         List<PropertyField> propertyFields = new ArrayList<>();
         Pawn pawn = new Pawn(field40, "0");
         Player player = new Player(0, propertyFields, pawn,"0");
-        Board board = Board.getInstance(fields);
+        List<SpecialCard> specialCards = new ArrayList<>();
+        Board board = Board.getInstance(fields,specialCards);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(), field40);
         player.move(board, -1);
         Assertions.assertEquals(player.getInJailTurn(), 0);
@@ -433,7 +437,8 @@ public class PlayerTest {
         fields.add(field39);
         fields.add(field40);
         propertyFields1.add(field2);
-        Board board = Board.getInstance(fields);
+        List<SpecialCard> specialCards = new ArrayList<>();
+        Board board = Board.getInstance(fields,specialCards);
         Pawn pawn = new Pawn(field1,"0");
         Player player = new Player(100,propertyFields2,pawn,"0");
         player.move(board,1);
@@ -537,7 +542,8 @@ public class PlayerTest {
         fields.add(field40);
         propertyFields1.add(field2);
         propertyFields1.add(field5);
-        Board board = Board.getInstance(fields);
+        List<SpecialCard> specialCards = new ArrayList<>();
+        Board board = Board.getInstance(fields,specialCards);
         Pawn pawn = new Pawn(field1,"0");
         Pawn pawn2 = new Pawn(field1,"1");
         Player player1 = new Player(100,propertyFields2,pawn,"0");
@@ -649,7 +655,8 @@ public class PlayerTest {
         fields.add(field38);
         fields.add(field39);
         fields.add(field40);
-        Board board = Board.getInstance(fields);
+        List<SpecialCard> specialCards = new ArrayList<>();
+        Board board = Board.getInstance(fields,specialCards);
         Pawn pawn = new Pawn(field1,"0");
         List<PropertyField> propertyFields = new ArrayList<>();
         Player player = new Player(110,propertyFields,pawn,"0");
@@ -745,7 +752,8 @@ public class PlayerTest {
         fields.add(field38);
         fields.add(field39);
         fields.add(field40);
-        Board board = Board.getInstance(fields);
+        List<SpecialCard> specialCards = new ArrayList<>();
+        Board board = Board.getInstance(fields,specialCards);
         Pawn pawn = new Pawn(field1,"0");
         List<PropertyField> propertyFields = new ArrayList<>();
         Player player = new Player(110,propertyFields,pawn,"0");

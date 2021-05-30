@@ -2,6 +2,10 @@ package Monopoly.GameManager;
 
 import Monopoly.Board.*;
 import Monopoly.Player.Bank;
+import Monopoly.SpecialCard.GiftCard;
+import Monopoly.SpecialCard.MoveCard;
+import Monopoly.SpecialCard.PayCard;
+import Monopoly.SpecialCard.SpecialCard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +14,7 @@ public class GameManager {
 
     public void initializeBoard(){
         List<PropertyField> propertyFields = new ArrayList<>();
+        List<SpecialCard> specialCards = new ArrayList<>();
         Bank bank = new Bank(0,propertyFields);
         Field field1 = new Field(0);
         PropertyField field2 = new PropertyField(1,60,bank,2);
@@ -120,7 +125,22 @@ public class GameManager {
         propertyFields.add(field36);
         propertyFields.add(field38);
         propertyFields.add(field40);
-        Board.getInstance(fields);
+
+        MoveCard card1 = new MoveCard(field1);
+        MoveCard card2 = new MoveCard(field6);
+        MoveCard card3 = new MoveCard(field25);
+        MoveCard card4 = new MoveCard(field12);
+        MoveCard card5 = new MoveCard(field40);
+//        MoveCard card6 = new MoveCard(field6);
+//        MoveCard card7 = new MoveCard(field40);
+        MoveCard card8 = new MoveCard(field13);
+//        MoveCard card9 = new MoveCard(field13);
+        PayCard card10 = new PayCard(50);
+        PayCard card11 = new PayCard(15);
+        GiftCard card12 = new GiftCard(150);
+        GiftCard card13 = new GiftCard(50);
+
+        Board.getInstance(fields,specialCards);
     }
 
 }
