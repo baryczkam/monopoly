@@ -1,6 +1,5 @@
 package Monopoly.Board;
 
-import Monopoly.Player.PlayerInterface;
 
 public class ParkingField extends SpecialField{
 

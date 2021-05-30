@@ -19,7 +19,7 @@ public class PayCard extends SpecialCard{
     }
 
     @Override
-    public void performAction(Player Player) {
-        Player.setMoney(Player.getMoney() - this.getAmountMoneyToPay());
+    public void performAction(Player player) {
+        player.setMoney(player.getMoney() - this.getAmountMoneyToPay());
     }
 }

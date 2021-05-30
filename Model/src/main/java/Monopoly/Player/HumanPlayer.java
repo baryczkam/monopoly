@@ -1,8 +1,6 @@
 package Monopoly.Player;
 
 import Monopoly.Board.PropertyField;
-import Monopoly.SpecialCard.JailCard;
-import Monopoly.SpecialCard.Status;
 
 import java.util.List;
 

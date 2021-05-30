@@ -1,8 +1,6 @@
 package Monopoly.Player;
 
 import Monopoly.Board.*;
-import Monopoly.SpecialCard.JailCard;
-import Monopoly.SpecialCard.Status;
 
 import java.util.List;
 import java.util.Objects;
@@ -97,17 +95,14 @@ public class Player extends Participant{
         if (getPawn().getCurrentLocation().getFieldIndex() + iloscPol > 39) {
             getPawn().setCurrentLocation(board.getField(Math.abs(40 - (getPawn().getCurrentLocation().getFieldIndex() + iloscPol))));
             setMoney(getMoney()+200);
-            payStayCost();
-            payTax(board);
-            getMoneyFromParkingField();
-            goToJail(board);
         } else {
             getPawn().setCurrentLocation(board.getField(getPawn().getCurrentLocation().getFieldIndex() + iloscPol));
-            payStayCost();
-            payTax(board);
-            getMoneyFromParkingField();
-            goToJail(board);
         }
+        payStayCost(iloscPol);
+        payTax();
+        getMoneyFromParkingField();
+        goToJail();
+        takeCard();
     }
 
     public int throwDice(){
@@ -134,12 +129,12 @@ public class Player extends Participant{
         return a + b;
     }
 
-    public void setStatus(Status inJail){
-        if(getPawn().getCurrentLocation() instanceof JailField)
-            {
-                this.setIsInJail(Status.IN_JAIL);
-            }
-    }
+//    public void setStatus(Status inJail){
+//        if(getPawn().getCurrentLocation() instanceof JailField)
+//            {
+//                this.setIsInJail(Status.IN_JAIL);
+//            }
+//    }
 
     // sprawdza czy dzialke mozna kupic (czy nalezy do banku)
     public boolean checkProperty(){
@@ -161,22 +156,21 @@ public class Player extends Participant{
     }
 
     // placimy za staniecie na pole ktore nie nalezy do nas i nalezy do innego gracza (nie nalezy do banku)
-    public void payStayCost(){
+    public void payStayCost(int index){
         if(getPawn().getCurrentLocation() instanceof PropertyField){
             if(Objects.nonNull(getPawn()) && Objects.nonNull(getPawn().getCurrentLocation()) && Objects.nonNull(getMoney()) && !(((PropertyField) getPawn().getCurrentLocation()).getOwner() == this) && !(((PropertyField) getPawn().getCurrentLocation()).getOwner() instanceof Bank)){
-                setMoney(getMoney() - ((PropertyField) getPawn().getCurrentLocation()).getStayCost());
-                ((PropertyField) getPawn().getCurrentLocation()).getOwner().setMoney(((PropertyField) getPawn().getCurrentLocation()).getOwner().getMoney() + ((PropertyField) getPawn().getCurrentLocation()).getStayCost());
+                ((PropertyField) getPawn().getCurrentLocation()).payStayCost(this,index);
             }
         }
     }
 
     // placimy za stanecie na polu TaxField, pieniadze przekazywane sa do pola ParkingField
-    public void payTax(Board board){
+    public void payTax(){
         if(getPawn().getCurrentLocation() instanceof TaxField){
             if(Objects.nonNull(getPawn()) && Objects.nonNull(getPawn().getCurrentLocation()) && Objects.nonNull(getMoney()) && Objects.nonNull(((TaxField) getPawn().getCurrentLocation()).getTaxCost())){
                 if(getMoney() - ((TaxField) getPawn().getCurrentLocation()).getTaxCost() >= 0){
                     setMoney(getMoney() - ((TaxField) getPawn().getCurrentLocation()).getTaxCost());
-                    board.getParkingField().setMoneyPayment(board.getParkingField().getMoneyPayment() + ((TaxField) getPawn().getCurrentLocation()).getTaxCost());
+                    Board.getInstance(null,null).getParkingField().setMoneyPayment(Board.getInstance(null,null).getParkingField().getMoneyPayment() + ((TaxField) getPawn().getCurrentLocation()).getTaxCost());
                 }
             }
         }
@@ -194,14 +188,23 @@ public class Player extends Participant{
 
     // pobieramy karte i wykonujemy czynnosc w zaleznosci jaka to jest karta
     public void takeCard(){
+        Random r = new Random();
+        int numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size());
+        takeCard(numerKarty);
+    }
 
+
+    public void takeCard(int numerKarty){
+        if(getPawn().getCurrentLocation() instanceof SpecialCardField){
+            Board.getInstance(null,null).getSpecialCardList().get(numerKarty).performAction(this);
+        }
     }
 
     // idziemy do wiezienia gdy staniemy na polu GoToJailField
-    public void goToJail(Board board){
+    public void goToJail(){
         if(getPawn().getCurrentLocation() instanceof GoToJailField){
             if(Objects.nonNull(getPawn()) && Objects.nonNull(getPawn().getCurrentLocation())){
-                getPawn().setCurrentLocation(board.getJailField());
+                getPawn().setCurrentLocation(Board.getInstance(null,null).getJailField());
                 this.setIsInJail(Status.IN_JAIL);
             }
         }
@@ -215,5 +218,17 @@ public class Player extends Participant{
 
     public void setInJailTurn(int inJailTurn) {
         this.inJailTurn = inJailTurn;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "pawn=" + pawn +
+                ", isInJail=" + isInJail +
+                ", inJailTurn=" + inJailTurn +
+                ", canExitJail=" + canExitJail +
+                ", money=" + getMoney() +
+                ", playerName='" + playerName + '\'' +
+                '}';
     }
 }

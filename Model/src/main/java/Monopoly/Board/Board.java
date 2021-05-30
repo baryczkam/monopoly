@@ -41,6 +41,9 @@ public class Board implements BoardInterface{
         }
         return null;
     }
+
+
+
     public ParkingField getParkingField(){
         for(Field field : fieldList){
             if(field instanceof ParkingField){
@@ -50,6 +53,13 @@ public class Board implements BoardInterface{
         return null;
     }
 
+    public List<SpecialCard> getSpecialCardList() {
+        return specialCardList;
+    }
+
+    public void setSpecialCardList(List<SpecialCard> specialCardList) {
+        this.specialCardList = specialCardList;
+    }
 
     public List<Field> getFieldList() {
         return fieldList;
@@ -59,7 +69,4 @@ public class Board implements BoardInterface{
         this.fieldList = fieldList;
     }
 
-    public void initializeBoard(){
-
-    }
 }

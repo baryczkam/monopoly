@@ -4,12 +4,11 @@ import Monopoly.Player.Player;
 import Monopoly.Player.PlayerInterface;
 
 public class ReleaseFromJailCard extends JailCard{
-    public ReleaseFromJailCard(Status status) {
-        super(status);
+    public ReleaseFromJailCard() {
     }
 
-    public void performAction(Player Player) {
-        if(!Player.getCanExitJail())
-            Player.setCanExitJail(true);
+    @Override
+    public void performAction(Player player) {
+        player.setCanExitJail(true);
     }
 }

@@ -1,8 +1,6 @@
 package Monopoly.Player;
 
 import Monopoly.Board.PropertyField;
-import Monopoly.SpecialCard.JailCard;
-import Monopoly.SpecialCard.Status;
 
 import java.util.List;
 
@@ -14,10 +12,10 @@ public class ComputerPlayer extends Player{
     public void simulateBuy(){
 
     }
-    public void simulateUpgrade(){
-
-    }
-    public void simulateSell(){
-
-    }
+//    public void simulateUpgrade(){
+//
+//    }
+//    public void simulateSell(){
+//
+//    }
 }

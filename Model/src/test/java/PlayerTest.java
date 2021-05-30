@@ -1,8 +1,8 @@
 import Monopoly.Board.*;
+import Monopoly.GameManager.GameManager;
 import Monopoly.Player.*;
-import Monopoly.SpecialCard.JailCard;
+import Monopoly.SpecialCard.MoveFieldCard;
 import Monopoly.SpecialCard.SpecialCard;
-import Monopoly.SpecialCard.Status;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -356,7 +356,7 @@ public class PlayerTest {
         Participant bank = new Bank(0,propertyFields1);
 
         Field field1 = new Field(0);
-        PropertyField field2 = new PropertyField(1,50,bank,10);
+        PropertyField field2 = new DistrictField(1,50,bank,10,ColorDistrictField.GREEN);
         Field field3 = new Field(2);
         Field field4 = new Field(3);
         Field field5 = new Field(4);
@@ -443,10 +443,10 @@ public class PlayerTest {
         Player player = new Player(100,propertyFields2,pawn,"0");
         player.move(board,1);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(),field2);
-        Assertions.assertNotEquals(((PropertyField) player.getPawn().getCurrentLocation()).getOwner(),player);
+        Assertions.assertNotEquals(((DistrictField) player.getPawn().getCurrentLocation()).getOwner(),player);
         player.checkProperty();
         Assertions.assertEquals(player.getListOfProperties().get(0),field2);
-        Assertions.assertEquals(((PropertyField) player.getPawn().getCurrentLocation()).getOwner(),player);
+        Assertions.assertEquals(((DistrictField) player.getPawn().getCurrentLocation()).getOwner(),player);
         Assertions.assertEquals(player.getListOfProperties().size(),1);
         Assertions.assertEquals(player.getMoney(),50);
         Assertions.assertEquals(bank.getListOfProperties().size(),0);
@@ -460,10 +460,10 @@ public class PlayerTest {
         Participant bank = new Bank(0,propertyFields1);
 
         Field field1 = new Field(0);
-        PropertyField field2 = new PropertyField(1,50,bank,10);
-        PropertyField field3 = new PropertyField(2,70,bank,15);
+        PropertyField field2 = new DistrictField(1,50,bank,10,ColorDistrictField.BLUE);
+        PropertyField field3 = new DistrictField(2,70,bank,15,ColorDistrictField.BLUE);
         Field field4 = new Field(3);
-        PropertyField field5 = new PropertyField(4,40,bank,100);
+        PropertyField field5 = new DistrictField(4,40,bank,100,ColorDistrictField.BLUE);
         Field field6 = new Field(5);
         Field field7 = new JailField(6);
         Field field8 = new Field(7);
@@ -759,7 +759,222 @@ public class PlayerTest {
         Player player = new Player(110,propertyFields,pawn,"0");
         player.move(board,1);
         Assertions.assertEquals(player.getPawn().getCurrentLocation(),field7);
+    }
 
+    @Test
+    public void takeCardTest(){
+//        GameManager game = new GameManager();
+//        game.initializeBoard();
+//        List<PropertyField> propertyFields = new ArrayList<>();
+//        Pawn pawn = new Pawn(Board.getInstance(null,null).getField(0),"0");
+//        Player player = new Player(110,propertyFields,pawn,"0");
+//        player.move(Board.getInstance(null,null),1);
+//        Assertions.assertEquals(player.getPawn().getCurrentLocation(),Board.getInstance(null,null).getField(1));
+//        player.move(Board.getInstance(null,null),1);
+//        // 1 karta
+//        player.takeCard(Board.getInstance(null,null),0);
+//        Assertions.assertEquals(player.getPawn().getCurrentLocation(),Board.getInstance(null,null).getField(0));
+//        player.move(Board.getInstance(null,null),2);
+//        // 2 karta
+//        player.takeCard(Board.getInstance(null,null),1);
+//        Assertions.assertEquals(player.getPawn().getCurrentLocation(),Board.getInstance(null,null).getField(5));
+//        // 3 karta
+//        player.move(Board.getInstance(null,null),2);
+//
+//        player.takeCard(Board.getInstance(null,null),2);
+//        Assertions.assertEquals(player.getPawn().getCurrentLocation(),Board.getInstance(null,null).getField(24));
+//
+//        // 9 karta
+//        player.move(Board.getInstance(null,null),9);
+//        player.takeCard(Board.getInstance(null,null),7);
+//        Assertions.assertEquals(player.getPawn().getCurrentLocation(),Board.getInstance(null,null).getField(33));
+//        Assertions.assertEquals(player.getMoney(),60);
+//
+//        // 10 karta
+//        player.takeCard(Board.getInstance(null,null),10);
+//        Assertions.assertEquals(player.getMoney(),110);
+//
+//        // 8 karta
+//        player.takeCard(Board.getInstance(null,null),6);
+//        Assertions.assertEquals(player.getPawn().getCurrentLocation(),Board.getInstance(null,null).getField(30));
+
+    }
+
+    @Test
+    public void buyAndPayForStationsAndFactiories(){
+        GameManager game = new GameManager();
+        game.initializeBoard();
+        List<PropertyField> propertyFields1 = new ArrayList<>();
+        List<PropertyField> propertyFields2 = new ArrayList<>();
+        Pawn pawn1 = new Pawn(Board.getInstance(null,null).getField(0),"0");
+        Pawn pawn2 = new Pawn(Board.getInstance(null,null).getField(0),"1");
+        Player player1 = new Player(1000,propertyFields1,pawn1,"0");
+        Player player2 = new Player(1040,propertyFields2,pawn2,"1");
+        player1.move(Board.getInstance(null,null),5);
+        player1.checkProperty();
+        player2.move(Board.getInstance(null,null),5);
+        Assertions.assertEquals(player1.getMoney(),850);
+        Assertions.assertEquals(player2.getMoney(),990);
+        player1.move(Board.getInstance(null,null),10);
+        player1.checkProperty();
+        player2.move(Board.getInstance(null,null),10);
+        Assertions.assertEquals(player1.getMoney(),750);
+        Assertions.assertEquals(player2.getMoney(),890);
+        player1.move(Board.getInstance(null,null),10);
+        player1.checkProperty();
+        player2.move(Board.getInstance(null,null),10);
+        Assertions.assertEquals(player1.getMoney(),750);
+        Assertions.assertEquals(player2.getMoney(),690);
+        player1.move(Board.getInstance(null,null),10);
+        player1.checkProperty();
+        player2.move(Board.getInstance(null,null),10);
+        Assertions.assertEquals(player1.getMoney(),950);
+        Assertions.assertEquals(player2.getMoney(),290);
+        System.out.println(player1.toString());
+        player1.move(Board.getInstance(null,null),17);
+        System.out.println(player1.toString());
+        player1.checkProperty();
+        System.out.println(player1.toString());
+        player2.move(Board.getInstance(null,null),17);
+        System.out.println(player1.toString());
+        Assertions.assertEquals(player1.getMoney(),1170);
+        Assertions.assertEquals(player2.getMoney(),320);
+        player1.move(Board.getInstance(null,null),16);
+        player1.checkProperty();
+        player2.move(Board.getInstance(null,null),16);
+        Assertions.assertEquals(player1.getMoney(),1340);
+        Assertions.assertEquals(player2.getMoney(),0);
+    }
+
+    @Test
+    public void buyDistricstsTest(){
+        List<PropertyField> propertyFields1 = new ArrayList<>();
+        List<PropertyField> propertyFields2 = new ArrayList<>();
+        List<PropertyField> propertyFields3 = new ArrayList<>();
+        Participant bank = new Bank(0,propertyFields1);
+
+        Field field1 = new Field(0);
+        PropertyField field2 = new DistrictField(1,50,bank,10,ColorDistrictField.BLUE);
+        PropertyField field3 = new DistrictField(2,70,bank,15,ColorDistrictField.BLUE);
+        Field field4 = new Field(3);
+        PropertyField field5 = new DistrictField(4,40,bank,100,ColorDistrictField.GREEN);
+        Field field6 = new Field(5);
+        Field field7 = new JailField(6);
+        Field field8 = new Field(7);
+        PropertyField field9 = new DistrictField(8, 50,bank,150,ColorDistrictField.GREEN);
+        PropertyField field10 = new DistrictField(9,50,bank,200,ColorDistrictField.GREEN);
+        Field field11 = new Field(10);
+        Field field12 = new Field(11);
+        Field field13 = new Field(12);
+        Field field14 = new Field(13);
+        Field field15 = new Field(14);
+        Field field16 = new Field(15);
+        Field field17 = new Field(16);
+        Field field18 = new Field(17);
+        Field field19 = new Field(18);
+        Field field20 = new Field(19);
+        Field field21 = new Field(20);
+        Field field22 = new Field(21);
+        Field field23 = new Field(22);
+        Field field24 = new Field(23);
+        Field field25 = new Field(24);
+        Field field26 = new Field(25);
+        Field field27 = new Field(26);
+        Field field28 = new Field(27);
+        Field field29 = new Field(28);
+        Field field30 = new Field(29);
+        Field field31 = new Field(30);
+        Field field32 = new Field(31);
+        Field field33 = new Field(32);
+        Field field34 = new Field(33);
+        Field field35 = new Field(34);
+        Field field36 = new Field(35);
+        Field field37 = new Field(36);
+        Field field38 = new Field(37);
+        Field field39 = new Field(38);
+        Field field40 = new Field(39);
+        List<Field> fields = new ArrayList<>();
+        fields.add(field1);
+        fields.add(field2);
+        fields.add(field3);
+        fields.add(field4);
+        fields.add(field5);
+        fields.add(field6);
+        fields.add(field7);
+        fields.add(field8);
+        fields.add(field9);
+        fields.add(field10);
+        fields.add(field11);
+        fields.add(field12);
+        fields.add(field13);
+        fields.add(field14);
+        fields.add(field15);
+        fields.add(field16);
+        fields.add(field17);
+        fields.add(field18);
+        fields.add(field19);
+        fields.add(field20);
+        fields.add(field21);
+        fields.add(field22);
+        fields.add(field23);
+        fields.add(field24);
+        fields.add(field25);
+        fields.add(field26);
+        fields.add(field27);
+        fields.add(field28);
+        fields.add(field29);
+        fields.add(field30);
+        fields.add(field31);
+        fields.add(field32);
+        fields.add(field33);
+        fields.add(field34);
+        fields.add(field35);
+        fields.add(field36);
+        fields.add(field37);
+        fields.add(field38);
+        fields.add(field39);
+        fields.add(field40);
+        propertyFields1.add(field2);
+        propertyFields1.add(field5);
+        List<SpecialCard> specialCards = new ArrayList<>();
+        MoveFieldCard card1 = new MoveFieldCard(field1);
+        MoveFieldCard card2 = new MoveFieldCard(field6);
+        specialCards.add(card1);
+        specialCards.add(card2);
+        Board.getInstance(fields,specialCards);
+        Pawn pawn = new Pawn(field1,"0");
+        Pawn pawn2 = new Pawn(field1,"1");
+        Player player1 = new Player(1000,propertyFields2,pawn,"0");
+        Player player2 = new Player(1000,propertyFields3,pawn2,"1");
+
+        player1.move(Board.getInstance(null,null),1);
+        player1.checkProperty();
+        player2.move(Board.getInstance(null,null),1);
+        Assertions.assertEquals(player1.getMoney(),960);
+        Assertions.assertEquals(player2.getMoney(),990);
+        player1.move(Board.getInstance(null,null),1);
+        player1.checkProperty();
+        player2.move(Board.getInstance(null,null),1);
+        Assertions.assertEquals(player1.getMoney(),920);
+        Assertions.assertEquals(player2.getMoney(),960);
+        player1.move(Board.getInstance(null,null),2);
+        player1.checkProperty();
+        Assertions.assertEquals(player1.getMoney(),880);
+        player2.move(Board.getInstance(null,null),2);
+        Assertions.assertEquals(player1.getMoney(),980);
+        Assertions.assertEquals(player2.getMoney(),860);
+        player1.move(Board.getInstance(null,null),4);
+        player1.checkProperty();
+        Assertions.assertEquals(player1.getMoney(),930);
+        player2.move(Board.getInstance(null,null),4);
+        Assertions.assertEquals(player1.getMoney(),1080);
+        Assertions.assertEquals(player2.getMoney(),710);
+        player1.move(Board.getInstance(null,null),1);
+        player1.checkProperty();
+        Assertions.assertEquals(player1.getMoney(),1030);
+        player2.move(Board.getInstance(null,null),1);
+        Assertions.assertEquals(player1.getMoney(),1430);
+        Assertions.assertEquals(player2.getMoney(),310);
     }
 }
 

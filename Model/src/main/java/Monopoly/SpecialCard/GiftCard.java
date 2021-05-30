@@ -19,7 +19,7 @@ public class GiftCard extends SpecialCard{
     }
 
     @Override
-    public void performAction(Player Player) {
-        Player.setMoney(Player.getMoney() + this.getMoney());
+    public void performAction(Player player) {
+        player.setMoney(player.getMoney() + this.getMoney());
     }
 }

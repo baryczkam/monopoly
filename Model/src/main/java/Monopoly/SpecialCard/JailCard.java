@@ -4,22 +4,14 @@ import Monopoly.Player.Player;
 import Monopoly.Player.PlayerInterface;
 
 public class JailCard extends SpecialCard{
-    private Status status;
 
-    public JailCard(Status status) {
-        this.status = status;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
+    public JailCard() {
     }
 
     @Override
-    public void performAction(Player Player) {
-        }
+    public void performAction(Player player) {
+
+    }
+
 }
 
