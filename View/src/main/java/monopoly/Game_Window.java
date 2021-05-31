@@ -124,7 +124,7 @@ public class Game_Window {
         dice.throwTheDice(players.get(0));
         eyelets.setText("" + dice.getNumberOfEyelets());
     //        int whichField = players.get(turn).getPawn().getCurrentLocation().getFieldIndex();
-        dice.movePawn(Board.getInstance(null,null),players.get(0));
+        dice.movePawn(players.get(0));
         pawnPosition.changePawnPosition(imageView1,players.get(0).getPawn().getCurrentLocation().getFieldIndex());
     }
 

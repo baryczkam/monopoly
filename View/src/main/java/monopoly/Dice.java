@@ -23,8 +23,8 @@ public class Dice {
         return getNumberOfEyelets();
     }
 
-    public void movePawn(Board board, Player player) {
-        player.move(board,getNumberOfEyelets());
+    public void movePawn(Player player) {
+        player.move(getNumberOfEyelets());
 
     }
 }
