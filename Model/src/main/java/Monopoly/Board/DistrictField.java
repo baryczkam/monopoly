@@ -37,26 +37,26 @@ public class DistrictField extends PropertyField{
         if (this.color.equals(ColorDistrictField.BROWN) || this.color.equals(ColorDistrictField.BLUE)){
             if(ile == 2){
                 player.setMoney(player.getMoney() - getActionCost()*2);
-                getOwner().setMoney(getOwner().getMoney() + getActionCost()*2);
+                ((Player) getOwner()).setMoney(((Player) getOwner()).getMoney() + getActionCost()*2);
             }
         }
         if (!(this.color.equals(ColorDistrictField.BROWN)) && !(this.color.equals(ColorDistrictField.BLUE))){
             if(ile == 3){
                 player.setMoney(player.getMoney() - getActionCost()*2);
-                getOwner().setMoney(getOwner().getMoney() + getActionCost()*2);
+                ((Player) getOwner()).setMoney(((Player) getOwner()).getMoney() + getActionCost()*2);
             }
         }
 
         if (this.color.equals(ColorDistrictField.BROWN) || this.color.equals(ColorDistrictField.BLUE)){
             if(ile == 1){
                 player.setMoney(player.getMoney() - getActionCost());
-                getOwner().setMoney(getOwner().getMoney() + getActionCost());
+                ((Player) getOwner()).setMoney(((Player) getOwner()).getMoney() + getActionCost());
             }
         }
         if(!this.color.equals(ColorDistrictField.BROWN) && !this.color.equals(ColorDistrictField.BLUE)){
             if(ile < 3 && ile > 0){
                 player.setMoney(player.getMoney() - getActionCost());
-                getOwner().setMoney(getOwner().getMoney() + getActionCost());
+                ((Player) getOwner()).setMoney(((Player) getOwner()).getMoney() + getActionCost());
             }
         }
     }

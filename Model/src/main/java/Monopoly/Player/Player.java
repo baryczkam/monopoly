@@ -7,14 +7,17 @@ import java.util.Objects;
 import java.util.Random;
 
 public class Player extends Participant{
+    private int money;
     private Pawn pawn;
     private Status isInJail;
     private int inJailTurn;
     private boolean canExitJail;
     private String playerName;
 
+
     public Player(int money, List<PropertyField> listOfProperties, Pawn pawn, String playerName) {
-        super(money, listOfProperties);
+        super(listOfProperties);
+        this.money = money;
         this.pawn = pawn;
         this.isInJail = Status.OUT_JAIL;
         this.canExitJail = false;
@@ -56,6 +59,14 @@ public class Player extends Participant{
 
     public void setCanExitJail(boolean canExitJail) {
         this.canExitJail = canExitJail;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public void move(){
@@ -194,7 +205,7 @@ public class Player extends Participant{
             numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
         }
         if(getPawn().getCurrentLocation() instanceof SocialCashCardField){
-            numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+            numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
         }
         takeCard(numerKarty);
     }

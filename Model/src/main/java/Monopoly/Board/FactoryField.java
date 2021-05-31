@@ -18,11 +18,11 @@ public class FactoryField extends PropertyField{
         }
         if (ile == 1){
             player.setMoney(player.getMoney() - getActionCost()*index);
-            getOwner().setMoney(getOwner().getMoney() + getActionCost()*index);
+            ((Player) getOwner()).setMoney(((Player) getOwner()).getMoney() + getActionCost()*index);
         }
         if (ile == 2){
             player.setMoney(player.getMoney() - getActionCost()*index*2);
-            getOwner().setMoney(getOwner().getMoney() + getActionCost()*index*2);
+            ((Player) getOwner()).setMoney(((Player) getOwner()).getMoney() + getActionCost()*index*2);
         }
     }
 }

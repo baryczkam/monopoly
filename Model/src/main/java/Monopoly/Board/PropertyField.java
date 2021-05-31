@@ -31,7 +31,6 @@ public class PropertyField extends Field{
         this.owner = owner;
     }
 
-
     public void payStayCost(Player player, int index){
 
     }

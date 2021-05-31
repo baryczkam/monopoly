@@ -12,7 +12,7 @@ public class GameManager {
     public void initializeBoard(){
         List<PropertyField> propertyFields = new ArrayList<>();
         List<SpecialCard> specialCards = new ArrayList<>();
-        Bank bank = new Bank(0,propertyFields);
+        Bank bank = new Bank(propertyFields);
         StartField field1 = new StartField(0);
         PropertyField field2 = new DistrictField(1,60,bank,2,ColorDistrictField.BROWN);
         SocialCashCardField field3 = new SocialCashCardField(2);

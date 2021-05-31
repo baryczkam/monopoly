@@ -354,7 +354,7 @@ public class PlayerTest {
     public void buyPropertyFieldTest(){
         List<PropertyField> propertyFields1 = new ArrayList<>();
         List<PropertyField> propertyFields2 = new ArrayList<>();
-        Participant bank = new Bank(0,propertyFields1);
+        Participant bank = new Bank(propertyFields1);
 
         Field field1 = new Field(0);
         PropertyField field2 = new DistrictField(1,50,bank,10,ColorDistrictField.GREEN);
@@ -458,7 +458,7 @@ public class PlayerTest {
         List<PropertyField> propertyFields1 = new ArrayList<>();
         List<PropertyField> propertyFields2 = new ArrayList<>();
         List<PropertyField> propertyFields3 = new ArrayList<>();
-        Participant bank = new Bank(0,propertyFields1);
+        Participant bank = new Bank(propertyFields1);
 
         Field field1 = new Field(0);
         PropertyField field2 = new DistrictField(1,50,bank,10,ColorDistrictField.BLUE);
@@ -852,7 +852,7 @@ public class PlayerTest {
         List<PropertyField> propertyFields1 = new ArrayList<>();
         List<PropertyField> propertyFields2 = new ArrayList<>();
         List<PropertyField> propertyFields3 = new ArrayList<>();
-        Participant bank = new Bank(0,propertyFields1);
+        Participant bank = new Bank(propertyFields1);
 
         Field field1 = new Field(0);
         PropertyField field2 = new DistrictField(1,50,bank,10,ColorDistrictField.BLUE);
@@ -1015,21 +1015,21 @@ public class PlayerTest {
         System.out.println(cos14);
         System.out.println(cos15);
         System.out.println("---------------------------------");
-        int cos16 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos17 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos18 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos19 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos20 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos21 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos22 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos23 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos24 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos25 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos26 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos27 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos28 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos29 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
-        int cos30 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
+        int cos16 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos17 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos18 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos19 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos20 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos21 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos22 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos23 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos24 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos25 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos26 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos27 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos28 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos29 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+        int cos30 = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
         System.out.println(cos16);
         System.out.println(cos17);
         System.out.println(cos18);
