@@ -121,15 +121,15 @@ public class Game_Window {
 //        pawnPosition.changePawnPosition(pawns.get(turn),players.get(turn).getPawn().getCurrentLocation().getFieldIndex());
 //    }
     public void rollTheDice() throws InterruptedException {
-        dice.throwTheDice(players.get(0));
+        dice.throwTheDice(players.get(turn));
         eyelets.setText("" + dice.getNumberOfEyelets());
     //        int whichField = players.get(turn).getPawn().getCurrentLocation().getFieldIndex();
-        dice.movePawn(players.get(0));
-        pawnPosition.changePawnPosition(imageView1,players.get(0).getPawn().getCurrentLocation().getFieldIndex());
+        dice.movePawn(players.get(turn));
+        pawnPosition.changePawnPosition(imageView1,players.get(turn).getPawn().getCurrentLocation().getFieldIndex());
     }
 
     public void changeTurn() {
-        if(turn == 3) {
+        if(turn == (players.size() - 1)) {
             turn = 0;
         }
         else turn++;
