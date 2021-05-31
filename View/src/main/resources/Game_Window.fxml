@@ -33,7 +33,7 @@
             <effect>
                 <DropShadow spread="0.5" />
             </effect></Button>
-        <Button layoutX="836.0" layoutY="594.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="140.0" style="-fx-background-color: #0071BC; -fx-background-radius: 15;" text="KUP DZIAŁKĘ" textFill="WHITE">
+        <Button fx:id="buyProperty" layoutX="836.0" layoutY="594.0" mnemonicParsing="false" onAction="#buyPropertyFromBank" prefHeight="65.0" prefWidth="140.0" style="-fx-background-color: #0071BC; -fx-background-radius: 15;" text="KUP DZIAŁKĘ" textFill="WHITE">
             <font>
                 <Font name="Arial Black" size="12.0" />
             </font>
@@ -63,6 +63,26 @@
                                         <Font name="Arial Black" size="12.0" />
                                     </font>
                                 </Text>
+                        <Text fill="#0071bc" layoutX="27.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PIONEK" wrappingWidth="65.0">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Text>
+                        <Label fx:id="playerName" layoutX="134.0" layoutY="25.0" prefHeight="22.0" prefWidth="190.0" textFill="#0071bc">
+                           <font>
+                              <Font name="Arial Black" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="playerPawn" layoutX="134.0" layoutY="59.0" prefHeight="22.0" prefWidth="190.0" textFill="#0071bc">
+                           <font>
+                              <Font name="Arial Black" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="playerMoney" layoutX="134.0" layoutY="94.0" prefHeight="22.0" prefWidth="190.0" textFill="#0071bc">
+                           <font>
+                              <Font name="Arial Black" size="14.0" />
+                           </font>
+                        </Label>
                             </children>
                         </AnchorPane>
                     </content>
@@ -122,5 +142,10 @@
          <image>
             <Image url="@images/pionki/Pionek_taczka.png" />
          </image></ImageView>
+      <Label fx:id="eyelets1" layoutX="236.0" layoutY="35.0" textFill="#0071bc">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

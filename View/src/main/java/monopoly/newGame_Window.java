@@ -30,7 +30,10 @@ public class newGame_Window implements Mediator {
     public Board board;
     private static Stage stage;
     public int numberOfPlayers;
-    List<PropertyField> propertyFields = new ArrayList<>();
+    List<PropertyField> propertyFields1 = new ArrayList<>();
+    List<PropertyField> propertyFields2 = new ArrayList<>();
+    List<PropertyField> propertyFields3 = new ArrayList<>();
+    List<PropertyField> propertyFields4 = new ArrayList<>();
 
     @FXML
     private ComboBox<Integer> chooseNumberOfPlayers;
@@ -114,7 +117,7 @@ public class newGame_Window implements Mediator {
     public void createPlayer1() {
         if (writeName1.getText() != "" && choosePawn1.getValue() != null) {
             Pawn pawn1 = new Pawn(Board.getInstance(null,null).getField(0),choosePawn1.getValue());
-            Player player1 = new Player(100,propertyFields,pawn1,writeName1.getText());
+            Player player1 = new Player(500,propertyFields1,pawn1,writeName1.getText());
             players.add(player1);
 //            System.out.println(players.get(0).getPawn().getPawnName());
             addPlayer1.setDisable(true);
@@ -129,7 +132,7 @@ public class newGame_Window implements Mediator {
     public void createPlayer2() {
         if (writeName2.getText() != "" && choosePawn2.getValue() != null) {
             Pawn pawn2 = new Pawn(Board.getInstance(null,null).getField(0),choosePawn2.getValue());
-            Player player2 = new Player(100,propertyFields,pawn2,writeName2.getText());
+            Player player2 = new Player(500,propertyFields2,pawn2,writeName2.getText());
             players.add(player2);
             addPlayer2.setDisable(true);
             choosePawn1.getItems().removeAll(choosePawn2.getValue());
@@ -143,8 +146,8 @@ public class newGame_Window implements Mediator {
     public void createPlayer3() {
         if (writeName3.getText() != "" && choosePawn3.getValue() != null) {
             Pawn pawn3 = new Pawn(Board.getInstance(null,null).getField(0),choosePawn3.getValue());
-            Player p3 = new Player(100,propertyFields,pawn3,writeName3.getText());
-            players.add(p3);
+            Player player3 = new Player(500,propertyFields3,pawn3,writeName3.getText());
+            players.add(player3);
             addPlayer3.setDisable(true);
             choosePawn1.getItems().removeAll(choosePawn3.getValue());
             choosePawn2.getItems().removeAll(choosePawn3.getValue());
@@ -157,7 +160,7 @@ public class newGame_Window implements Mediator {
     public void createPlayer4() {
         if (writeName4.getText() != "" && choosePawn4.getValue() != null) {
             Pawn pawn4 = new Pawn(Board.getInstance(null, null).getField(0), choosePawn4.getValue());
-            Player player4 = new Player(100, propertyFields, pawn4, writeName4.getText());
+            Player player4 = new Player(500, propertyFields4, pawn4, writeName4.getText());
             players.add(player4);
             addPlayer4.setDisable(true);
             choosePawn1.getItems().removeAll(choosePawn4.getValue());

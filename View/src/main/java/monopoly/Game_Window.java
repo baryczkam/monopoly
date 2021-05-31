@@ -1,16 +1,20 @@
 package monopoly;
 
 import Monopoly.Board.Board;
+import Monopoly.Board.DistrictField;
 import Monopoly.GameManager.GameManager;
 import Monopoly.Board.Field;
 import Monopoly.Board.PropertyField;
+import Monopoly.Player.Bank;
 import Monopoly.Player.Pawn;
 import Monopoly.Player.Player;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.Alert.AlertType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +26,7 @@ public class Game_Window {
     public PawnPosition pawnPosition;
     public Vector<Player> players;
     public Vector<ImageView> pawns;
-    public int numberOfPlayers;
     public int turn;
-    public newGame_Window newGameWindow = new newGame_Window();
 
     @FXML
     private ImageView imageView1;
@@ -71,7 +73,16 @@ public class Game_Window {
     @FXML
     private Button endOfTurn;
 
-    public Game_Window() {}
+    @FXML
+    private Label playerName;
+
+    @FXML
+    private Label playerPawn;
+
+    @FXML
+    private Label playerMoney;
+
+    Alert wiadomosc = new Alert(AlertType.INFORMATION);
 
     @FXML
     public void initialize() {
@@ -80,6 +91,11 @@ public class Game_Window {
         pawnPosition = new PawnPosition();
         pawns = new Vector<>();
         players = newGame_Window.players;
+        endOfTurn.setDisable(true);
+        buyProperty.setDisable(true);
+        wiadomosc.setTitle("Błąd zakupu");
+        wiadomosc.setHeaderText("Nie można kupić tego pola");
+        wiadomosc.setContentText("Masz za mało pieniędzy.");
 
         if (players.size() == 1) {
             pawns.add(imageView1);
@@ -104,6 +120,10 @@ public class Game_Window {
         }
 
         addPawnToPlayer();
+
+        playerName.setText(players.get(0).getPlayerName());
+        playerPawn.setText(players.get(0).getPawn().getPawnName());
+        playerMoney.setText("" + players.get(0).getMoney());
     }
 
 
@@ -113,6 +133,23 @@ public class Game_Window {
         dice.movePawn(players.get(turn));
         pawnPosition.changePawnPosition(pawns.get(turn),players.get(turn).getPawn().getCurrentLocation().getFieldIndex());
         rollTheDice.setDisable(true);
+        endOfTurn.setDisable(false);
+
+        if (players.get(turn).getPawn().getCurrentLocation() instanceof PropertyField &&
+                ((PropertyField) players.get(turn).getPawn().getCurrentLocation()).getOwner() instanceof Bank) {
+            buyProperty.setDisable(false);
+        }
+    }
+
+    public void buyPropertyFromBank() {
+        if (players.get(turn).checkProperty()) {
+            players.get(turn).buyProperty();
+            buyProperty.setDisable(true);
+            playerMoney.setText("" + players.get(turn).getMoney());
+        }
+        else {
+            wiadomosc.show();
+        }
     }
 
     public void changeTurn() {
@@ -121,18 +158,17 @@ public class Game_Window {
         }
         else turn++;
         rollTheDice.setDisable(false);
+        endOfTurn.setDisable(true);
+        playerName.setText(players.get(turn).getPlayerName());
+        playerPawn.setText(players.get(turn).getPawn().getPawnName());
+        playerMoney.setText("" + players.get(turn).getMoney());
+        buyProperty.setDisable(true);
     }
 
-    public void buyProperty() {}
     public void expandProperty() {}
     public void takeSpecialCard() {}
     public void whoseTurn() {}
     public void prisonField() {}
-
-    public void transferMessage(Vector<Player> players, int numberOfPlayers) {
-        this.players = players;
-        this.numberOfPlayers = numberOfPlayers;
-    }
 
     public void addPawnToPlayer() {
         for (int i = 0; i < players.size(); i++) {
@@ -156,5 +192,7 @@ public class Game_Window {
             }
         }
     }
+
+
 
 }
