@@ -22,7 +22,10 @@ public class MoveFieldCard extends MoveCard{
 
     @Override
     public void performAction(Player player) {
-        player.getPawn().setCurrentLocation(destinationField);
+        if(player.getPawn().getCurrentLocation().getFieldIndex() > getDestinationField().getFieldIndex()){
+            player.setMoney(player.getMoney() + 200);
+        }
+        player.getPawn().setCurrentLocation(this.destinationField);
     }
 
 }
