@@ -24,10 +24,8 @@ public class Game_Window {
     public Vector<ImageView> pawns;
     public int numberOfPlayers;
     public int turn;
+    public newGame_Window newGameWindow = new newGame_Window();
 
-
-//    @FXML
-//    private ImageView pionekAuto;
     @FXML
     private ImageView imageView1;
 
@@ -39,6 +37,24 @@ public class Game_Window {
 
     @FXML
     private ImageView imageView4;
+
+    @FXML
+    private ImageView imageAuto;
+
+    @FXML
+    private ImageView imageBut;
+
+    @FXML
+    private ImageView imageKapelusz;
+
+    @FXML
+    private ImageView imagePies;
+
+    @FXML
+    private ImageView imageStatek;
+
+    @FXML
+    private ImageView imageTaczka;
 
     @FXML
     private Label eyelets;
@@ -63,69 +79,40 @@ public class Game_Window {
         dice = new Dice();
         pawnPosition = new PawnPosition();
         pawns = new Vector<>();
-        if (numberOfPlayers == 1) {
-            setPawnImage(imageView1,1);
+        players = newGame_Window.players;
+
+        if (players.size() == 1) {
             pawns.add(imageView1);
         }
-        if (numberOfPlayers == 2) {
-//            setPawnImage(imageView1,1);
-//            setPawnImage(imageView2,2);
-            imageView1.setImage(new Image("..\\resources\\images\\pionki\\Pionek_auto.png"));
+
+        if (players.size() == 2) {
             pawns.add(imageView1);
             pawns.add(imageView2);
         }
-        if (numberOfPlayers == 3) {
-            setPawnImage(imageView1,1);
-            setPawnImage(imageView2,2);
-            setPawnImage(imageView3,3);
+
+        if (players.size() == 3) {
             pawns.add(imageView1);
             pawns.add(imageView2);
             pawns.add(imageView3);
         }
-        if (numberOfPlayers == 4) {
-            setPawnImage(imageView1,1);
-            setPawnImage(imageView2,2);
-            setPawnImage(imageView3,3);
-            setPawnImage(imageView4,4);
+
+        if (players.size() == 4) {
             pawns.add(imageView1);
             pawns.add(imageView2);
             pawns.add(imageView3);
             pawns.add(imageView4);
         }
-//        System.out.println(pawns.get(0).getImage());
+
+        addPawnToPlayer();
     }
 
-    public void setPawnImage(ImageView pawn, int number) {
-//        String path = "@images/pionki/";
-        String path = "images\\pionki\\";
-        if(players.get(number).getPawn().getPawnName() == "Auto")
-            path += "Pionek_auto.png";
-        if(players.get(number).getPawn().getPawnName() == "But")
-            path += "Pionek_but.png";
-        if(players.get(number).getPawn().getPawnName() == "Kapelusz")
-            path += "Pionek_kapelusz.png";
-        if(players.get(number).getPawn().getPawnName() == "Pies")
-            path += "Pionek_pies.png";
-        if(players.get(number).getPawn().getPawnName() == "Statek")
-            path += "Pionek_statek.png";
-        if(players.get(number).getPawn().getPawnName() == "Taczka")
-            path += "Pionek_taczka.png";
-        pawn.setImage(new Image(path));
-    }
 
-//    public void rollTheDice() throws InterruptedException {
-//        dice.throwTheDice(players.get(turn));
-//        eyelets.setText("" + dice.getNumberOfEyelets());
-////        int whichField = players.get(turn).getPawn().getCurrentLocation().getFieldIndex();
-//        dice.movePawn(Board.getInstance(null,null),players.get(turn));
-//        pawnPosition.changePawnPosition(pawns.get(turn),players.get(turn).getPawn().getCurrentLocation().getFieldIndex());
-//    }
     public void rollTheDice() throws InterruptedException {
         dice.throwTheDice(players.get(turn));
         eyelets.setText("" + dice.getNumberOfEyelets());
-    //        int whichField = players.get(turn).getPawn().getCurrentLocation().getFieldIndex();
         dice.movePawn(players.get(turn));
-        pawnPosition.changePawnPosition(imageView1,players.get(turn).getPawn().getCurrentLocation().getFieldIndex());
+        pawnPosition.changePawnPosition(pawns.get(turn),players.get(turn).getPawn().getCurrentLocation().getFieldIndex());
+        rollTheDice.setDisable(true);
     }
 
     public void changeTurn() {
@@ -133,6 +120,7 @@ public class Game_Window {
             turn = 0;
         }
         else turn++;
+        rollTheDice.setDisable(false);
     }
 
     public void buyProperty() {}
@@ -145,4 +133,28 @@ public class Game_Window {
         this.players = players;
         this.numberOfPlayers = numberOfPlayers;
     }
+
+    public void addPawnToPlayer() {
+        for (int i = 0; i < players.size(); i++) {
+            if (players.get(i).getPawn().getPawnName() == "Auto") {
+                pawns.get(i).setImage(imageAuto.getImage());
+            }
+            if (players.get(i).getPawn().getPawnName() == "But") {
+                pawns.get(i).setImage(imageBut.getImage());
+            }
+            if (players.get(i).getPawn().getPawnName() == "Kapelusz") {
+                pawns.get(i).setImage(imageKapelusz.getImage());
+            }
+            if (players.get(i).getPawn().getPawnName() == "Pies") {
+                pawns.get(i).setImage(imagePies.getImage());
+            }
+            if (players.get(i).getPawn().getPawnName() == "Statek") {
+                pawns.get(i).setImage(imageStatek.getImage());
+            }
+            if (players.get(i).getPawn().getPawnName() == "Taczka") {
+                pawns.get(i).setImage(imageTaczka.getImage());
+            }
+        }
+    }
+
 }

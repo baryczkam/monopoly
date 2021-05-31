@@ -26,7 +26,7 @@ import static javafx.collections.FXCollections.observableArrayList;
 
 public class newGame_Window implements Mediator {
 
-    public Vector<Player> players;
+    public static Vector<Player> players;
     public Board board;
     private static Stage stage;
     public int numberOfPlayers;
@@ -187,25 +187,8 @@ public class newGame_Window implements Mediator {
     private Button returnBtn;
 
     @FXML
-    private void startNewGameWindow() {
-        stage = BuildingStage.getStage();
-        BuildingStage.setStage(stage);
-        Scene scene = null;
-        try {
-//            createBoard();
-//            createPlayer();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Game_Window.fxml"));
-            Parent root = loader.load();
-            Game_Window scene2Controller = loader.getController();
-            scene2Controller.transferMessage(players,numberOfPlayers);
-            scene = new Scene(root);
-        } catch (IOException ex) {
-            System.err.println(ex);
-        }
-        stage.setScene(scene);
-        stage.sizeToScene();
-        stage.show();
-        System.out.println(players.get(0).getPawn().getPawnName());
+    public void startNewGameWindow() {
+        BuildingStage.buildStage("/Game_Window.fxml");
     }
 
     @FXML

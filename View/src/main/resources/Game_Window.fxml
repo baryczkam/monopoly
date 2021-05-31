@@ -95,8 +95,32 @@
             </children>
         </Pane>
       <ImageView fx:id="imageView1" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView2" fitHeight="65.0" fitWidth="65.0" layoutX="631.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView3" fitHeight="65.0" fitWidth="65.0" layoutX="566.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="imageView4" fitHeight="65.0" fitWidth="65.0" layoutX="501.0" layoutY="721.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView2" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView3" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView4" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageAuto" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@images/pionki/Pionek_auto.png" />
+         </image></ImageView>
+      <ImageView fx:id="imageBut" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@images/pionki/Pionek_but.png" />
+         </image></ImageView>
+      <ImageView fx:id="imageKapelusz" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@images/pionki/Pionek_kapelusz.png" />
+         </image></ImageView>
+      <ImageView fx:id="imagePies" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@images/pionki/Pionek_pies.png" />
+         </image></ImageView>
+      <ImageView fx:id="imageStatek" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@images/pionki/Pionek_statek.png" />
+         </image></ImageView>
+      <ImageView fx:id="imageTaczka" fitHeight="65.0" fitWidth="65.0" layoutX="721.0" layoutY="741.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@images/pionki/Pionek_taczka.png" />
+         </image></ImageView>
     </children>
 </AnchorPane>
