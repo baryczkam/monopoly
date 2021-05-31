@@ -197,7 +197,8 @@ public class Player extends Participant{
     }
 
     // pobieramy karte i wykonujemy czynnosc w zaleznosci jaka to jest karta
-    public void takeCard(){
+
+    public int numerKarty(){
         Random r = new Random();
         int numerKarty = 0;
         if(getPawn().getCurrentLocation() instanceof ChanceCardField){
@@ -206,7 +207,21 @@ public class Player extends Participant{
         if(getPawn().getCurrentLocation() instanceof SocialCashCardField){
             numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
         }
-        takeCard(numerKarty);
+        return numerKarty;
+    }
+
+
+
+    public void takeCard(){
+        int k = numerKarty();
+//        int numerKarty = 0;
+//        if(getPawn().getCurrentLocation() instanceof ChanceCardField){
+//            numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
+//        }
+//        if(getPawn().getCurrentLocation() instanceof SocialCashCardField){
+//            numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
+//        }
+        takeCard(k);
     }
 
 
