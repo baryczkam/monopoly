@@ -193,7 +193,7 @@ public class Player extends Participant{
         if(getPawn().getCurrentLocation() instanceof ChanceCardField){
             numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
         }
-        if(getPawn().getCurrentLocation() instanceof SocialSecurityCardField){
+        if(getPawn().getCurrentLocation() instanceof SocialCashCardField){
             numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2 + 1) + 16;
         }
         takeCard(numerKarty);

@@ -15,7 +15,7 @@ public class GameManager {
         Bank bank = new Bank(0,propertyFields);
         StartField field1 = new StartField(0);
         PropertyField field2 = new DistrictField(1,60,bank,2,ColorDistrictField.BROWN);
-        SocialSecurityCardField field3 = new SocialSecurityCardField(2);
+        SocialCashCardField field3 = new SocialCashCardField(2);
         PropertyField field4 = new DistrictField(3,60,bank,4,ColorDistrictField.BROWN);
         TaxField field5 = new TaxField(4,200);
         StationField field6 = new StationField(5,200,bank,50);
@@ -30,7 +30,7 @@ public class GameManager {
         PropertyField field15 = new DistrictField(14,160,bank,12,ColorDistrictField.PURPLE);
         StationField field16 = new StationField(15,200,bank,50);
         PropertyField field17 = new DistrictField(16,180,bank,14,ColorDistrictField.ORANGE);
-        SocialSecurityCardField field18 = new SocialSecurityCardField(17);
+        SocialCashCardField field18 = new SocialCashCardField(17);
         PropertyField field19 = new DistrictField(18,180,bank,14,ColorDistrictField.ORANGE);
         PropertyField field20 = new DistrictField(19,200,bank,16,ColorDistrictField.ORANGE);
         ParkingField field21 = new ParkingField(20,0);
@@ -46,7 +46,7 @@ public class GameManager {
         GoToJailField field31 = new GoToJailField(30);
         PropertyField field32 = new DistrictField(31,300,bank,26,ColorDistrictField.GREEN);
         PropertyField field33 = new DistrictField(32,300,bank,26,ColorDistrictField.GREEN);
-        SocialSecurityCardField field34 = new SocialSecurityCardField(33);
+        SocialCashCardField field34 = new SocialCashCardField(33);
         PropertyField field35 = new DistrictField(34,320,bank,28,ColorDistrictField.GREEN);
         StationField field36 = new StationField(35,200,bank,50);
         ChanceCardField field37 = new ChanceCardField(36);
