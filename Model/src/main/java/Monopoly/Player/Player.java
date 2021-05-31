@@ -151,7 +151,6 @@ public class Player extends Participant{
     public boolean checkProperty(){
         if(Objects.nonNull(getPawn()) && Objects.nonNull(getPawn().getCurrentLocation()) && getPawn().getCurrentLocation() instanceof PropertyField && ((PropertyField) getPawn().getCurrentLocation()).getOwner() instanceof Bank){
             if(Objects.nonNull(getMoney()) && getMoney() - ((PropertyField) getPawn().getCurrentLocation()).getCostPurchaseProperty() >= 0){
-                buyProperty();
                 return true;
             }
         }
@@ -159,7 +158,7 @@ public class Player extends Participant{
     }
 
     // kupuje dzialke
-    private void buyProperty(){
+    public void buyProperty(){
         setMoney(getMoney() - ((PropertyField) getPawn().getCurrentLocation()).getCostPurchaseProperty());
         ((PropertyField) getPawn().getCurrentLocation()).getOwner().getListOfProperties().remove(getPawn().getCurrentLocation());
         ((PropertyField) getPawn().getCurrentLocation()).setOwner(this);
