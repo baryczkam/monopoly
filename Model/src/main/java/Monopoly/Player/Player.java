@@ -113,7 +113,6 @@ public class Player extends Participant{
         payTax();
         getMoneyFromParkingField();
         goToJail();
-//        takeCard();
     }
 
     public int throwDice(){
@@ -209,21 +208,6 @@ public class Player extends Participant{
         }
         return numerKarty;
     }
-
-
-
-    public void takeCard(){
-        int k = numerKarty();
-//        int numerKarty = 0;
-//        if(getPawn().getCurrentLocation() instanceof ChanceCardField){
-//            numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2);
-//        }
-//        if(getPawn().getCurrentLocation() instanceof SocialCashCardField){
-//            numerKarty = r.nextInt(Board.getInstance(null,null).getSpecialCardList().size()/2) + 16;
-//        }
-        takeCard(k);
-    }
-
 
     public void takeCard(int numerKarty){
         if(getPawn().getCurrentLocation() instanceof SpecialCardField){
