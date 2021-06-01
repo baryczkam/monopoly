@@ -1,6 +1,6 @@
 package monopoly;
 
-public class propertyCard extends Cards{
+public class propertyCard extends Cards_Window {
     private String nameOfProperty;
     private int homePurchasePrice;
 
@@ -9,8 +9,8 @@ public class propertyCard extends Cards{
         this.homePurchasePrice = homePurchasePrice;
     }
 
-    @Override
-    public void showContent() {
-        super.showContent();
-    }
+//    @Override
+//    public void showContent() {
+//        super.showContent();
+//    }
 }

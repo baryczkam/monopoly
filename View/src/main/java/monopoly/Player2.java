@@ -7,6 +7,6 @@ public class Player2 {
     private String name;
     private Pawn pawn;
     private int accountBalance;
-    private Cards cardsHeld;
+    private Cards_Window cardsHeld;
 
 }

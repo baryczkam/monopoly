@@ -25,6 +25,5 @@ public class Dice {
 
     public void movePawn(Player player) {
         player.move(getNumberOfEyelets());
-
     }
 }

@@ -1,11 +1,11 @@
 package monopoly;
 
-public class specialCard extends Cards{
+public class specialCard extends Cards_Window {
 
     public void executeCommand() {}
 
-    @Override
-    public void showContent() {
-        super.showContent();
-    }
+//    @Override
+//    public void showContent() {
+//        super.showContent();
+//    }
 }

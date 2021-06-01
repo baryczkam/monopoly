@@ -1,21 +1,23 @@
 package monopoly;
 
-import Monopoly.Board.Board;
-import Monopoly.Board.DistrictField;
+import Monopoly.Board.*;
 import Monopoly.GameManager.GameManager;
-import Monopoly.Board.Field;
-import Monopoly.Board.PropertyField;
 import Monopoly.Player.Bank;
 import Monopoly.Player.Pawn;
 import Monopoly.Player.Player;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -24,9 +26,13 @@ public class Game_Window {
 
     public Dice dice;
     public PawnPosition pawnPosition;
-    public Vector<Player> players;
+    public static Vector<Player> players;
     public Vector<ImageView> pawns;
-    public int turn;
+    public static int turn;
+    public int numberOfSpecialCard;
+
+    @FXML
+    private ImageView specialCard;
 
     @FXML
     private ImageView imageView1;
@@ -63,6 +69,9 @@ public class Game_Window {
 
     @FXML
     private Button saveGameBtn;
+
+    @FXML
+    private Button showCards;
 
     @FXML
     private Button rollTheDice;
@@ -131,6 +140,14 @@ public class Game_Window {
         dice.throwTheDice(players.get(turn));
         eyelets.setText("" + dice.getNumberOfEyelets());
         dice.movePawn(players.get(turn));
+        numberOfSpecialCard = players.get(turn).numerKarty();
+
+        if (players.get(turn).getPawn().getCurrentLocation() instanceof SpecialCardField) {
+            setSpecialCardImage();
+        }
+
+        players.get(turn).takeCard(numberOfSpecialCard);
+        playerMoney.setText("" + players.get(turn).getMoney());
         pawnPosition.changePawnPosition(pawns.get(turn),players.get(turn).getPawn().getCurrentLocation().getFieldIndex());
         rollTheDice.setDisable(true);
         endOfTurn.setDisable(false);
@@ -139,6 +156,7 @@ public class Game_Window {
                 ((PropertyField) players.get(turn).getPawn().getCurrentLocation()).getOwner() instanceof Bank) {
             buyProperty.setDisable(false);
         }
+
     }
 
     public void buyPropertyFromBank() {
@@ -163,6 +181,7 @@ public class Game_Window {
         playerPawn.setText(players.get(turn).getPawn().getPawnName());
         playerMoney.setText("" + players.get(turn).getMoney());
         buyProperty.setDisable(true);
+        specialCard.setImage(null);
     }
 
     public void expandProperty() {}
@@ -193,6 +212,88 @@ public class Game_Window {
         }
     }
 
+    public void setSpecialCardImage() {
+        String path = "\\images\\karty_specjalne\\";
+        if(numberOfSpecialCard == 0)
+            path += "karta_szansa1.png";
+        if(numberOfSpecialCard == 1)
+            path += "karta_szansa2.png";
+        if(numberOfSpecialCard == 2)
+            path += "karta_szansa3.png";
+        if(numberOfSpecialCard == 3)
+            path += "karta_szansa4.png";
+        if(numberOfSpecialCard == 4)
+            path += "karta_szansa5.png";
+        if(numberOfSpecialCard == 5)
+            path += "karta_szansa6.png";
+        if(numberOfSpecialCard == 6)
+            path += "karta_szansa7.png";
+        if(numberOfSpecialCard == 7)
+            path += "karta_szansa8.png";
+        if(numberOfSpecialCard == 8)
+            path += "karta_szansa9.png";
+        if(numberOfSpecialCard == 9)
+            path += "karta_szansa10.png";
+        if(numberOfSpecialCard == 10)
+            path += "karta_szansa11.png";
+        if(numberOfSpecialCard == 11)
+            path += "karta_szansa12.png";
+        if(numberOfSpecialCard == 12)
+            path += "karta_szansa13.png";
+        if(numberOfSpecialCard == 13)
+            path += "karta_szansa14.png";
+        if(numberOfSpecialCard == 14)
+            path += "karta_szansa15.png";
+        if(numberOfSpecialCard == 15)
+            path += "karta_szansa16.png";
+        if(numberOfSpecialCard == 16)
+            path += "karta_kasa_spoleczna1.png";
+        if(numberOfSpecialCard == 17)
+            path += "karta_kasa_spoleczna2.png";
+        if(numberOfSpecialCard == 18)
+            path += "karta_kasa_spoleczna3.png";
+        if(numberOfSpecialCard == 19)
+            path += "karta_kasa_spoleczna4.png";
+        if(numberOfSpecialCard == 20)
+            path += "karta_kasa_spoleczna5.png";
+        if(numberOfSpecialCard == 21)
+            path += "karta_kasa_spoleczna6.png";
+        if(numberOfSpecialCard == 22)
+            path += "karta_kasa_spoleczna7.png";
+        if(numberOfSpecialCard == 23)
+            path += "karta_kasa_spoleczna8.png";
+        if(numberOfSpecialCard == 24)
+            path += "karta_kasa_spoleczna9.png";
+        if(numberOfSpecialCard == 25)
+            path += "karta_kasa_spoleczna10.png";
+        if(numberOfSpecialCard == 26)
+            path += "karta_kasa_spoleczna11.png";
+        if(numberOfSpecialCard == 27)
+            path += "karta_kasa_spoleczna12.png";
+        if(numberOfSpecialCard == 28)
+            path += "karta_kasa_spoleczna13.png";
+        if(numberOfSpecialCard == 29)
+            path += "karta_kasa_spoleczna14.png";
+        if(numberOfSpecialCard == 30)
+            path += "karta_kasa_spoleczna15.png";
+        if(numberOfSpecialCard == 31)
+            path += "karta_kasa_spoleczna16.png";
+        specialCard.setImage(new Image(path));
+    }
 
+    public void showPlayersCards() {
+        try {
+            //Load second scene
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Cards_Window.fxml"));
+            Parent root = loader.load();
+            //Show scene 2 in new window
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Karty gracza: " + players.get(turn).getPlayerName());
+            stage.show();
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+    }
 
 }

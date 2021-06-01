@@ -113,7 +113,7 @@ public class Player extends Participant{
         payTax();
         getMoneyFromParkingField();
         goToJail();
-        takeCard();
+//        takeCard();
     }
 
     public int throwDice(){

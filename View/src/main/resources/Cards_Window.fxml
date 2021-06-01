@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #E1EDFF;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="monopoly.Cards_Window">
+   <children>
+      <ScrollPane prefHeight="800.0" prefWidth="1000.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="1000.0" style="-fx-background-color: #E1EDFF;">
+               <children>
+                  <ImageView fx:id="propertyCard1" fitHeight="402.0" fitWidth="252.0" layoutX="75.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard2" fitHeight="402.0" fitWidth="252.0" layoutX="375.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard3" fitHeight="402.0" fitWidth="252.0" layoutX="75.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard4" fitHeight="402.0" fitWidth="252.0" layoutX="375.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl4.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard5" fitHeight="402.0" fitWidth="252.0" layoutX="675.0" layoutY="475.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl5.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard6" fitHeight="402.0" fitWidth="252.0" layoutX="75.0" layoutY="900.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl6.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard7" fitHeight="402.0" fitWidth="252.0" layoutX="375.0" layoutY="900.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl7.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard8" fitHeight="402.0" fitWidth="252.0" layoutX="675.0" layoutY="900.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl8.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard9" fitHeight="402.0" fitWidth="252.0" layoutX="75.0" layoutY="1325.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl9.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard10" fitHeight="402.0" fitWidth="252.0" layoutX="375.0" layoutY="1325.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl10.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard11" fitHeight="402.0" fitWidth="252.0" layoutX="675.0" layoutY="1325.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl11.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard12" fitHeight="402.0" fitWidth="252.0" layoutX="75.0" layoutY="1750.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl12.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard13" fitHeight="402.0" fitWidth="252.0" layoutX="375.0" layoutY="1750.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl13.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard14" fitHeight="402.0" fitWidth="252.0" layoutX="675.0" layoutY="1750.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl14.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard15" fitHeight="402.0" fitWidth="252.0" layoutX="75.0" layoutY="2175.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl15.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard16" fitHeight="402.0" fitWidth="252.0" layoutX="375.0" layoutY="2175.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl16.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard17" fitHeight="402.0" fitWidth="252.0" layoutX="675.0" layoutY="2175.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl17.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard18" fitHeight="402.0" fitWidth="252.0" layoutX="75.0" layoutY="2600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl18.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard19" fitHeight="402.0" fitWidth="252.0" layoutX="375.0" layoutY="2600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl19.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard20" fitHeight="402.0" fitWidth="252.0" layoutX="675.0" layoutY="2600.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl20.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard21" fitHeight="402.0" fitWidth="252.0" layoutX="75.0" layoutY="3025.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl21.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="propertyCard22" fitHeight="402.0" fitWidth="252.0" layoutX="375.0" layoutY="3025.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl22.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="specialCard1" fitHeight="252.0" fitWidth="402.0" layoutX="75.0" layoutY="4300.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_specjalne/karta_kasa_spoleczna16.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="specialCard2" fitHeight="252.0" fitWidth="402.0" layoutX="535.0" layoutY="4300.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_specjalne/karta_szansa16.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="stationCard1" fitHeight="402.0" fitWidth="252.0" layoutX="75.0" layoutY="3450.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl22.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="stationCard2" fitHeight="402.0" fitWidth="252.0" layoutX="375.0" layoutY="3450.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl22.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="stationCard3" fitHeight="402.0" fitWidth="252.0" layoutX="675.0" layoutY="3450.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl22.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="stationCard4" fitHeight="402.0" fitWidth="252.0" layoutX="75.0" layoutY="3875.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl22.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="factoryCard1" fitHeight="402.0" fitWidth="252.0" layoutX="375.0" layoutY="3875.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl22.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="factoryCard2" fitHeight="402.0" fitWidth="252.0" layoutX="675.0" layoutY="3875.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/karty_dzielnice/dzielnica_tyl22.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
