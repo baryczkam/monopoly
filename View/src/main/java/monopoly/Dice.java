@@ -19,6 +19,7 @@ public class Dice {
     }
 
     public int throwTheDice(Player player) {
+//        setNumberOfEyelets(-1);
         setNumberOfEyelets(player.throwDice());
         return getNumberOfEyelets();
     }

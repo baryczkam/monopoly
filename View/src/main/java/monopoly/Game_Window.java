@@ -5,12 +5,14 @@ import Monopoly.GameManager.GameManager;
 import Monopoly.Player.Bank;
 import Monopoly.Player.Pawn;
 import Monopoly.Player.Player;
+import Monopoly.Player.Status;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -98,6 +100,8 @@ public class Game_Window {
     private Button chanceBtn;
 
     Alert wiadomosc = new Alert(AlertType.INFORMATION);
+    Alert wiadomoscWiezienie = new Alert(AlertType.NONE, "Idziesz do więzienia.",ButtonType.OK);
+    Alert wiadomoscCzynsz = new Alert(AlertType.NONE,"Stoisz na polu innego gracza - płacisz mu czynsz.",ButtonType.OK);
 
     @FXML
     public void initialize() {
@@ -108,9 +112,14 @@ public class Game_Window {
         players = newGame_Window.players;
         endOfTurn.setDisable(true);
         buyProperty.setDisable(true);
+
         wiadomosc.setTitle("Błąd zakupu");
         wiadomosc.setHeaderText("Nie można kupić tego pola");
         wiadomosc.setContentText("Masz za mało pieniędzy.");
+
+        wiadomoscWiezienie.setTitle("Więzienie");
+
+        wiadomoscCzynsz.setTitle("Czynsz");
 
         if (players.size() == 1) {
             pawns.add(imageView1);
@@ -146,23 +155,40 @@ public class Game_Window {
         dice.throwTheDice(players.get(turn));
         eyelets.setText("" + dice.getNumberOfEyelets());
         dice.movePawn(players.get(turn));
-        numberOfSpecialCard = players.get(turn).numerKarty();
 
-        if (players.get(turn).getPawn().getCurrentLocation() instanceof SpecialCardField) {
-            setSpecialCardImage();
+        if (players.get(turn).getPawn().getCurrentLocation() instanceof ChanceCardField) {
+            endOfTurn.setDisable(true);
+            chanceBtn.setDisable(false);
         }
 
-        players.get(turn).takeCard(numberOfSpecialCard);
+        if (players.get(turn).getPawn().getCurrentLocation() instanceof SocialCashCardField) {
+            endOfTurn.setDisable(true);
+            socialCashBtn.setDisable(false);
+        }
+
         playerMoney.setText("" + players.get(turn).getMoney());
         pawnPosition.changePawnPosition(pawns.get(turn),players.get(turn).getPawn().getCurrentLocation().getFieldIndex());
         rollTheDice.setDisable(true);
-        endOfTurn.setDisable(false);
+
+        if (players.get(turn).getIsInJail() == Status.IN_JAIL && players.get(turn).getInJailTurn() == 0) {
+            wiadomoscWiezienie.show();
+        }
+
+        if (players.get(turn).getPawn().getCurrentLocation() instanceof PropertyField &&
+                !(((PropertyField) players.get(turn).getPawn().getCurrentLocation()).getOwner() instanceof Bank) &&
+                !(((PropertyField) players.get(turn).getPawn().getCurrentLocation()).getOwner() == players.get(turn))) {
+            wiadomoscCzynsz.show();
+        }
+
+        if (!(players.get(turn).getPawn().getCurrentLocation() instanceof ChanceCardField ||
+                players.get(turn).getPawn().getCurrentLocation() instanceof SocialCashCardField))  {
+            endOfTurn.setDisable(false);
+        }
 
         if (players.get(turn).getPawn().getCurrentLocation() instanceof PropertyField &&
                 ((PropertyField) players.get(turn).getPawn().getCurrentLocation()).getOwner() instanceof Bank) {
             buyProperty.setDisable(false);
         }
-
     }
 
     public void buyPropertyFromBank() {
@@ -216,6 +242,17 @@ public class Game_Window {
                 pawns.get(i).setImage(imageTaczka.getImage());
             }
         }
+    }
+
+    public void drawSpecialCard() {
+        numberOfSpecialCard = players.get(turn).numerKarty();
+        setSpecialCardImage();
+        players.get(turn).takeCard(numberOfSpecialCard);
+        pawnPosition.changePawnPosition(pawns.get(turn),players.get(turn).getPawn().getCurrentLocation().getFieldIndex());
+        playerMoney.setText("" + players.get(turn).getMoney());
+        socialCashBtn.setDisable(true);
+        chanceBtn.setDisable(true);
+        endOfTurn.setDisable(false);
     }
 
     public void setSpecialCardImage() {

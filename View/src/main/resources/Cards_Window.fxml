@@ -123,42 +123,42 @@
                   </ImageView>
                   <ImageView fx:id="specialCard1" fitHeight="252.0" fitWidth="402.0" layoutX="75.0" layoutY="4300.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/karty_specjalne/karta_kasa_spoleczna16.png" />
+                        <Image url="@images/karty_specjalne/karta_kasa_spoleczna_tyl.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="specialCard2" fitHeight="252.0" fitWidth="402.0" layoutX="535.0" layoutY="4300.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/karty_specjalne/karta_szansa16.png" />
+                        <Image url="@images/karty_specjalne/karta_szansa_tyl.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="stationCard1" fitHeight="402.0" fitWidth="252.0" layoutX="75.0" layoutY="3450.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/karty_dzielnice/dzielnica_tyl22.png" />
+                        <Image url="@images/karty_dzielnice/dworzec_zachodni_tyl.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="stationCard2" fitHeight="402.0" fitWidth="252.0" layoutX="375.0" layoutY="3450.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/karty_dzielnice/dzielnica_tyl22.png" />
+                        <Image url="@images/karty_dzielnice/dworzec_gdanski_tyl.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="stationCard3" fitHeight="402.0" fitWidth="252.0" layoutX="675.0" layoutY="3450.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/karty_dzielnice/dzielnica_tyl22.png" />
+                        <Image url="@images/karty_dzielnice/dworzec_wschodni_tyl.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="stationCard4" fitHeight="402.0" fitWidth="252.0" layoutX="75.0" layoutY="3875.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/karty_dzielnice/dzielnica_tyl22.png" />
+                        <Image url="@images/karty_dzielnice/dworzec_centralny_tyl.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="factoryCard1" fitHeight="402.0" fitWidth="252.0" layoutX="375.0" layoutY="3875.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/karty_dzielnice/dzielnica_tyl22.png" />
+                        <Image url="@images/karty_dzielnice/elektrownia_tyl.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="factoryCard2" fitHeight="402.0" fitWidth="252.0" layoutX="675.0" layoutY="3875.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/karty_dzielnice/dzielnica_tyl22.png" />
+                        <Image url="@images/karty_dzielnice/wodociagi_tyl.png" />
                      </image>
                   </ImageView>
                </children></AnchorPane>

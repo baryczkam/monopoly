@@ -153,7 +153,7 @@
             <Font name="Arial Black" size="20.0" />
          </font>
       </Label>
-      <Button fx:id="socialCashBtn" layoutX="155.0" layoutY="190.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="161.0" rotate="-45.0" style="-fx-background-color: tranparent;" />
-      <Button fx:id="chanceBtn" layoutX="486.0" layoutY="518.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="155.0" rotate="-45.0" style="-fx-background-color: tranparent;" />
+      <Button fx:id="socialCashBtn" disable="true" layoutX="155.0" layoutY="190.0" mnemonicParsing="false" onAction="#drawSpecialCard" prefHeight="101.0" prefWidth="161.0" rotate="-45.0" stylesheets="@style4.css" />
+      <Button fx:id="chanceBtn" disable="true" layoutX="486.0" layoutY="518.0" mnemonicParsing="false" onAction="#drawSpecialCard" prefHeight="101.0" prefWidth="155.0" rotate="-45.0" stylesheets="@style4.css" />
     </children>
 </AnchorPane>
