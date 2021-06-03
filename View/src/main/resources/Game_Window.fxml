@@ -16,7 +16,7 @@
     <children>
         <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/plansza.png" />
+                <Image url="@images/Monopoly_plansza.png" />
             </image>
         </ImageView>
         <Button layoutX="1018.0" layoutY="703.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="140.0" style="-fx-background-color: #0071BC; -fx-background-radius: 15;" text="ZAPISZ GRĘ" textFill="WHITE">
@@ -153,5 +153,7 @@
             <Font name="Arial Black" size="20.0" />
          </font>
       </Label>
+      <Button fx:id="socialCashBtn" layoutX="155.0" layoutY="190.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="161.0" rotate="-45.0" style="-fx-background-color: tranparent;" />
+      <Button fx:id="chanceBtn" layoutX="486.0" layoutY="518.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="155.0" rotate="-45.0" style="-fx-background-color: tranparent;" />
     </children>
 </AnchorPane>

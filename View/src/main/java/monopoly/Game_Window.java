@@ -91,6 +91,12 @@ public class Game_Window {
     @FXML
     private Label playerMoney;
 
+    @FXML
+    private Button socialCashBtn;
+
+    @FXML
+    private Button chanceBtn;
+
     Alert wiadomosc = new Alert(AlertType.INFORMATION);
 
     @FXML
