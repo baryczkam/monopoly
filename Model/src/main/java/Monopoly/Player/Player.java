@@ -1,7 +1,9 @@
 package Monopoly.Player;
 
 import Monopoly.Board.*;
+import Monopoly.SpecialCard.SpecialCard;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Random;
@@ -75,44 +77,45 @@ public class Player extends Participant{
     }
 
     public void move(int iloscPol){
+        if(!checkLost()){
+            //wylosował 3 dublety wiec do wiezienia i sie nie rusza
+            if(iloscPol == -1) {
+                getPawn().setCurrentLocation(Board.getInstance(null,null).getJailField());
+                this.setIsInJail(Status.IN_JAIL);
+                return;
+            }
 
-        //wylosował 3 dublety wiec do wiezienia i sie nie rusza
-        if(iloscPol == -1) {
-            getPawn().setCurrentLocation(Board.getInstance(null,null).getJailField());
-            this.setIsInJail(Status.IN_JAIL);
-            return;
-        }
+            //jest w wiezieniu juz 2 tury wiec wychodzi
+            if (this.isInJail.equals(Status.IN_JAIL) && this.inJailTurn == 2) {
+                this.inJailTurn = 0;
+                this.setIsInJail(Status.OUT_JAIL);
+            }
 
-        //jest w wiezieniu juz 2 tury wiec wychodzi
-        if (this.isInJail.equals(Status.IN_JAIL) && this.inJailTurn == 2) {
-            this.inJailTurn = 0;
-            this.setIsInJail(Status.OUT_JAIL);
-        }
+            //jest w wiezieniu krócej niz 2 tury ale ma karte wyjscia czy cos wiec wychodzi
+            if (this.isInJail.equals(Status.IN_JAIL) && this.canExitJail) {
+                this.inJailTurn = 0;
+                this.setIsInJail(Status.OUT_JAIL);
+                this.canExitJail = false;
+            }
 
-        //jest w wiezieniu krócej niz 2 tury ale ma karte wyjscia czy cos wiec wychodzi
-        if (this.isInJail.equals(Status.IN_JAIL) && this.canExitJail) {
-            this.inJailTurn = 0;
-            this.setIsInJail(Status.OUT_JAIL);
-            this.canExitJail = false;
-        }
+            //jest w wiezieniu, jeszcze nie odsiedział 2 tur więc się nie rusza
+            if(this.isInJail.equals(Status.IN_JAIL) && this.inJailTurn != 2) {
+                this.inJailTurn++;
+                return;
+            }
 
-        //jest w wiezieniu, jeszcze nie odsiedział 2 tur więc się nie rusza
-        if(this.isInJail.equals(Status.IN_JAIL) && this.inJailTurn != 2) {
-            this.inJailTurn++;
-            return;
+            //ruch
+            if (getPawn().getCurrentLocation().getFieldIndex() + iloscPol > 39) {
+                getPawn().setCurrentLocation(Board.getInstance(null,null).getField(Math.abs(40 - (getPawn().getCurrentLocation().getFieldIndex() + iloscPol))));
+                setMoney(getMoney()+200);
+            } else {
+                getPawn().setCurrentLocation(Board.getInstance(null,null).getField(getPawn().getCurrentLocation().getFieldIndex() + iloscPol));
+            }
+            payStayCost(iloscPol);
+            payTax();
+            getMoneyFromParkingField();
+            goToJail();
         }
-
-        //ruch
-        if (getPawn().getCurrentLocation().getFieldIndex() + iloscPol > 39) {
-            getPawn().setCurrentLocation(Board.getInstance(null,null).getField(Math.abs(40 - (getPawn().getCurrentLocation().getFieldIndex() + iloscPol))));
-            setMoney(getMoney()+200);
-        } else {
-            getPawn().setCurrentLocation(Board.getInstance(null,null).getField(getPawn().getCurrentLocation().getFieldIndex() + iloscPol));
-        }
-        payStayCost(iloscPol);
-        payTax();
-        getMoneyFromParkingField();
-        goToJail();
     }
 
     public int throwDice(){
@@ -158,10 +161,12 @@ public class Player extends Participant{
 
     // kupuje dzialke
     public void buyProperty(){
-        setMoney(getMoney() - ((PropertyField) getPawn().getCurrentLocation()).getCostPurchaseProperty());
-        ((PropertyField) getPawn().getCurrentLocation()).getOwner().getListOfProperties().remove(getPawn().getCurrentLocation());
-        ((PropertyField) getPawn().getCurrentLocation()).setOwner(this);
-        getListOfProperties().add(((PropertyField) getPawn().getCurrentLocation()));
+        if(checkProperty()){
+            setMoney(getMoney() - ((PropertyField) getPawn().getCurrentLocation()).getCostPurchaseProperty());
+            ((PropertyField) getPawn().getCurrentLocation()).getOwner().getListOfProperties().remove(getPawn().getCurrentLocation());
+            ((PropertyField) getPawn().getCurrentLocation()).setOwner(this);
+            getListOfProperties().add(((PropertyField) getPawn().getCurrentLocation()));
+        }
     }
 
     // placimy za staniecie na pole ktore nie nalezy do nas i nalezy do innego gracza (nie nalezy do banku)
@@ -209,10 +214,32 @@ public class Player extends Participant{
         return numerKarty;
     }
 
+    /**
+     * Wykorzystany jest tutaj wzorzec strategii. Logika dotycząca konkretnych akcji jest rozproszona zgodnie
+     * z typem po różnych klasach rozszeżających SpecialCard(Strategy),
+     * natomiast na podstawie wylosowanego numeru(Context) podejmowana jest dopiero konkretna akcja.
+     * @param numerKarty
+     */
     public void takeCard(int numerKarty){
-        if(getPawn().getCurrentLocation() instanceof SpecialCardField){
-            Board.getInstance(null,null).getSpecialCardList().get(numerKarty).performAction(this);
+        Pawn pawn = getPawn();
+        if(Objects.isNull(pawn) || !(pawn.getCurrentLocation() instanceof SpecialCardField)){
+            return;
         }
+        Board board = Board.getInstance(null, null);
+
+        if(Objects.isNull(board)){
+            return;
+        }
+
+        List<SpecialCard> specialCardList = board.getSpecialCardList();
+
+        if(Objects.isNull(specialCardList) || specialCardList.size() == 0){
+            return;
+        }
+
+        SpecialCard specialCard = specialCardList.get(numerKarty);
+
+        specialCard.performAction(this);
     }
 
     // idziemy do wiezienia gdy staniemy na polu GoToJailField
@@ -223,6 +250,13 @@ public class Player extends Participant{
                 this.setIsInJail(Status.IN_JAIL);
             }
         }
+    }
+
+    public boolean checkLost(){
+        if(getMoney() < 0){
+            return true;
+        }
+        return false;
     }
 
 

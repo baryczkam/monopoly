@@ -2,7 +2,7 @@ package Monopoly.SpecialCard;
 
 import Monopoly.Player.Player;
 
-public class RenovationCard extends SpecialCard{
+public class RenovationCard implements SpecialCard{
     private int value;
 
     public RenovationCard(int value) {

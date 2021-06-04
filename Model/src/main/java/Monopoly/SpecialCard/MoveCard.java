@@ -1,11 +1,8 @@
 package Monopoly.SpecialCard;
 
-import Monopoly.Board.Field;
-import Monopoly.Player.Pawn;
 import Monopoly.Player.Player;
-import Monopoly.Player.PlayerInterface;
 
-public class MoveCard extends SpecialCard{
+public class MoveCard implements SpecialCard{
     public MoveCard() {
     }
 

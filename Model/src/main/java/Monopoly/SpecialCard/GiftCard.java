@@ -3,7 +3,7 @@ package Monopoly.SpecialCard;
 import Monopoly.Player.Player;
 import Monopoly.Player.PlayerInterface;
 
-public class GiftCard extends SpecialCard{
+public class GiftCard implements SpecialCard{
     private int money;
 
     public GiftCard(int money) {

@@ -3,7 +3,7 @@ package Monopoly.SpecialCard;
 import Monopoly.Player.Player;
 import Monopoly.Player.PlayerInterface;
 
-public class PayCard extends SpecialCard{
+public class PayCard implements SpecialCard{
     private int amountMoneyToPay;
 
     public PayCard(int amountMoneyToPay) {

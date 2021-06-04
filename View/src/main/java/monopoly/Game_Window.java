@@ -2,6 +2,7 @@ package monopoly;
 
 import Monopoly.Board.*;
 import Monopoly.GameManager.GameManager;
+import Monopoly.Monopoly;
 import Monopoly.Player.Bank;
 import Monopoly.Player.Pawn;
 import Monopoly.Player.Player;
@@ -175,7 +176,7 @@ public class Game_Window {
         }
 
         if (players.get(turn).getPawn().getCurrentLocation() instanceof PropertyField &&
-                !(((PropertyField) players.get(turn).getPawn().getCurrentLocation()).getOwner() instanceof Bank) &&
+                !(Monopoly.getOwnerOfCurrentLocation(players.get(turn)) instanceof Bank) &&
                 !(((PropertyField) players.get(turn).getPawn().getCurrentLocation()).getOwner() == players.get(turn))) {
             wiadomoscCzynsz.show();
         }

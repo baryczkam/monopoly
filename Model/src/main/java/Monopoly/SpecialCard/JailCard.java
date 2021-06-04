@@ -3,7 +3,7 @@ package Monopoly.SpecialCard;
 import Monopoly.Player.Player;
 import Monopoly.Player.PlayerInterface;
 
-public class JailCard extends SpecialCard{
+public class JailCard implements SpecialCard{
 
     public JailCard() {
     }
