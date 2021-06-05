@@ -173,6 +173,7 @@ public class Player extends Participant{
     public void payStayCost(int index){
         if(getPawn().getCurrentLocation() instanceof PropertyField){
             if(Objects.nonNull(getPawn()) && Objects.nonNull(getPawn().getCurrentLocation()) && Objects.nonNull(getMoney()) && !(((PropertyField) getPawn().getCurrentLocation()).getOwner() == this) && !(((PropertyField) getPawn().getCurrentLocation()).getOwner() instanceof Bank)){
+                if(!((Player) ((PropertyField) getPawn().getCurrentLocation()).getOwner()).checkLost())
                 ((PropertyField) getPawn().getCurrentLocation()).payStayCost(this,index);
             }
         }

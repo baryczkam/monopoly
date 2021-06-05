@@ -558,6 +558,7 @@ public class PlayerTest {
         Assertions.assertEquals(player1.getMoney(),60);
         Assertions.assertEquals(player2.getMoney(),90);
         player2.buyProperty();
+        System.out.println(player2.getPawn().getCurrentLocation().getFieldIndex());
         Assertions.assertEquals(player2.getListOfProperties().size(),0);
         player1.move(1);
         player1.buyProperty();
@@ -571,6 +572,14 @@ public class PlayerTest {
         Assertions.assertEquals(player1.getListOfProperties().size(),2);
         player2.move(3);
         Assertions.assertEquals(player2.getMoney(),-110);
+        System.out.println(player1.toString());
+        System.out.println(player2.toString());
+        player1.move(-4);
+        player1.move(1);
+        Assertions.assertEquals(player1.getMoney(),220);
+        System.out.println(player1.getPawn().getCurrentLocation().getFieldIndex());
+        System.out.println(player1.toString());
+        System.out.println(player2.toString());
 
     }
     @Test
