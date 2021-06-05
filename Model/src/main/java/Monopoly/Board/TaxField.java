@@ -1,6 +1,5 @@
 package Monopoly.Board;
 
-import Monopoly.Player.PlayerInterface;
 
 public class TaxField extends SpecialField{
     private int taxCost;

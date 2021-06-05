@@ -2,7 +2,9 @@ package Monopoly.SpecialCard;
 
 import Monopoly.Player.Player;
 
-public class RenovationCard implements SpecialCard{
+import java.io.Serializable;
+
+public class RenovationCard implements SpecialCard, Serializable {
     private int value;
 
     public RenovationCard(int value) {

@@ -4,7 +4,9 @@ import Monopoly.Board.Board;
 import Monopoly.Board.Field;
 import Monopoly.Player.Player;
 
-public class MoveIndexCard extends MoveCard{
+import java.io.Serializable;
+
+public class MoveIndexCard extends MoveCard implements Serializable {
     private int index;
 
     public MoveIndexCard(int index) {

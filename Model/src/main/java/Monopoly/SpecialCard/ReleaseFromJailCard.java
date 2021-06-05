@@ -1,9 +1,10 @@
 package Monopoly.SpecialCard;
 
 import Monopoly.Player.Player;
-import Monopoly.Player.PlayerInterface;
 
-public class ReleaseFromJailCard extends JailCard{
+import java.io.Serializable;
+
+public class ReleaseFromJailCard extends JailCard implements Serializable {
     public ReleaseFromJailCard() {
     }
 

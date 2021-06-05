@@ -2,9 +2,10 @@ package Monopoly.Player;
 
 import Monopoly.Board.PropertyField;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Participant {
+public class Participant implements Serializable {
     private List<PropertyField> listOfProperties;
 
     public Participant(List<PropertyField> listOfProperties) {

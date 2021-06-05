@@ -4,7 +4,9 @@ import Monopoly.Board.Board;
 import Monopoly.Board.Field;
 import Monopoly.Player.Player;
 
-public class GoToStartCard extends MoveCard{
+import java.io.Serializable;
+
+public class GoToStartCard extends MoveCard implements Serializable {
 
     public GoToStartCard() {
 

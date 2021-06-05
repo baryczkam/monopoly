@@ -1,8 +1,9 @@
 package Monopoly.Board;
 
-import Monopoly.Player.PlayerInterface;
 
-public class Field {
+import java.io.Serializable;
+
+public class Field implements Serializable {
     private int fieldIndex;
 
     public Field(int fieldIndex) {

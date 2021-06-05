@@ -4,7 +4,9 @@ import Monopoly.Board.Board;
 import Monopoly.Player.Player;
 import Monopoly.Player.Status;
 
-public class SendToJailCard extends JailCard{
+import java.io.Serializable;
+
+public class SendToJailCard extends JailCard implements Serializable {
     public SendToJailCard() {
     }
 

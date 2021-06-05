@@ -1,9 +1,10 @@
 package Monopoly.SpecialCard;
 
 import Monopoly.Player.Player;
-import Monopoly.Player.PlayerInterface;
 
-public class PayCard implements SpecialCard{
+import java.io.Serializable;
+
+public class PayCard implements SpecialCard, Serializable {
     private int amountMoneyToPay;
 
     public PayCard(int amountMoneyToPay) {

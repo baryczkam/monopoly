@@ -2,9 +2,10 @@ package Monopoly.Board;
 
 import Monopoly.SpecialCard.SpecialCard;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Board implements BoardInterface{
+public class Board implements Serializable {
     private List<Field> fieldList;
     private List<SpecialCard> specialCardList;
 
