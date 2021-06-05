@@ -1,4 +1,5 @@
 package monopoly;
+import Monopoly.Monopoly;
 import Monopoly.Player.Player;
 import Monopoly.Board.Board;
 
@@ -20,11 +21,11 @@ public class Dice {
 
     public int throwTheDice(Player player) {
 //        setNumberOfEyelets(-1);
-        setNumberOfEyelets(player.throwDice());
+        setNumberOfEyelets(Monopoly.throwDice(player));
         return getNumberOfEyelets();
     }
 
     public void movePawn(Player player) {
-        player.move(getNumberOfEyelets());
+        Monopoly.move(player,getNumberOfEyelets());
     }
 }

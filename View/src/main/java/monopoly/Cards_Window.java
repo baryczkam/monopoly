@@ -1,5 +1,6 @@
 package monopoly;
 
+import Monopoly.Monopoly;
 import Monopoly.Player.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -114,128 +115,126 @@ public class Cards_Window {
     public void initialize() {
         players = Game_Window.players;
         turn = Game_Window.turn;
-        if (players.get(turn).getListOfProperties() != null) {
+        if (Monopoly.getListOfProperties(players.get(turn)) != null) {
             setPropertyImage();
         }
     }
 
     public void setPropertyImage() {
-        for (int i = 0; i < players.get(turn).getListOfProperties().size(); i++) {
+        for (int i = 0; i < Monopoly.getListOfProperties(players.get(turn)).size(); i++) {
             String path = "\\images\\karty_dzielnice\\";
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 1) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 1) {
                 path += "dzielnica1.png";
                 propertyCard1.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 3) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 3) {
                 path += "dzielnica2.png";
                 propertyCard2.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 6) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 6) {
                 path += "dzielnica3.png";
                 propertyCard3.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 8) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 8) {
                 path += "dzielnica4.png";
                 propertyCard4.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 9) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 9) {
                 path += "dzielnica5.png";
                 propertyCard5.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 11) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 11) {
                 path += "dzielnica6.png";
                 propertyCard6.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 13) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 13) {
                 path += "dzielnica7.png";
                 propertyCard7.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 14) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 14) {
                 path += "dzielnica8.png";
                 propertyCard8.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 16) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 16) {
                 path += "dzielnica9.png";
                 propertyCard9.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 18) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 18) {
                 path += "dzielnica10.png";
                 propertyCard10.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 19) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 19) {
                 path += "dzielnica11.png";
                 propertyCard11.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 21) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 21) {
                 path += "dzielnica12.png";
                 propertyCard12.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 23) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 23) {
                 path += "dzielnica13.png";
                 propertyCard13.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 24) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 24) {
                 path += "dzielnica14.png";
                 propertyCard14.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 26) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 26) {
                 path += "dzielnica15.png";
                 propertyCard15.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 27) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 27) {
                 path += "dzielnica16.png";
                 propertyCard17.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 29) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 29) {
                 path += "dzielnica17.png";
                 propertyCard17.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 31) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 31) {
                 path += "dzielnica18.png";
                 propertyCard18.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 32) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 32) {
                 path += "dzielnica19.png";
                 propertyCard19.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 34) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 34) {
                 path += "dzielnica20.png";
                 propertyCard20.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 37) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 37) {
                 path += "dzielnica21.png";
                 propertyCard21.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 39) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 39) {
                 path += "dzielnica22.png";
                 propertyCard22.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 5) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 5) {
                 path += "dworzec_zachodni.png";
                 stationCard1.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 15) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 15) {
                 path += "dworzec_gdanski.png";
                 stationCard2.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 25) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 25) {
                 path += "dworzec_wschodni.png";
                 stationCard3.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 35) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 35) {
                 path += "dworzec_centralny.png";
                 stationCard4.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 12) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 12) {
                 path += "elektrownia.png";
                 factoryCard1.setImage(new Image(path));
             }
-            if(players.get(turn).getListOfProperties().get(i).getFieldIndex() == 28) {
+            if(Monopoly.getListOfProperties(players.get(turn)).get(i).getFieldIndex() == 28) {
                 path += "wodociagi.png";
                 factoryCard2.setImage(new Image(path));
             }
         }
     }
-
-
 }

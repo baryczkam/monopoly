@@ -1,32 +1,27 @@
 package monopoly;
 
-import Monopoly.Board.Field;
 import Monopoly.Board.Board;
 import Monopoly.Board.PropertyField;
 import Monopoly.GameManager.GameManager;
+import Monopoly.Monopoly;
 import Monopoly.Player.Pawn;
-import Monopoly.SpecialCard.SpecialCard;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import Monopoly.Player.Player;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
 import static javafx.collections.FXCollections.observableArrayList;
 
-public class newGame_Window implements Mediator {
+public class newGame_Window {
 
     public static Vector<Player> players;
-    public Board board;
+    public static Board board;
     private static Stage stage;
     public int numberOfPlayers;
     List<PropertyField> propertyFields1 = new ArrayList<>();
@@ -136,8 +131,8 @@ public class newGame_Window implements Mediator {
 
     public void createPlayer1() {
         if (writeName1.getText() != "" && choosePawn1.getValue() != null) {
-            Pawn pawn1 = new Pawn(Board.getInstance(null,null).getField(0),choosePawn1.getValue());
-            Player player1 = new Player(500,propertyFields1,pawn1,writeName1.getText());
+            Pawn pawn1 = Monopoly.createPawn(Board.getInstance(null,null).getField(0),choosePawn1.getValue());
+            Player player1 = Monopoly.createPlayer(-1,propertyFields1,pawn1,writeName1.getText());
             players.add(player1);
             addPlayer1.setDisable(true);
             choosePawn2.getItems().removeAll(choosePawn1.getValue());
@@ -156,8 +151,8 @@ public class newGame_Window implements Mediator {
 
     public void createPlayer2() {
         if (writeName2.getText() != "" && choosePawn2.getValue() != null) {
-            Pawn pawn2 = new Pawn(Board.getInstance(null,null).getField(0),choosePawn2.getValue());
-            Player player2 = new Player(500,propertyFields2,pawn2,writeName2.getText());
+            Pawn pawn2 = Monopoly.createPawn(Board.getInstance(null,null).getField(0),choosePawn2.getValue());
+            Player player2 = Monopoly.createPlayer(11,propertyFields2,pawn2,writeName2.getText());
             players.add(player2);
             addPlayer2.setDisable(true);
             choosePawn1.getItems().removeAll(choosePawn2.getValue());
@@ -176,8 +171,8 @@ public class newGame_Window implements Mediator {
 
     public void createPlayer3() {
         if (writeName3.getText() != "" && choosePawn3.getValue() != null) {
-            Pawn pawn3 = new Pawn(Board.getInstance(null,null).getField(0),choosePawn3.getValue());
-            Player player3 = new Player(500,propertyFields3,pawn3,writeName3.getText());
+            Pawn pawn3 = Monopoly.createPawn(Board.getInstance(null,null).getField(0),choosePawn3.getValue());
+            Player player3 = Monopoly.createPlayer(500,propertyFields3,pawn3,writeName3.getText());
             players.add(player3);
             addPlayer3.setDisable(true);
             choosePawn1.getItems().removeAll(choosePawn3.getValue());
@@ -196,8 +191,8 @@ public class newGame_Window implements Mediator {
 
     public void createPlayer4() {
         if (writeName4.getText() != "" && choosePawn4.getValue() != null) {
-            Pawn pawn4 = new Pawn(Board.getInstance(null, null).getField(0), choosePawn4.getValue());
-            Player player4 = new Player(500, propertyFields4, pawn4, writeName4.getText());
+            Pawn pawn4 = Monopoly.createPawn(Board.getInstance(null,null).getField(0),choosePawn4.getValue());
+            Player player4 = Monopoly.createPlayer(500,propertyFields4,pawn4,writeName4.getText());
             players.add(player4);
             addPlayer4.setDisable(true);
             choosePawn1.getItems().removeAll(choosePawn4.getValue());

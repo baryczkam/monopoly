@@ -33,6 +33,8 @@ public class Game_Window {
     public Vector<ImageView> pawns;
     public static int turn;
     public int numberOfSpecialCard;
+    public static int tempTurn;
+    public int licznik;
 
     @FXML
     private ImageView specialCard;
@@ -100,9 +102,12 @@ public class Game_Window {
     @FXML
     private Button chanceBtn;
 
+
+
     Alert wiadomosc = new Alert(AlertType.INFORMATION);
     Alert wiadomoscWiezienie = new Alert(AlertType.NONE, "Idziesz do więzienia.",ButtonType.OK);
     Alert wiadomoscCzynsz = new Alert(AlertType.NONE,"Stoisz na polu innego gracza - płacisz mu czynsz.",ButtonType.OK);
+    Alert wiadomoscPrzegrana = new Alert(AlertType.NONE,"Przegrywasz.",ButtonType.OK);
 
     @FXML
     public void initialize() {
@@ -146,9 +151,10 @@ public class Game_Window {
 
         addPawnToPlayer();
 
-        playerName.setText(players.get(0).getPlayerName());
-        playerPawn.setText(players.get(0).getPawn().getPawnName());
+        playerName.setText(Monopoly.getPlayerName(players.get(0)));
+        playerPawn.setText(Monopoly.getPawnName(players.get(0)));
         playerMoney.setText("" + players.get(0).getMoney());
+        licznik = players.size();
     }
 
 
@@ -157,44 +163,53 @@ public class Game_Window {
         eyelets.setText("" + dice.getNumberOfEyelets());
         dice.movePawn(players.get(turn));
 
-        if (players.get(turn).getPawn().getCurrentLocation() instanceof ChanceCardField) {
+        if (Monopoly.getCurrentLocation(players.get(turn)) instanceof ChanceCardField) {
             endOfTurn.setDisable(true);
             chanceBtn.setDisable(false);
         }
 
-        if (players.get(turn).getPawn().getCurrentLocation() instanceof SocialCashCardField) {
+        if (Monopoly.getCurrentLocation(players.get(turn)) instanceof SocialCashCardField) {
             endOfTurn.setDisable(true);
             socialCashBtn.setDisable(false);
         }
 
         playerMoney.setText("" + players.get(turn).getMoney());
-        pawnPosition.changePawnPosition(pawns.get(turn),players.get(turn).getPawn().getCurrentLocation().getFieldIndex());
+        pawnPosition.changePawnPosition(pawns.get(turn),Monopoly.indexOfCurrentLocation(players.get(turn)));
         rollTheDice.setDisable(true);
 
-        if (players.get(turn).getIsInJail() == Status.IN_JAIL && players.get(turn).getInJailTurn() == 0) {
+        if (Monopoly.isInJail(players.get(turn)) == Status.IN_JAIL && Monopoly.isInJailTurn(players.get(turn)) == 0) {
             wiadomoscWiezienie.show();
         }
 
-        if (players.get(turn).getPawn().getCurrentLocation() instanceof PropertyField &&
+        if (Monopoly.getCurrentLocation(players.get(turn)) instanceof PropertyField &&
                 !(Monopoly.getOwnerOfCurrentLocation(players.get(turn)) instanceof Bank) &&
-                !(((PropertyField) players.get(turn).getPawn().getCurrentLocation()).getOwner() == players.get(turn))) {
+                !((Monopoly.getOwnerOfCurrentLocation(players.get(turn)) == players.get(turn)))) {
             wiadomoscCzynsz.show();
         }
 
-        if (!(players.get(turn).getPawn().getCurrentLocation() instanceof ChanceCardField ||
-                players.get(turn).getPawn().getCurrentLocation() instanceof SocialCashCardField))  {
+        if (!(Monopoly.getCurrentLocation(players.get(turn)) instanceof ChanceCardField ||
+                Monopoly.getCurrentLocation(players.get(turn)) instanceof SocialCashCardField))  {
             endOfTurn.setDisable(false);
         }
 
-        if (players.get(turn).getPawn().getCurrentLocation() instanceof PropertyField &&
-                ((PropertyField) players.get(turn).getPawn().getCurrentLocation()).getOwner() instanceof Bank) {
+        if (Monopoly.getCurrentLocation(players.get(turn))  instanceof PropertyField &&
+                Monopoly.getOwnerOfCurrentLocation(players.get(turn)) instanceof Bank) {
             buyProperty.setDisable(false);
         }
+
+        if (Monopoly.checkLost(players.get(turn))) {
+            licznik -= 1;
+            wiadomoscPrzegrana.show();
+        }
+
+//        if (licznik == 1) {
+//            showGameResult();
+//        }
     }
 
     public void buyPropertyFromBank() {
-        if (players.get(turn).checkProperty()) {
-            players.get(turn).buyProperty();
+        if (Monopoly.checkProperty(players.get(turn))) {
+            Monopoly.buyProperty(players.get(turn));
             buyProperty.setDisable(true);
             playerMoney.setText("" + players.get(turn).getMoney());
         }
@@ -204,56 +219,69 @@ public class Game_Window {
     }
 
     public void changeTurn() {
+        tempTurn = turn;
         if(turn == (players.size() - 1)) {
             turn = 0;
         }
         else turn++;
+        while(Monopoly.checkLost(players.get(turn))) {
+//            licznik -= 1;
+            if(turn == (players.size() - 1)) {
+                turn = 0;
+            }
+            else turn++;
+        }
+        if (licznik == 1) {
+            showGameResult();
+        }
+//        if (tempTurn == turn) {
+//            showGameResult();
+//        }
         rollTheDice.setDisable(false);
         endOfTurn.setDisable(true);
-        playerName.setText(players.get(turn).getPlayerName());
-        playerPawn.setText(players.get(turn).getPawn().getPawnName());
+        playerName.setText(Monopoly.getPlayerName(players.get(turn)));
+        playerPawn.setText(Monopoly.getPawnName(players.get(turn)));
         playerMoney.setText("" + players.get(turn).getMoney());
         buyProperty.setDisable(true);
         specialCard.setImage(null);
     }
 
-    public void expandProperty() {}
-    public void takeSpecialCard() {}
-    public void whoseTurn() {}
-    public void prisonField() {}
-
     public void addPawnToPlayer() {
         for (int i = 0; i < players.size(); i++) {
-            if (players.get(i).getPawn().getPawnName() == "Auto") {
+            if (Monopoly.getPawnName(players.get(i)) == "Auto") {
                 pawns.get(i).setImage(imageAuto.getImage());
             }
-            if (players.get(i).getPawn().getPawnName() == "But") {
+            if (Monopoly.getPawnName(players.get(i)) == "But") {
                 pawns.get(i).setImage(imageBut.getImage());
             }
-            if (players.get(i).getPawn().getPawnName() == "Kapelusz") {
+            if (Monopoly.getPawnName(players.get(i)) == "Kapelusz") {
                 pawns.get(i).setImage(imageKapelusz.getImage());
             }
-            if (players.get(i).getPawn().getPawnName() == "Pies") {
+            if (Monopoly.getPawnName(players.get(i)) == "Pies") {
                 pawns.get(i).setImage(imagePies.getImage());
             }
-            if (players.get(i).getPawn().getPawnName() == "Statek") {
+            if (Monopoly.getPawnName(players.get(i)) == "Statek") {
                 pawns.get(i).setImage(imageStatek.getImage());
             }
-            if (players.get(i).getPawn().getPawnName() == "Taczka") {
+            if (Monopoly.getPawnName(players.get(i)) == "Taczka") {
                 pawns.get(i).setImage(imageTaczka.getImage());
             }
         }
     }
 
     public void drawSpecialCard() {
-        numberOfSpecialCard = players.get(turn).numerKarty();
+        numberOfSpecialCard = Monopoly.numerKarty(players.get(turn));
         setSpecialCardImage();
-        players.get(turn).takeCard(numberOfSpecialCard);
-        pawnPosition.changePawnPosition(pawns.get(turn),players.get(turn).getPawn().getCurrentLocation().getFieldIndex());
+        Monopoly.takeCard(players.get(turn), numberOfSpecialCard);
+        pawnPosition.changePawnPosition(pawns.get(turn),Monopoly.indexOfCurrentLocation(players.get(turn)));
         playerMoney.setText("" + players.get(turn).getMoney());
         socialCashBtn.setDisable(true);
         chanceBtn.setDisable(true);
         endOfTurn.setDisable(false);
+        if (Monopoly.getCurrentLocation(players.get(turn))  instanceof PropertyField &&
+                Monopoly.getOwnerOfCurrentLocation(players.get(turn)) instanceof Bank) {
+            buyProperty.setDisable(false);
+        }
     }
 
     public void setSpecialCardImage() {
@@ -333,7 +361,22 @@ public class Game_Window {
             //Show scene 2 in new window
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("Karty gracza: " + players.get(turn).getPlayerName());
+            stage.setTitle("Karty gracza: " + Monopoly.getPlayerName(players.get(turn)));
+            stage.show();
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    public void showGameResult() {
+        try {
+            //Load second scene
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Result_Window.fxml"));
+            Parent root = loader.load();
+            //Show scene 2 in new window
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Koniec rozgrywki");
             stage.show();
         } catch (IOException ex) {
             System.err.println(ex);

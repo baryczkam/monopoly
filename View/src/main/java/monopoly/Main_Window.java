@@ -2,8 +2,10 @@ package monopoly;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
+import javafx.scene.shape.Rectangle;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javafx.stage.Stage;
@@ -33,5 +35,18 @@ public class Main_Window {
     @FXML
     public void openInformationWindow() {
         BuildingStage.buildStage("/information_Window.fxml");
+    }
+
+
+    @FXML
+    public void initialize() {
+
+    }
+
+
+
+    public void xyz() {
+
+
     }
 }
