@@ -6,9 +6,9 @@ import Monopoly.Player.Player;
 public class PropertyField extends Field{
     private int costPurchaseProperty;
     private Participant owner;
-    private int actionCost;
+    private double actionCost;
 
-    public PropertyField(int fieldIndex, int costPurchaseProperty, Participant owner, int actionCost) {
+    public PropertyField(int fieldIndex, int costPurchaseProperty, Participant owner, double actionCost) {
         super(fieldIndex);
         this.costPurchaseProperty = costPurchaseProperty;
         this.owner = owner;
@@ -35,7 +35,7 @@ public class PropertyField extends Field{
 
     }
 
-    public int getActionCost() {
+    public double getActionCost() {
         return actionCost;
     }
 
