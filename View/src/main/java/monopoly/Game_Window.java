@@ -154,7 +154,12 @@ public class Game_Window {
 
     public void rollTheDice() throws InterruptedException {
         dice.throwTheDice(players.get(turn));
-        eyelets.setText("" + dice.getNumberOfEyelets());
+        if(dice.getNumberOfEyelets() == -1) {
+            eyelets.setText("TRZY DUBLETY");
+        }
+        else {
+            eyelets.setText("" + dice.getNumberOfEyelets());
+        }
         dice.movePawn(players.get(turn));
 
         if (Monopoly.getCurrentLocation(players.get(turn)) instanceof ChanceCardField) {
@@ -223,12 +228,14 @@ public class Game_Window {
         if (licznik == 1) {
             showGameResult();
         }
-        rollTheDice.setDisable(false);
+        else {
+            rollTheDice.setDisable(false);
+            buyProperty.setDisable(true);
+        }
         endOfTurn.setDisable(true);
         playerName.setText(Monopoly.getPlayerName(players.get(turn)));
         playerPawn.setText(Monopoly.getPawnName(players.get(turn)));
         playerMoney.setText("" + players.get(turn).getMoney());
-        buyProperty.setDisable(true);
         specialCard.setImage(null);
     }
 
