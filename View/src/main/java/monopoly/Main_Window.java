@@ -1,17 +1,14 @@
 package monopoly;
-
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
-import javafx.scene.control.Tooltip;
-import javafx.scene.shape.Rectangle;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import javafx.stage.Stage;
-import java.util.ResourceBundle;
 
-public class Main_Window {
+public class Main_Window implements Mediator {
+
+    public void initialize() {
+        registerComponent(new newGameButton());
+        registerComponent(new loadGameButton());
+        registerComponent(new informationButton());
+    }
 
     @FXML
     private Button newGameBtn;
@@ -21,6 +18,22 @@ public class Main_Window {
 
     @FXML
     private Button informationBtn;
+
+    @Override
+    public void registerComponent(Component component) {
+        component.setMediator(this);
+        switch (component.getName()) {
+            case "newGameButton" -> {
+                newGameBtn = (newGameButton) component;
+            }
+            case "loadGameButton" -> {
+                loadGameBtn = (loadGameButton) component;
+            }
+            case "informationButton" -> {
+                informationBtn = (informationButton) component;
+            }
+        }
+    }
 
     @FXML
     public void openNewGameWindow() {
@@ -35,18 +48,5 @@ public class Main_Window {
     @FXML
     public void openInformationWindow() {
         BuildingStage.buildStage("/information_Window.fxml");
-    }
-
-
-    @FXML
-    public void initialize() {
-
-    }
-
-
-
-    public void xyz() {
-
-
     }
 }

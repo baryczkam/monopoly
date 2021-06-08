@@ -1,10 +1,8 @@
 package monopoly;
-
 import Monopoly.Monopoly;
 import Monopoly.Player.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-
 import java.util.Vector;
 
 public class Result_Window {

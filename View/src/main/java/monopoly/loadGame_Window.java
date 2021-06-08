@@ -1,28 +1,19 @@
 package monopoly;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.File;
 import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
 
 public class loadGame_Window implements Initializable {
 
-    public void loadGame() {
-
-    }
+    public void loadGame() {}
 
     List<String> lstFile;
 

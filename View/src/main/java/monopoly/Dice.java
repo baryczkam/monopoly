@@ -1,15 +1,12 @@
 package monopoly;
 import Monopoly.Monopoly;
 import Monopoly.Player.Player;
-import Monopoly.Board.Board;
 
 public class Dice {
 
     private int numberOfEyelets;
 
-    public Dice() {
-
-    }
+    public Dice() {}
 
     public int getNumberOfEyelets() {
         return numberOfEyelets;

@@ -1,10 +1,5 @@
 package monopoly;
-
 import java.io.IOException;
-import java.util.ResourceBundle;
-import java.util.Vector;
-
-import Monopoly.Player.Player;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

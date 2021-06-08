@@ -1,5 +1,4 @@
 package monopoly;
-
 import Monopoly.Board.Board;
 import Monopoly.Board.PropertyField;
 import Monopoly.GameManager.GameManager;
@@ -11,7 +10,6 @@ import Monopoly.Player.Player;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -21,8 +19,6 @@ import static javafx.collections.FXCollections.observableArrayList;
 public class newGame_Window {
 
     public static Vector<Player> players;
-    public static Board board;
-    private static Stage stage;
     public int numberOfPlayers;
     List<PropertyField> propertyFields1 = new ArrayList<>();
     List<PropertyField> propertyFields2 = new ArrayList<>();
@@ -132,7 +128,8 @@ public class newGame_Window {
     public void createPlayer1() {
         if (writeName1.getText() != "" && choosePawn1.getValue() != null) {
             Pawn pawn1 = Monopoly.createPawn(Board.getInstance(null,null).getField(0),choosePawn1.getValue());
-            Player player1 = Monopoly.createPlayer(-1,propertyFields1,pawn1,writeName1.getText());
+//            Player player1 = Monopoly.createPlayer(-1,propertyFields1,pawn1,writeName1.getText());
+            Player player1 = Monopoly.createPlayer(500,propertyFields1,pawn1,writeName1.getText());
             players.add(player1);
             addPlayer1.setDisable(true);
             choosePawn2.getItems().removeAll(choosePawn1.getValue());
@@ -152,7 +149,8 @@ public class newGame_Window {
     public void createPlayer2() {
         if (writeName2.getText() != "" && choosePawn2.getValue() != null) {
             Pawn pawn2 = Monopoly.createPawn(Board.getInstance(null,null).getField(0),choosePawn2.getValue());
-            Player player2 = Monopoly.createPlayer(11,propertyFields2,pawn2,writeName2.getText());
+//            Player player2 = Monopoly.createPlayer(11,propertyFields2,pawn2,writeName2.getText());
+            Player player2 = Monopoly.createPlayer(500,propertyFields2,pawn2,writeName2.getText());
             players.add(player2);
             addPlayer2.setDisable(true);
             choosePawn1.getItems().removeAll(choosePawn2.getValue());
@@ -210,7 +208,6 @@ public class newGame_Window {
     }
 
     Alert wiadomoscDodawanieGraczy = new Alert(Alert.AlertType.NONE, "Wszystkie pola muszą być wypełnione, żeby dodać gracza.",ButtonType.OK);
-
 
     @FXML
     public void startNewGameWindow() {

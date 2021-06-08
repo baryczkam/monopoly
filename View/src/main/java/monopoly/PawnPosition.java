@@ -1,9 +1,5 @@
 package monopoly;
-
-//import Monopoly.Player.Pawn;
-import Monopoly.Board.Field;
 import javafx.scene.image.ImageView;
-import java.util.concurrent.TimeUnit;
 
 public class PawnPosition {
 

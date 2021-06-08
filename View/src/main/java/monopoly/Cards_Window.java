@@ -1,19 +1,14 @@
 package monopoly;
-
 import Monopoly.Monopoly;
 import Monopoly.Player.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-
-//import javax.swing.text.html.ImageView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.util.Vector;
 
 public class Cards_Window {
-
-//    public void showContent() {}
 
     public Vector<Player> players;
     public int turn;

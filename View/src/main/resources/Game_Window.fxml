@@ -19,7 +19,7 @@
                 <Image url="@images/Monopoly_plansza.png" />
             </image>
         </ImageView>
-        <Button layoutX="1018.0" layoutY="703.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="140.0" style="-fx-background-color: #0071BC; -fx-background-radius: 15;" text="ZAPISZ GRĘ" textFill="WHITE">
+        <Button layoutX="1018.0" layoutY="703.0" mnemonicParsing="false" onAction="#saveGame" prefHeight="65.0" prefWidth="140.0" style="-fx-background-color: #0071BC; -fx-background-radius: 15;" text="ZAPISZ GRĘ" textFill="WHITE">
             <font>
                 <Font name="Arial Black" size="12.0" />
             </font>

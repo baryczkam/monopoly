@@ -1,10 +1,7 @@
 package monopoly;
-
 import Monopoly.Board.*;
-import Monopoly.GameManager.GameManager;
 import Monopoly.Monopoly;
 import Monopoly.Player.Bank;
-import Monopoly.Player.Pawn;
 import Monopoly.Player.Player;
 import Monopoly.Player.Status;
 import javafx.fxml.FXML;
@@ -19,10 +16,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
 
 public class Game_Window {
@@ -201,10 +195,6 @@ public class Game_Window {
             licznik -= 1;
             wiadomoscPrzegrana.show();
         }
-
-//        if (licznik == 1) {
-//            showGameResult();
-//        }
     }
 
     public void buyPropertyFromBank() {
@@ -225,7 +215,6 @@ public class Game_Window {
         }
         else turn++;
         while(Monopoly.checkLost(players.get(turn))) {
-//            licznik -= 1;
             if(turn == (players.size() - 1)) {
                 turn = 0;
             }
@@ -234,9 +223,6 @@ public class Game_Window {
         if (licznik == 1) {
             showGameResult();
         }
-//        if (tempTurn == turn) {
-//            showGameResult();
-//        }
         rollTheDice.setDisable(false);
         endOfTurn.setDisable(true);
         playerName.setText(Monopoly.getPlayerName(players.get(turn)));
@@ -370,10 +356,8 @@ public class Game_Window {
 
     public void showGameResult() {
         try {
-            //Load second scene
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Result_Window.fxml"));
             Parent root = loader.load();
-            //Show scene 2 in new window
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Koniec rozgrywki");
@@ -383,4 +367,18 @@ public class Game_Window {
         }
     }
 
+    public void saveGame() {
+        try {
+            //Load second scene
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/saveGame_Window.fxml"));
+            Parent root = loader.load();
+            //Show scene 2 in new window
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("ZAPIS GRY");
+            stage.show();
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+    }
 }
